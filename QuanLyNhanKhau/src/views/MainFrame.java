@@ -97,7 +97,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(HomeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jblTrangChu)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         HomeLayout.setVerticalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +122,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(NhanKhauBtnLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlbNhanKhau)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         NhanKhauBtnLayout.setVerticalGroup(
             NhanKhauBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +185,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jlbKhaiBao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbKhaiBao.setForeground(new java.awt.Color(255, 255, 255));
-        jlbKhaiBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cachly.png"))); // NOI18N
+        jlbKhaiBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/healthreport_icon.png"))); // NOI18N
         jlbKhaiBao.setText("Khai Báo Dịch Tễ");
         jlbKhaiBao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlbKhaiBao.setPreferredSize(new java.awt.Dimension(115, 54));
@@ -207,7 +207,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jlbTest.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbTest.setForeground(new java.awt.Color(255, 255, 255));
-        jlbTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/increasing-stocks-graphic.png"))); // NOI18N
+        jlbTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cachly.png"))); // NOI18N
         jlbTest.setText("Test Covid");
         jlbTest.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -232,7 +232,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jlbCachLy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbCachLy.setForeground(new java.awt.Color(255, 255, 255));
-        jlbCachLy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/increasing-stocks-graphic.png"))); // NOI18N
+        jlbCachLy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cachly_icon.png"))); // NOI18N
         jlbCachLy.setText("Cách Ly");
         jlbCachLy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -284,7 +284,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(CachLyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ThongKeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpnBeanLayout = new javax.swing.GroupLayout(jpnBean);
