@@ -17,18 +17,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `quan_ly_nhan_khau` DEFAULT CHARACTER SET latin1 ;
 USE `quan_ly_nhan_khau` ;
 
--- -----------------------------------------------------
--- Table `quan_ly_nhan_khau`.`cach_ly`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`cach_ly` (
-  `id` INT(11) NOT NULL,
-  `tgian_bat_dau` DATETIME NOT NULL,
-  `muc_do_cach_ly` VARCHAR(50) NULL DEFAULT NULL,
-  `is_tested` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
 
 -- -----------------------------------------------------
 -- Table `quan_ly_nhan_khau`.`users`
@@ -190,24 +178,6 @@ COLLATE = utf8_unicode_ci;
 
 
 -- -----------------------------------------------------
--- Table `quan_ly_nhan_khau`.`khai_bao`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`khai_bao` (
-  `id` INT(11) NOT NULL,
-  `vung_dich` VARCHAR(50) NULL DEFAULT NULL,
-  `bieu_hien` VARCHAR(50) NULL DEFAULT NULL,
-  `ngay_khai_bao` DATE NOT NULL,
-  `nhankhau_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_nhankhau_id_1` (`nhankhau_id` ASC) VISIBLE,
-  CONSTRAINT `fk_nhankhau_id_1`
-    FOREIGN KEY (`nhankhau_id`)
-    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
 -- Table `quan_ly_nhan_khau`.`khai_tu`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`khai_tu` (
@@ -230,26 +200,6 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`khai_tu` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
-
-
--- -----------------------------------------------------
--- Table `quan_ly_nhan_khau`.`nhankhau_cachly`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`nhankhau_cachly` (
-  `id` INT(11) NOT NULL,
-  `cachly_id` INT(11) NOT NULL,
-  `nhankhau_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_cachly_id` (`cachly_id` ASC) VISIBLE,
-  INDEX `fk_nhankhau_id` (`nhankhau_id` ASC) VISIBLE,
-  CONSTRAINT `fk_cachly_id`
-    FOREIGN KEY (`cachly_id`)
-    REFERENCES `quan_ly_nhan_khau`.`cach_ly` (`id`),
-  CONSTRAINT `fk_nhankhau_id`
-    FOREIGN KEY (`nhankhau_id`)
-    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
@@ -294,24 +244,6 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
-
-
--- -----------------------------------------------------
--- Table `quan_ly_nhan_khau`.`test`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`test` (
-  `id` INT(11) NOT NULL,
-  `hinh_thuc_test` VARCHAR(50) NOT NULL,
-  `thoi_diem_test` DATETIME NOT NULL,
-  `ket_qua` VARCHAR(50) NOT NULL,
-  `cachly_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_cachly_id_1` (`cachly_id` ASC) VISIBLE,
-  CONSTRAINT `fk_cachly_id_1`
-    FOREIGN KEY (`cachly_id`)
-    REFERENCES `quan_ly_nhan_khau`.`cach_ly` (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
@@ -452,6 +384,87 @@ INSERT INTO `tieu_su` (`ID`, `idNhanKhau`, `tuNgay`, `denNgay`, `diaChi`, `ngheN
 
 INSERT INTO `users` (`ID`, `userName`, `passwd`) VALUES
 (1, 'admin', '1');
+
+
+-- -----------------------------------------------------
+-- Table `quan_ly_nhan_khau`.`khai_bao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`khai_bao` (
+  `id_khaibao` INT(11) NOT NULL,
+  `id_nhankhau` INT(11) NOT NULL,
+  `vung_dich` VARCHAR(50) NULL DEFAULT NULL,
+  `bieu_hien` VARCHAR(50) NULL DEFAULT NULL,
+  `ngay_khai_bao` DATE NOT NULL,
+  PRIMARY KEY (`id_khaibao`),
+  INDEX `fk_nhankhau_id_1` (`id_nhankhau` ASC) VISIBLE,
+  CONSTRAINT `fk_nhankhau_khaibao`
+    FOREIGN KEY (`id_nhankhau`)
+    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `quan_ly_nhan_khau`.`cach_ly`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`cach_ly` (
+  `id_cachly` INT(11) NOT NULL,
+  `id_nhankhau` INT(11) NOT NULL,
+  `tgian_bat_dau` DATETIME NOT NULL,
+  `muc_do_cach_ly` VARCHAR(50) NULL DEFAULT NULL,
+  `tgian` DATETIME NOT NULL,
+  `is_tested` TINYINT(1) NOT NULL,
+  PRIMARY KEY (`id_cachly`),
+  CONSTRAINT `fk_nhankhau_cachly` 
+    FOREIGN KEY (`id_nhankhau`) 
+    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+-- -----------------------------------------------------
+-- Table `quan_ly_nhan_khau`.`test`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`test` (
+  `id_test` INT(11) NOT NULL,
+  `id_nhankhau` INT(11) NOT NULL,
+  `noi_test` VARCHAR(100) NOT NULL,
+  `thoi_diem_test` DATETIME NOT NULL,
+  `hinh_thuc_test` VARCHAR(50) NOT NULL,
+  `ket_qua` VARCHAR(50) NOT NULL,
+  `id_cachly` INT(11) NOT NULL,
+  PRIMARY KEY (`id_test`),
+  INDEX `fk_cachly_id_1` (`id_cachly` ASC) VISIBLE,
+  CONSTRAINT `fk_cachly_test`
+    FOREIGN KEY (`id_cachly`)
+    REFERENCES `quan_ly_nhan_khau`.`cach_ly` (`id_cachly`),
+  CONSTRAINT `fk_nhankhau_test`
+    FOREIGN KEY (`id_nhankhau`)
+    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
+    )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `quan_ly_nhan_khau`.`nhankhau_cachly`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`nhankhau_cachly` (
+  `id` INT(11) NOT NULL,
+  `id_cachly` INT(11) NOT NULL,
+  `id_nhankhau` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_cachly_id` (`id_cachly` ASC) VISIBLE,
+  INDEX `fk_nhankhau_id` (`id_nhankhau` ASC) VISIBLE,
+  CONSTRAINT `fk_cachly_id`
+    FOREIGN KEY (`id_cachly`)
+    REFERENCES `quan_ly_nhan_khau`.`cach_ly` (`id_cachly`),
+  CONSTRAINT `fk_nhankhau_id`
+    FOREIGN KEY (`id_nhankhau`)
+    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
