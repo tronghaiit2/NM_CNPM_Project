@@ -1,22 +1,22 @@
 package views;
 
-import controllers.TestPanelController;
-import javax.swing.JFrame;
+import controllers.TestManagerPanelController;
 
+import javax.swing.*;
 /**
  *
  * @author Dung
  */
-public class TestPanel extends javax.swing.JPanel {
+public class TestManagePanel extends javax.swing.JPanel {
     private JFrame parentFrame;
-    private TestPanelController controller;
+    private TestManagerPanelController controller;
     /**
-     * Creates new form KhaiBaoPanel
+     * Creates new form TestManagePanel
      */
-    public TestPanel(JFrame parentFrame) {
+    public TestManagePanel(JFrame parentFrame) {
         this.parentFrame = parentFrame;
         initComponents();
-        this.controller = new TestPanelController();
+        this.controller = new TestManagerPanelController();
     }
     /**
      * This method is called from within the constructor to initialize the form.
