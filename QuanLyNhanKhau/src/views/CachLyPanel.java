@@ -2,6 +2,7 @@ package views;
 
 import controllers.CachLyPanelController;
 import javax.swing.JFrame;
+import views.CachLyManagerFrame.ThemMoiCachLyJFrame;
 
 /**
  *
@@ -54,11 +55,16 @@ public class CachLyPanel extends javax.swing.JPanel {
         );
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Chỉnh sửa");
+        jButton1.setText("Xóa");
         jButton1.setPreferredSize(new java.awt.Dimension(101, 25));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setLabel("Thêm mới");
+        jButton2.setText("Thêm mới");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -100,6 +106,14 @@ public class CachLyPanel extends javax.swing.JPanel {
         jBtn.getAccessibleContext().setAccessibleName("");
         jBtn.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ThemMoiCachLyJFrame themMoiCachLyJFrame = new ThemMoiCachLyJFrame();
+        themMoiCachLyJFrame.setLocationRelativeTo(null);
+        themMoiCachLyJFrame.setResizable(false);
+        themMoiCachLyJFrame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

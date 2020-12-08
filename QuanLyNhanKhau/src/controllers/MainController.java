@@ -62,8 +62,12 @@ public class MainController {
                     break;
                 case "KhaiBao":
                     view = new ThongKePanel(this.jfrMain);
+                    break;
                 case "Test":
                     view = new TestPanel(this.jfrMain);
+                    break;
+                case "CachLy":
+                    view = new CachLyPanel(this.jfrMain);
                     break;
                 //any more
                 default:
@@ -137,10 +141,13 @@ public class MainController {
                     break;
                 case "KhaiBao": 
                     view = new KhaiBaoPanel(this.jfrMain);
+                    break;
                 case "Test":
                     view = new TestPanel(this.jfrMain);
+                    break;
                 case "CachLy":
                     view = new CachLyPanel(this.jfrMain);
+                    break;
                 default:
                     break;
             }
