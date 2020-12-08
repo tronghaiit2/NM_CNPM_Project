@@ -1,9 +1,9 @@
 package utility;
 
 import Bean.HoKhauBean;
-import Bean.TestBean;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
+import models.Test;
 import models.TieuSuModel;
 
 import javax.swing.table.DefaultTableModel;
@@ -114,7 +114,7 @@ public class ClassTableModel {
         dtm.addRow(new Object[] {"", "", "", "", "", ""});
         return dtm;
     }
-    public DefaultTableModel setTableTest(List<TestBean> test, String[] listColumn){
+    public DefaultTableModel setTableTest(List<Test> test, String[] listColumn){
         final int column = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
@@ -129,13 +129,13 @@ public class ClassTableModel {
         dtm.setColumnIdentifiers(listColumn);
         Object[] obj = new Object[column];
 
-        test.forEach((TestBean item) ->{
-            obj[0] = item.getTest().getId();
-            obj[1] = item.getNhanKhauModel().getID();
-            obj[2] = item.getTest().getThoi_diem_test().toString();
-            obj[3] = item.getTest().getHinh_thuc_test();
-            obj[4] = item.getTest().getKet_qua();
-            obj[5] = item.getTest().getCachly_id();
+        test.forEach((Test item) ->{
+            obj[0] = item.getTestId();
+            obj[1] = item.getId();
+            obj[2] = item.getThoi_diem_test().toString();
+            obj[3] = item.getHinh_thuc_test();
+            obj[4] = item.getKet_qua();
+            obj[5] = item.getCachly_id();
             dtm.addRow(obj);
         });
         return dtm;

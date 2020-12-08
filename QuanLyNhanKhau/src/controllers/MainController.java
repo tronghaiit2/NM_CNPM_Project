@@ -54,6 +54,7 @@ public class MainController {
                     break;
                 case "KhaiBao":
                     view = new ThongKePanel(this.jfrMain);
+                    break;
                 case "Test":
                     view = new TestManagePanel(this.jfrMain);
                     break;

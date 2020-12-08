@@ -19,7 +19,6 @@ public class NhanKhauManagePanel extends javax.swing.JPanel {
      */
     private NhanKhauManagerPanelController controller = null;
     private JFrame parentJFrame;
-    
     public NhanKhauManagePanel(JFrame parentFrame) {
         this.parentJFrame = parentFrame;
         initComponents();
