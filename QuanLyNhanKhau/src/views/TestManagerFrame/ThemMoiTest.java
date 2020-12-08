@@ -5,12 +5,24 @@
  */
 package views.TestManagerFrame;
 
+import Bean.TestBean;
+import controllers.TestManagerController.ThemMoiTestController;
+import controllers.TestManagerPanelController;
+
+import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 /**
  *
  * @author admins
  */
 public class ThemMoiTest extends javax.swing.JFrame {
 
+    private TestManagerPanelController parentController;
+    private JFrame parentFrame;
+    private TestBean testBean;
+    private ThemMoiTestController controller;
     /**
      * Creates new form ThemMoiTest
      */
@@ -18,6 +30,26 @@ public class ThemMoiTest extends javax.swing.JFrame {
         initComponents();
     }
 
+    public ThemMoiTest(TestManagerPanelController parentController, JFrame parentFrame){
+        this.parentController = parentController;
+        this.parentFrame = parentFrame;
+        this.parentFrame.setEnabled(false);
+        this.testBean = new TestBean();
+        initComponents();
+        setTitle("Thêm mới test");
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        controller = new ThemMoiTestController();
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+                    close();
+                }
+            }
+
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,40 +183,14 @@ public class ThemMoiTest extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    void close(){
+        this.parentFrame.setEnabled(true);
+        dispose();
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThemMoiTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThemMoiTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThemMoiTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThemMoiTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ThemMoiTest().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
