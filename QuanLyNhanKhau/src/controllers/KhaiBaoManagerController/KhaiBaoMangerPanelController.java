@@ -24,7 +24,7 @@ public class KhaiBaoMangerPanelController {
     private JTextField jtfSearch = new JTextField("");
     private KhaiBaoService khaiBaoService;
     private List<KhaiBaoBean> khaiBaoBeanList;
-    private ClassTableModel classTableModel = null;
+    private ClassTableModel classTableModel;
     private JFrame parentJFrame;
 
     public KhaiBaoMangerPanelController(JPanel jpnView, JTextField jtfSearch) {
@@ -33,7 +33,7 @@ public class KhaiBaoMangerPanelController {
         this.classTableModel = new ClassTableModel();
         this.khaiBaoService = new KhaiBaoService();
         this.khaiBaoBeanList = this.khaiBaoService.getListKhaiBao("");
-        // initAction();
+        initAction();
     }
 
     public void initAction() {
@@ -65,12 +65,7 @@ public class KhaiBaoMangerPanelController {
     }
 
     public void setDataTable() {
-        List<KhaiBaoBean> listItem = new ArrayList<>();
-        this.khaiBaoBeanList.forEach(khaiBao -> {
-            System.out.println(khaiBao.getNhanKhauModel().getMaNhanKhau() + "@");
-            listItem.add(khaiBao);
-        });
-        DefaultTableModel model = classTableModel.setTableKhaiBaoBean(listItem, COLUMNS);
+        DefaultTableModel model = classTableModel.setTableKhaiBaoBean(khaiBaoBeanList, COLUMNS);
 
         JTable table = new JTable(model) {
             @Override
@@ -82,29 +77,30 @@ public class KhaiBaoMangerPanelController {
 
         // thiet ke bang
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
-        table.setRowHeight(50);
+        System.out.println(table.getValueAt(0, 0));
+        table.getTableHeader().setPreferredSize(new Dimension(120, 50));
+        table.setRowHeight(55);
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
         table.getColumnModel().getColumn(0).setMaxWidth(80);
         table.getColumnModel().getColumn(0).setMinWidth(80);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
-//        table.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//      //          JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-//                if (e.getClickCount() > 1) {
-//                    KhaiBaoBean temp = khaiBaoBeanList.get(table.getSelectedRow());
-//                    KhaiBaoBean info;
-//                    info = (KhaiBaoBean) khaiBaoService.getListKhaiBao(temp.getNhanKhauModel().getHoTen());
-//                    InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
-//                    infoJframe.setLocationRelativeTo(null);
-//                    infoJframe.setVisible(true);
-//                }
-//            }
-//
-//        });
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+      //          JOptionPane.showConfirmDialog(null, table.getSelectedRow());
+                if (e.getClickCount() > 1) {
+                    KhaiBaoBean temp = khaiBaoBeanList.get(table.getSelectedRow());
+                    KhaiBaoBean info;
+                    info = (KhaiBaoBean) khaiBaoService.getListKhaiBao(temp.getNhanKhauModel().getHoTen());
+                    InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
+                    infoJframe.setLocationRelativeTo(null);
+                    infoJframe.setVisible(true);
+                }
+            }
+
+        });
 
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
@@ -112,7 +108,6 @@ public class KhaiBaoMangerPanelController {
         jpnView.removeAll();
         jpnView.setLayout(new BorderLayout());
         jpnView.add(scroll);
-        jpnView.setVisible(true);
         jpnView.validate();
         jpnView.repaint();
     }
