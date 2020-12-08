@@ -53,7 +53,7 @@ public class MainController {
                     view = new ThongKePanel(this.jfrMain);
                     break;
                 case "KhaiBao":
-                    view = new ThongKePanel(this.jfrMain);
+                    view = new KhaiBaoPanel(this.jfrMain);
                     break;
                 case "Test":
                     view = new TestManagePanel(this.jfrMain);
@@ -61,7 +61,7 @@ public class MainController {
                 //any more
                 default:
                     break;
-            }
+        }
         root.removeAll();
         root.setLayout(new BorderLayout());
         root.add(view);
@@ -130,10 +130,13 @@ public class MainController {
                     break;
                 case "KhaiBao": 
                     view = new KhaiBaoPanel(this.jfrMain);
+                    break;
                 case "Test":
                     view = new TestManagePanel(this.jfrMain);
+                    break;
                 case "CachLy":
                     view = new CachLyPanel(this.jfrMain);
+                    break;
                 default:
                     break;
             }
