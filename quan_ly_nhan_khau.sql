@@ -404,7 +404,6 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`khai_bao` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-
 -- -----------------------------------------------------
 -- Table `quan_ly_nhan_khau`.`cach_ly`
 -- -----------------------------------------------------
@@ -415,11 +414,7 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`cach_ly` (
   `muc_do_cach_ly` VARCHAR(50) NULL DEFAULT NULL,
   `tgian` DATETIME NOT NULL,
   `is_tested` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`id_cachly`),
-  CONSTRAINT `fk_nhankhau_cachly` 
-    FOREIGN KEY (`id_nhankhau`) 
-    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
-)
+  PRIMARY KEY (`id_cachly`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
@@ -441,8 +436,7 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`test` (
     REFERENCES `quan_ly_nhan_khau`.`cach_ly` (`id_cachly`),
   CONSTRAINT `fk_nhankhau_test`
     FOREIGN KEY (`id_nhankhau`)
-    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
-    )
+    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
