@@ -1,5 +1,6 @@
 package services;
 
+import Bean.KhaiBaoBean;
 import Bean.NhanKhauBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +24,7 @@ public class NhanKhauService {
      * 
      */
     public NhanKhauBean getNhanKhau(String cmt) {
-        NhanKhauBean nhanKhauBean = new NhanKhauBean();  
+        NhanKhauBean nhanKhauBean = new NhanKhauBean();
         // truy cap db
         try {
             Connection connection = MysqlConnection.getMysqlConnection();

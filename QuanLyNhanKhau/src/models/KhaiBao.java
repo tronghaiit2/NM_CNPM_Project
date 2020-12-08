@@ -5,7 +5,7 @@
  */
 package models;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -42,7 +42,7 @@ public class KhaiBao {
         this.bieu_hien = bieu_hien;
     }
 
-    public Date getNgay_khai_bao() {
+    public java.sql.Date getNgay_khai_bao() {
         return ngay_khai_bao;
     }
 
