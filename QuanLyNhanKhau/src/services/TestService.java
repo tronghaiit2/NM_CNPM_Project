@@ -43,21 +43,6 @@ public class TestService {
         return list;
     }
 
-//    public List<TestBean> search(String keyword){
-//        List<TestBean> list = new ArrayList<>();
-//        String query;
-//        if (keyword.trim().isEmpty()){
-//            return this.getListTestBeans();
-//        }
-//
-//        try {
-//
-//        } catch (Exception e){
-//
-//        }
-//        return list;
-//    }
-
     private void exceptionHandle(String message){
         JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);
     }

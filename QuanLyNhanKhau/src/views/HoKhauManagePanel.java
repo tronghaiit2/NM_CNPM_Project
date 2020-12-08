@@ -29,6 +29,10 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
         controller.setParentJFrame(parentFrame);
     }
 
+    public HoKhauManagePanel(){
+        initComponents();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,4 +165,5 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
     private javax.swing.JButton tachHoKhauBtn;
     private javax.swing.JButton themMoiBtn;
     // End of variables declaration//GEN-END:variables
+
 }

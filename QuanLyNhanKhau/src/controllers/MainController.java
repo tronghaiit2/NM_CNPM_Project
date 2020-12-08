@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class MainController {
     // set panel for root
     public void setView(JPanel jpnItem, JLabel jlbItem, String kind) {
         this.kindSelected = kind;
-        jpnItem.setBackground(new Color(0));
+        jpnItem.setBackground(new Color(0x000000));
         jlbItem.setBackground(new Color(0));
         JPanel view = new  JPanel();
         switch(kind) {
@@ -128,7 +129,7 @@ public class MainController {
                 case "ThongKe":
                     view = new ThongKePanel(this.jfrMain);
                     break;
-                case "KhaiBao": 
+                case "KhaiBao":
                     view = new KhaiBaoPanel(this.jfrMain);
                     break;
                 case "Test":

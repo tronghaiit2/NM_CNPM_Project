@@ -11,6 +11,7 @@ import controllers.MainController;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame() throws SQLException, ClassNotFoundException {
         initComponents();
         setTitle("QUẢN LÝ NHÂN KHẨU");
         List<DanhMucBean> listDanhMuc = new ArrayList<>();

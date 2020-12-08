@@ -86,8 +86,8 @@ public class NhanKhauManagerPanelController {
         };
         
         // thiet ke bang
-        
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+        System.out.println(table.getValueAt(1, 1));
         table.getTableHeader().setPreferredSize(new Dimension(100, 50));
         table.setRowHeight(50);
         table.validate();
