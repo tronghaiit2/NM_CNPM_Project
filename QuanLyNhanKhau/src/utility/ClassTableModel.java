@@ -1,11 +1,13 @@
 package utility;
 
 import Bean.HoKhauBean;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
+import models.Test;
 import models.TieuSuModel;
+
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
@@ -112,7 +114,32 @@ public class ClassTableModel {
         dtm.addRow(new Object[] {"", "", "", "", "", ""});
         return dtm;
     }
-    
+    public DefaultTableModel setTableTest(List<Test> test, String[] listColumn){
+        final int column = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return super.isCellEditable(row, column);
+            }
+            @Override
+            public Class<?> getColumnClass (int columnIndex){
+                return columnIndex == 6? Boolean.class : String.class;
+            }
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj = new Object[column];
+
+        test.forEach((Test item) ->{
+            obj[0] = item.getTestId();
+            obj[1] = item.getId();
+            obj[2] = item.getThoi_diem_test().toString();
+            obj[3] = item.getHinh_thuc_test();
+            obj[4] = item.getKet_qua();
+            obj[5] = item.getCachly_id();
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
     public DefaultTableModel setTableHoKhau(List<HoKhauBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {

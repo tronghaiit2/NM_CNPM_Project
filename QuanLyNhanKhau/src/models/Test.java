@@ -16,6 +16,15 @@ public class Test {
     private Date thoi_diem_test;
     private String ket_qua;
     private int cachly_id;
+    private int testId;
+
+    public int getTestId() {
+        return testId;
+    }
+
+    public void setTestId(int testId) {
+        this.testId = testId;
+    }
 
     public int getId() {
         return id;
@@ -57,5 +66,9 @@ public class Test {
         this.cachly_id = cachly_id;
     }
 
-
+    @Override
+    public String toString(){
+        String testString = id + " " + hinh_thuc_test + " " + thoi_diem_test + " " + ket_qua + " " + cachly_id + " " + testId;
+        return testString;
+    }
 }

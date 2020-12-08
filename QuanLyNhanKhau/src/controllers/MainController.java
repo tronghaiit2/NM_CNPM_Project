@@ -4,23 +4,15 @@
  */
 package controllers;
 
+
 import Bean.DanhMucBean;
-import java.awt.BorderLayout;
-import java.awt.Color;
+import views.*;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import views.CachLyPanel;
-import views.HoKhauManagePanel;
-import views.HomePagePanel;
-import views.NhanKhauManagePanel;
-import views.ThongKePanel;
-import views.TimKiemPanel;
-import views.KhaiBaoPanel;
-import views.TestPanel;
 
 /**
  *
@@ -61,14 +53,15 @@ public class MainController {
                     view = new ThongKePanel(this.jfrMain);
                     break;
                 case "KhaiBao":
-                    view = new ThongKePanel(this.jfrMain);
+                    view = new KhaiBaoPanel(this.jfrMain);
+                    break;
                 case "Test":
-                    view = new TestPanel(this.jfrMain);
+                    view = new TestManagePanel(this.jfrMain);
                     break;
                 //any more
                 default:
                     break;
-            }
+        }
         root.removeAll();
         root.setLayout(new BorderLayout());
         root.add(view);
@@ -137,10 +130,13 @@ public class MainController {
                     break;
                 case "KhaiBao": 
                     view = new KhaiBaoPanel(this.jfrMain);
+                    break;
                 case "Test":
-                    view = new TestPanel(this.jfrMain);
+                    view = new TestManagePanel(this.jfrMain);
+                    break;
                 case "CachLy":
                     view = new CachLyPanel(this.jfrMain);
+                    break;
                 default:
                     break;
             }

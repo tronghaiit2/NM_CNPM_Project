@@ -1,27 +1,21 @@
 package controllers;
 
 import Bean.NhanKhauBean;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
+import models.NhanKhauModel;
+import services.NhanKhauService;
+import utility.ClassTableModel;
+import views.infoViews.InfoJframe;
+
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import models.NhanKhauModel;
-import services.NhanKhauService;
-import utility.ClassTableModel;
-import views.infoViews.InfoJframe;
 
 /**
  *
@@ -37,6 +31,7 @@ public class NhanKhauManagerPanelController {
     private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
     private JFrame parentJFrame;
 
+    // khởi tạo
     public NhanKhauManagerPanelController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;

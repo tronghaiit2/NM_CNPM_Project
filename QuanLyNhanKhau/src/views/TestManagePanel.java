@@ -1,22 +1,24 @@
 package views;
 
-import controllers.TestPanelController;
-import javax.swing.JFrame;
+import controllers.TestManagerPanelController;
 
+import javax.swing.*;
 /**
  *
  * @author Dung
  */
-public class TestPanel extends javax.swing.JPanel {
-    private JFrame parentFrame;
-    private TestPanelController controller;
+public class TestManagePanel extends javax.swing.JPanel {
+    private JFrame parentJFrame;
+    private TestManagerPanelController controller = null;
     /**
-     * Creates new form KhaiBaoPanel
+     * Creates new form TestManagePanel
      */
-    public TestPanel(JFrame parentFrame) {
-        this.parentFrame = parentFrame;
+    public TestManagePanel(JFrame parentFrame) {
+        this.parentJFrame = parentFrame;
         initComponents();
-        this.controller = new TestPanelController();
+        controller = new TestManagerPanelController(jPanel1, jTextField1);
+        controller.setParentJFrame(parentJFrame);
+        controller.setDataTable();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +60,7 @@ public class TestPanel extends javax.swing.JPanel {
         jButton1.setPreferredSize(new java.awt.Dimension(101, 25));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setLabel("Thêm mới");
+        jButton2.setText("Thêm mới");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

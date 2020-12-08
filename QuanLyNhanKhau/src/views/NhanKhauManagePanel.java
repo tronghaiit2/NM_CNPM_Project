@@ -1,11 +1,12 @@
 package views;
 
 import controllers.NhanKhauManagerPanelController;
-import javax.swing.JFrame;
 import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
 import views.NhanKhauManagerFrame.DangKyTamTruJFrame;
 import views.NhanKhauManagerFrame.DangKyTamVangJFrame;
 import views.NhanKhauManagerFrame.KhaiTuJFrame;
+
+import javax.swing.*;
 
 /**
  *
@@ -18,7 +19,6 @@ public class NhanKhauManagePanel extends javax.swing.JPanel {
      */
     private NhanKhauManagerPanelController controller = null;
     private JFrame parentJFrame;
-    
     public NhanKhauManagePanel(JFrame parentFrame) {
         this.parentJFrame = parentFrame;
         initComponents();

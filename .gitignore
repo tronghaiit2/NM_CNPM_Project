@@ -59,6 +59,8 @@ local.properties
 *.ids
 *.orig
 classes/
+build/
+out/
 
 ######################
 # Visual Studio Code
@@ -141,6 +143,7 @@ Desktop.ini
 ######################
 .eslintcache
 
+
 ######################
 # NetBean
 ######################
@@ -152,3 +155,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
