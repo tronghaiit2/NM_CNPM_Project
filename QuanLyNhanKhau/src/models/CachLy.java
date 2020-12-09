@@ -15,6 +15,7 @@ public class CachLy {
     private Date tgian_bat_dau;
     private String muc_do_cach_ly;
     private boolean is_tested;
+    private int cachly_id;
 
     public int getId() {
         return id;
@@ -46,6 +47,14 @@ public class CachLy {
 
     public void setIs_tested(boolean is_tested) {
         this.is_tested = is_tested;
+    }
+
+    public int getCachly_id() {
+        return cachly_id;
+    }
+
+    public void setCachly_id(int cachly_id) {
+        this.cachly_id = cachly_id;
     }
 
 

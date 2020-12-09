@@ -6,11 +6,7 @@ import Bean.KhaiBaoBean;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-import models.GiaDinhModel;
-
-import models.NhanKhauModel;
-import models.Test;
-import models.TieuSuModel;
+import models.*;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
@@ -191,6 +187,34 @@ public class ClassTableModel {
             obj[3] = item.getKhaiBaoModel().getNgay_khai_bao();
             obj[4] = item.getKhaiBaoModel().getBieu_hien();
             obj[5] = item.getKhaiBaoModel().getVung_dich();
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
+    //Table Cach Ly
+    public DefaultTableModel setTableCachLy (List <CachLy> cachLy, String[]listColumn){
+        final int column = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return super.isCellEditable(row, column);
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 5 ? Boolean.class : String.class;
+            }
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj = new Object[column];
+
+        cachLy.forEach((CachLy item) -> {
+            obj[0] = item.getCachly_id();
+            obj[1] = item.getId();
+            obj[2] = item.getTgian_bat_dau().toString();
+            obj[3] = item.getMuc_do_cach_ly();
+            obj[4] = item.isIs_tested();
+
             dtm.addRow(obj);
         });
         return dtm;
