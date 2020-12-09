@@ -23,9 +23,9 @@ public class KhaiBaoService {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query;
             if (hoTen != "") {
-                query = String.format("SELECT * FROM khai_bao join nhan_khau on khai_bao.nhankhau_ID = nhan_khau.ID where nhan_khau.hoTen = \'%s\' " , hoTen);
+                query = String.format("SELECT * FROM khai_bao join nhan_khau on khai_bao.id_nhankhau = nhan_khau.ID where nhan_khau.hoTen = \'%s\' " , hoTen);
             } else {
-                query = "SELECT * FROM khai_bao join nhan_khau on khai_bao.nhankhau_ID = nhan_khau.ID";
+                query = "SELECT * FROM khai_bao join nhan_khau on khai_bao.id_nhankhau = nhan_khau.ID";
             }
 
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
@@ -63,7 +63,7 @@ public class KhaiBaoService {
             String query_turn_off_safe_mode = "SET SQL_SAFE_UPDATES = 0";
             PreparedStatement preparedStatement_safe_mode = (PreparedStatement) connection.prepareStatement(query_turn_off_safe_mode);
             preparedStatement_safe_mode.executeQuery();
-            String query = String.format("delete from khai_bao where nhankhau_id = \'%s\'", IDNhanKhau);
+            String query = String.format("delete from khai_bao where id_nhankhau = \'%s\'", IDNhanKhau);
             try (PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query)) {
                 int res = preparedStatement.executeUpdate(query);
                 if (res == 1){
@@ -94,7 +94,7 @@ public class KhaiBaoService {
             query = "SELECT * "
                     + "FROM khai_bao as kb "
                     + "INNER JOIN nhan_khau as nk "
-                    + "ON nk.ID = kb.nhankhau_id "
+                    + "ON nk.ID = kb.id_nhankhau "
                     + "Inner join chung_minh_thu "
                     + "on nk.ID = chung_minh_thu.idNhanKhau "
                     + "WHERE chung_minh_thu.soCMT LIKE '%"
@@ -104,7 +104,7 @@ public class KhaiBaoService {
             query = "SELECT * "
                     + "FROM khai_bao "
                     + "inner join nhan_khau as nk1 "
-                    + "on nk1.ID = khai_bao.nhankhau_id "
+                    + "on nk1.ID = khai_bao.id_nhankhau "
                     + "WHERE nk1.hoTen LIKE '%"
                     + keyword
                     + "%'";
@@ -121,6 +121,7 @@ public class KhaiBaoService {
                 nhanKhau.setHoTen(rs.getString("hoTen"));
                 nhanKhau.setGioiTinh(rs.getString("gioiTinh"));
                 nhanKhau.setNamSinh(rs.getDate("namSinh"));
+                nhanKhau.setMaNhanKhau(rs.getString("maNhanKhau"));
                 KhaiBao khaiBao = new KhaiBao();
                 khaiBao.setNgay_khai_bao(rs.getDate("ngay_khai_bao"));
                 khaiBao.setVung_dich(rs.getString("vung_dich"));

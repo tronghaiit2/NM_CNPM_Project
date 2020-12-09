@@ -21,7 +21,7 @@ public class ThemMoiKhaiBaoController {
         if (connection == null) {
             System.out.println("Connection fail");
         }
-        String query = "INSERT INTO khai_bao (vung_dich, bieu_hien, ngay_khai_bao, nhankhau_id) values (?,?,?,?)";
+        String query = "INSERT INTO khai_bao (vung_dich, bieu_hien, ngay_khai_bao, id_nhankhau) values (?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, khaiBao.getVung_dich());
         preparedStatement.setString(2, khaiBao.getBieu_hien());
