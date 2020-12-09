@@ -1,6 +1,8 @@
 package services;
 
 import Bean.KhaiBaoBean;
+import Bean.NhanKhauBean;
+import models.ChungMinhThuModel;
 import models.KhaiBao;
 import models.NhanKhauModel;
 
@@ -78,6 +80,63 @@ public class KhaiBaoService {
             e.printStackTrace();
         }
     }
+
+    public List<KhaiBaoBean> search(String keyword) {
+        List<KhaiBaoBean> list = new  ArrayList<>();
+        String query;
+        if (keyword.trim().isEmpty()) {
+            return getListKhaiBao("");
+        }
+        // truy cap db
+        // create query
+        try {
+            long a = Long.parseLong(keyword);
+            query = "SELECT * "
+                    + "FROM khai_bao as kb "
+                    + "INNER JOIN nhan_khau as nk "
+                    + "ON nk.ID = kb.nhankhau_id "
+                    + "Inner join chung_minh_thu "
+                    + "on nk.ID = chung_minh_thu.idNhanKhau "
+                    + "WHERE chung_minh_thu.soCMT LIKE '%"
+                    + keyword
+                    + "%'";
+        } catch (Exception e) {
+            query = "SELECT * "
+                    + "FROM khai_bao "
+                    + "inner join nhan_khau as nk1 "
+                    + "on nk1.ID = khai_bao.nhankhau_id "
+                    + "WHERE nk1.hoTen LIKE '%"
+                    + keyword
+                    + "%'";
+        }
+
+        // execute query
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                KhaiBaoBean temp = new KhaiBaoBean();
+                NhanKhauModel nhanKhau = new NhanKhauModel();
+                nhanKhau.setHoTen(rs.getString("hoTen"));
+                nhanKhau.setGioiTinh(rs.getString("gioiTinh"));
+                nhanKhau.setNamSinh(rs.getDate("namSinh"));
+                KhaiBao khaiBao = new KhaiBao();
+                khaiBao.setNgay_khai_bao(rs.getDate("ngay_khai_bao"));
+                khaiBao.setVung_dich(rs.getString("vung_dich"));
+                khaiBao.setBieu_hien(rs.getString("bieu_hien"));
+                temp.setKhaiBaoModel(khaiBao);
+                temp.setNhanKhauModel(nhanKhau);
+                list.add(temp);
+            }
+            preparedStatement.close();
+            connection.close();
+        } catch (Exception mysqlException) {
+            mysqlException.printStackTrace();
+        }
+        return list;
+    }
+
 
 
 
