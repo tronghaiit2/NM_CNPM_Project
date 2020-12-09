@@ -4,6 +4,7 @@ import Bean.KhaiBaoBean;
 import models.KhaiBao;
 import models.NhanKhauModel;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,6 +53,30 @@ public class KhaiBaoService {
             e2.printStackTrace();
         }
         return listKhaiBao;
+    }
+
+    public void removeKhaiBao(String IDNhanKhau){
+        try{
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query_turn_off_safe_mode = "SET SQL_SAFE_UPDATES = 0";
+            PreparedStatement preparedStatement_safe_mode = (PreparedStatement) connection.prepareStatement(query_turn_off_safe_mode);
+            preparedStatement_safe_mode.executeQuery();
+            String query = String.format("delete from khai_bao where nhankhau_id = \'%s\'", IDNhanKhau);
+            try (PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query)) {
+                int res = preparedStatement.executeUpdate(query);
+                if (res == 1){
+                    JOptionPane.showMessageDialog(null, "Xóa thành công ");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Xóa thất bại", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 
