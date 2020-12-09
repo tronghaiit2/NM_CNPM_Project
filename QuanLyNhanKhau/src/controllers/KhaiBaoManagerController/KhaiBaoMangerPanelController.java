@@ -12,8 +12,12 @@ import java.awt.*;
 import java.util.EventObject;
 import java.util.List;
 
+/**
+* @author: hieppm
+ */
+
 public class KhaiBaoMangerPanelController {
-    private final String[] COLUMNS = {"Họ tên", "Mã nhân khẩu", "Ngày sinh", "Giới tính", "Biểu hiện", "Vùng dịch"};
+    private final String[] COLUMNS = {"Họ tên", "Mã nhân khẩu", "Ngày sinh", "Ngày khai báo", "Biểu hiện", "Vùng dịch"};
     private JPanel jpnView;
     private JTextField jtfSearch = new JTextField("");
     private KhaiBaoService khaiBaoService;
@@ -36,7 +40,7 @@ public class KhaiBaoMangerPanelController {
             public void insertUpdate(DocumentEvent e) {
                 // What to do
                 String key = jtfSearch.getText();
-                khaiBaoBeanList = khaiBaoService.getListKhaiBao(key);
+                khaiBaoBeanList = khaiBaoService.search(key);
                 setDataTable();
             }
 
@@ -44,7 +48,7 @@ public class KhaiBaoMangerPanelController {
             public void removeUpdate(DocumentEvent e) {
                 // what to do
                 String key = jtfSearch.getText();
-                khaiBaoBeanList = khaiBaoService.getListKhaiBao(key);
+                khaiBaoBeanList = khaiBaoService.search(key);
                 setDataTable();
             }
 
@@ -52,7 +56,7 @@ public class KhaiBaoMangerPanelController {
             public void changedUpdate(DocumentEvent e) {
                 // what to do
                 String key = jtfSearch.getText();
-                khaiBaoBeanList = khaiBaoService.getListKhaiBao(key);
+                khaiBaoBeanList = khaiBaoService.search(key);
                 setDataTable();
             }
         });
@@ -71,7 +75,6 @@ public class KhaiBaoMangerPanelController {
 
         // thiet ke bang
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        System.out.println(table.getValueAt(0, 0));
         table.getTableHeader().setPreferredSize(new Dimension(120, 50));
         table.setRowHeight(55);
         table.validate();
