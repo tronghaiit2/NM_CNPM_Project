@@ -1,25 +1,19 @@
 package controllers.KhaiBaoManagerController;
 
 import Bean.KhaiBaoBean;
-import models.KhaiBao;
 import services.KhaiBaoService;
 import utility.ClassTableModel;
-import views.infoViews.InfoJframe;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 
 public class KhaiBaoMangerPanelController {
-    private final String[] COLUMNS = { "Họ tên", "Mã nhân khẩu", "Ngày sinh", "Giới tính", "Biểu hiện", "Vùng dịch"};
+    private final String[] COLUMNS = {"Họ tên", "Mã nhân khẩu", "Ngày sinh", "Giới tính", "Biểu hiện", "Vùng dịch"};
     private JPanel jpnView;
     private JTextField jtfSearch = new JTextField("");
     private KhaiBaoService khaiBaoService;
@@ -86,21 +80,7 @@ public class KhaiBaoMangerPanelController {
         table.getColumnModel().getColumn(0).setMaxWidth(80);
         table.getColumnModel().getColumn(0).setMinWidth(80);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-      //          JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-                if (e.getClickCount() > 1) {
-                    KhaiBaoBean temp = khaiBaoBeanList.get(table.getSelectedRow());
-                    KhaiBaoBean info;
-                    info = (KhaiBaoBean) khaiBaoService.getListKhaiBao(temp.getNhanKhauModel().getHoTen());
-                    InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
-                    infoJframe.setLocationRelativeTo(null);
-                    infoJframe.setVisible(true);
-                }
-            }
 
-        });
 
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
@@ -116,7 +96,7 @@ public class KhaiBaoMangerPanelController {
         this.parentJFrame = parentJFrame;
     }
 
-    public void refreshData(){
+    public void refreshData() {
         this.khaiBaoBeanList = this.khaiBaoService.getListKhaiBao("");
         setDataTable();
     }

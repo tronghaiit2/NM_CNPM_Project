@@ -6,7 +6,6 @@ import views.KhaiBaoManagerFrame.ThemMoiKhaiBao;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author Dung
@@ -15,7 +14,7 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
     private JFrame parentFrame;
     private KhaiBaoMangerPanelController controller = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtn;
+//    private javax.swing.JButton jBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JTextField jTextField1;
@@ -43,7 +42,7 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         tablePanel = new javax.swing.JPanel();
-        jBtn = new javax.swing.JButton();
+//        jBtn = new javax.swing.JButton();
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -54,9 +53,8 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
         setToolTipText("");
         setPreferredSize(new java.awt.Dimension(855, 465));
 
-        jBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jBtn.setText("Hiển thị");
-
+//        jBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+//        jBtn.setText("Hiển thị");
 
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -72,7 +70,7 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setText("Thêm mới");
         jButton2.setBackground(Color.RED);
-        jButton2.addActionListener(new java.awt.event.ActionListener(){
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -106,7 +104,7 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(61, 61, 61)
-                                                .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                                .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
@@ -115,8 +113,8 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+//                                        .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
@@ -128,12 +126,11 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
                                 .addContainerGap())
         );
 
-        jBtn.getAccessibleContext().setAccessibleName("");
-        jBtn.getAccessibleContext().setAccessibleDescription("");
+//        jBtn .getAccessibleContext().setAccessibleName("");
+//        jBtn.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
     public void Button2Action(ActionEvent e) {
-        System.out.println("hello");
         ThemMoiKhaiBao themMoi = new ThemMoiKhaiBao(this.controller, this.parentFrame);
         themMoi.setVisible(true);
         themMoi.setLocationRelativeTo(null);
