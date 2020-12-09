@@ -49,6 +49,7 @@ public class HomeCotroller {
             preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
+
                 this.nhanKhauTamTruLb.setText(String.valueOf(rs.getInt("tong")));
             }
             preparedStatement.close();
@@ -60,13 +61,18 @@ public class HomeCotroller {
                 this.nhanKhauTamVangLb.setText(String.valueOf(rs.getInt("tong")));
             }
             preparedStatement.close();
-            query = "Select COUNT (distinct nhankhau_id) as TONG from khai_bao";
+
+            query = "SELECT COUNT(DISTINCT nhankhau_id) as tong from khai_bao";
             preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
-                this.tongKhaiBao.setText(String.valueOf(rs.getInt("TONG")));
+                this.tongKhaiBao.setText(String.valueOf(rs.getInt("tong")));
             }
             preparedStatement.close();
+
+
+
+
             connection.close();
         } catch (Exception e) {
         }
