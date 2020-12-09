@@ -20,9 +20,9 @@ public class KhaiBaoService {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query;
             if (hoTen != "") {
-                query = String.format("SELECT * FROM khai_bao join nhan_khau on khai_bao.nhankhau_ID = nhan_khau.ID where nhan_khau.hoTen = \'%s\' " , hoTen);
+                query = String.format("SELECT * FROM khai_bao join nhan_khau on khai_bao.id_nhankhau = nhan_khau.ID where nhan_khau.hoTen = \'%s\' " , hoTen);
             } else {
-                query = "SELECT * FROM khai_bao join nhan_khau on khai_bao.nhankhau_ID = nhan_khau.ID";
+                query = "SELECT * FROM khai_bao join nhan_khau on khai_bao.id_nhankhau = nhan_khau.ID\n";
             }
 
             PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);

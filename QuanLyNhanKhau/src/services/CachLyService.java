@@ -24,7 +24,6 @@ public class CachLyService {
 
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-
             //need fix query
             String query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id = nk.ID JOIN cach_ly cl ON t.cachly_id = cl.id ";
             PreparedStatement preparedStatement = connection.prepareStatement(query);

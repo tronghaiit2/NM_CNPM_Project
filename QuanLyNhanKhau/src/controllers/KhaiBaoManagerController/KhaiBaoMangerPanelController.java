@@ -71,7 +71,7 @@ public class KhaiBaoMangerPanelController {
 
         // thiet ke bang
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        System.out.println(table.getValueAt(0, 0));
+        //System.out.println(table.getValueAt(0, 0));
         table.getTableHeader().setPreferredSize(new Dimension(120, 50));
         table.setRowHeight(55);
         table.validate();
