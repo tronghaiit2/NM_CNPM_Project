@@ -15,16 +15,15 @@ public class CachLyBean {
     private CachLy cachLy;
     private Test test;
     private NhanKhauCachLy nhanKhauCachLy;
-    
+
     public CachLyBean(CachLy cachLy, Test test, NhanKhauCachLy nhanKhauCachLy) {
         this.cachLy = cachLy;
         this.test = test;
         this.nhanKhauCachLy = nhanKhauCachLy;
     }
-    
+
     public CachLyBean(){
         this.cachLy = new CachLy();
-        this.test = new Test();
         this.nhanKhauCachLy = new NhanKhauCachLy();
     }
 
@@ -51,5 +50,5 @@ public class CachLyBean {
     public void setNhanKhauCachLy(NhanKhauCachLy nhanKhauCachLy) {
         this.nhanKhauCachLy = nhanKhauCachLy;
     }
-    
+
 }
