@@ -37,10 +37,11 @@ public class ThemMoiTest extends javax.swing.JFrame {
         jtfHinhThuc = new javax.swing.JTextField();
         jtfKetQua = new javax.swing.JTextField();
         jtfCachLy = new javax.swing.JTextField();
-        jtfIdNhanKhau = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         testTimeChooser = new com.toedter.calendar.JDateChooser();
+        selectBtn = new javax.swing.JButton();
+        tenChuHoJtf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,12 +69,27 @@ public class ThemMoiTest extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("Thêm mới");
 
+        selectBtn.setText("Chọn...");
+        selectBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectBtnActionPerformed(evt);
+            }
+        });
+
+        tenChuHoJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tenChuHoJtf.setEnabled(false);
+        tenChuHoJtf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tenChuHoJtfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -88,15 +104,17 @@ public class ThemMoiTest extends javax.swing.JFrame {
                             .addComponent(jlblKetQua)
                             .addComponent(jlblHinhThuc)
                             .addComponent(jlblCachLy))
-                        .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(testTimeChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtfIdTest, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfHinhThuc, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfKetQua, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfCachLy, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(jtfIdNhanKhau))
-                        .addGap(155, 155, 155))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tenChuHoJtf)
+                            .addComponent(testTimeChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(jtfIdTest)
+                            .addComponent(jtfHinhThuc)
+                            .addComponent(jtfKetQua)
+                            .addComponent(jtfCachLy))
+                        .addGap(102, 102, 102))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,14 +133,16 @@ public class ThemMoiTest extends javax.swing.JFrame {
                                 .addGap(80, 80, 80)
                                 .addComponent(jlblTestTime))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(selectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tenChuHoJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(20, 20, 20)
-                                .addComponent(jtfIdNhanKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addComponent(testTimeChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblHinhThuc))
+                            .addComponent(jlblHinhThuc)
+                            .addComponent(jtfHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfKetQua, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,6 +160,17 @@ public class ThemMoiTest extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
+        ChooseNhanKhau chooseNhanKhau = new ChooseNhanKhau();
+        chooseNhanKhau.setLocationRelativeTo(null);
+        chooseNhanKhau.setResizable(false);
+        chooseNhanKhau.setVisible(true);
+    }//GEN-LAST:event_selectBtnActionPerformed
+
+    private void tenChuHoJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenChuHoJtfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tenChuHoJtfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,9 +218,10 @@ public class ThemMoiTest extends javax.swing.JFrame {
     private javax.swing.JLabel jlblTestTime;
     private javax.swing.JTextField jtfCachLy;
     private javax.swing.JTextField jtfHinhThuc;
-    private javax.swing.JTextField jtfIdNhanKhau;
     private javax.swing.JTextField jtfIdTest;
     private javax.swing.JTextField jtfKetQua;
+    private javax.swing.JButton selectBtn;
+    private javax.swing.JTextField tenChuHoJtf;
     private com.toedter.calendar.JDateChooser testTimeChooser;
     // End of variables declaration//GEN-END:variables
 }

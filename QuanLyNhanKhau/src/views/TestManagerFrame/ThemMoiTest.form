@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jButton1" min="-2" pref="101" max="-2" attributes="0"/>
@@ -41,16 +41,18 @@
                           <Component id="jlblHinhThuc" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jlblCachLy" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="testTimeChooser" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="selectBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tenChuHoJtf" max="32767" attributes="0"/>
+                          <Component id="testTimeChooser" alignment="0" pref="248" max="32767" attributes="0"/>
                           <Component id="jtfIdTest" alignment="0" max="32767" attributes="0"/>
                           <Component id="jtfHinhThuc" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfKetQua" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jtfCachLy" alignment="1" pref="195" max="32767" attributes="0"/>
-                          <Component id="jtfIdNhanKhau" max="32767" attributes="0"/>
+                          <Component id="jtfKetQua" max="32767" attributes="0"/>
+                          <Component id="jtfCachLy" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -76,16 +78,19 @@
                               <Component id="jlblTestTime" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="selectBtn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="tenChuHoJtf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jtfIdNhanKhau" min="-2" pref="33" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="testTimeChooser" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jtfHinhThuc" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jlblHinhThuc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfHinhThuc" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -166,8 +171,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtfCachLy">
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfIdNhanKhau">
-    </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -185,6 +188,25 @@
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="testTimeChooser">
+    </Component>
+    <Component class="javax.swing.JButton" name="selectBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n..."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tenChuHoJtf">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tenChuHoJtfActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
