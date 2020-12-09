@@ -156,3 +156,4 @@ dist/
 nbdist/
 .nb-gradle/
 
+/out

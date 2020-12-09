@@ -56,7 +56,7 @@ public class TestManagePanel extends javax.swing.JPanel {
         );
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Chỉnh sửa");
+        jButton1.setText("Xóa");
         jButton1.setPreferredSize(new java.awt.Dimension(101, 25));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
