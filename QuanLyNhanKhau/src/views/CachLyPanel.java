@@ -1,6 +1,6 @@
 package views;
 
-import controllers.CachLyPanelController;
+import controllers.CachLyManagerPanelController;
 import javax.swing.JFrame;
 import views.CachLyManagerFrame.ThemMoiCachLyJFrame;
 
@@ -9,15 +9,17 @@ import views.CachLyManagerFrame.ThemMoiCachLyJFrame;
  * @author Dung
  */
 public class CachLyPanel extends javax.swing.JPanel {
-    private JFrame parentFrame;
-    private CachLyPanelController controller;
+    private JFrame parentJFrame;
+    private CachLyManagerPanelController controller = null;
     /**
      * Creates new form KhaiBaoPanel
      */
     public CachLyPanel(JFrame parentFrame) {
-        this.parentFrame = parentFrame;
+        this.parentJFrame = parentFrame;
         initComponents();
-        this.controller = new CachLyPanelController();
+        controller = new CachLyManagerPanelController(tablePanel, jtfSearch);
+        controller.setParentJFrame(parentJFrame);
+        controller.setDataTable();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,10 +31,10 @@ public class CachLyPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jBtn = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        tablePanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jtfSearch = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setToolTipText("");
@@ -41,16 +43,16 @@ public class CachLyPanel extends javax.swing.JPanel {
         jBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jBtn.setText("Hiển thị");
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(707, 389));
+        tablePanel.setPreferredSize(new java.awt.Dimension(707, 389));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
+        tablePanel.setLayout(tablePanelLayout);
+        tablePanelLayout.setHorizontalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 707, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        tablePanelLayout.setVerticalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 377, Short.MAX_VALUE)
         );
 
@@ -73,13 +75,13 @@ public class CachLyPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
                         .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -90,11 +92,11 @@ public class CachLyPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                    .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -120,7 +122,7 @@ public class CachLyPanel extends javax.swing.JPanel {
     private javax.swing.JButton jBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jtfSearch;
+    private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
 }

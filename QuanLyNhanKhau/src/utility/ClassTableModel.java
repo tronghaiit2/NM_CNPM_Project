@@ -3,6 +3,7 @@ package utility;
 import Bean.HoKhauBean;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import models.CachLy;
 import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;
@@ -134,6 +135,34 @@ public class ClassTableModel {
             obj[2] = item.getChuHo().getHoTen();
             obj[3] = item.getHoKhauModel().getDiaChi();
             obj[4] = item.getHoKhauModel().getNgayLap();
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
+    
+    //Table Cach Ly
+    public DefaultTableModel setTableCachLy(List<CachLy> cachLy, String[] listColumn){
+        final int column = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return super.isCellEditable(row, column);
+            }
+            @Override
+            public Class<?> getColumnClass (int columnIndex){
+                return columnIndex == 5? Boolean.class : String.class;
+            }
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj = new Object[column];
+
+        cachLy.forEach((CachLy item) ->{
+            obj[0] = item.getCachly_id();
+            obj[1] = item.getId();
+            obj[2] = item.getTgian_bat_dau().toString();
+            obj[3] = item.getMuc_do_cach_ly();
+            obj[4] = item.isIs_tested();
+            
             dtm.addRow(obj);
         });
         return dtm;

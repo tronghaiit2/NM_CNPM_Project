@@ -24,7 +24,6 @@ public class CachLyBean {
     
     public CachLyBean(){
         this.cachLy = new CachLy();
-        this.test = new Test();
         this.nhanKhauCachLy = new NhanKhauCachLy();
     }
 
