@@ -19,12 +19,12 @@ public class QuanLyNhanKhau {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
         }
-        MainFrame mainFrame = new MainFrame();
-        mainFrame.setLocationRelativeTo(null);
-        mainFrame.setResizable(true);
-        mainFrame.setVisible(true);
-//        LoginUI loginUI = new LoginUI();
-//        loginUI.setVisible(true);
+//        MainFrame mainFrame = new MainFrame();
+//        mainFrame.setLocationRelativeTo(null);
+//        mainFrame.setResizable(true);
+//        mainFrame.setVisible(true);
+        LoginUI loginUI = new LoginUI();
+        loginUI.setVisible(true);
     }
     
 }
