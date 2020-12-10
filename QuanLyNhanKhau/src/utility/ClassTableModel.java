@@ -192,7 +192,7 @@ public class ClassTableModel {
         return dtm;
     }
     //Table Cach Ly
-    public DefaultTableModel setTableCachLy (List <CachLy> cachLy, String[]listColumn){
+    public DefaultTableModel setTableCachLy (List <CachLyModel> cachLy, String[]listColumn){
         final int column = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel() {
             @Override
@@ -208,7 +208,7 @@ public class ClassTableModel {
         dtm.setColumnIdentifiers(listColumn);
         Object[] obj = new Object[column];
 
-        cachLy.forEach((CachLy item) -> {
+        cachLy.forEach((CachLyModel item) -> {
             obj[0] = item.getCachly_id();
             obj[1] = item.getId();
             obj[2] = item.getTgian_bat_dau().toString();

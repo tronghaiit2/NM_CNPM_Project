@@ -12,7 +12,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import models.CachLy;
+import models.CachLyModel;
+import models.NhanKhauModel;
 
 /**
  *
@@ -24,19 +25,25 @@ public class CachLyService {
 
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            //need fix query
-            String query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id = nk.ID JOIN cach_ly cl ON t.cachly_id = cl.id ";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            String query;
+
+                //need fix query
+            query = "SELECT * FROM cach_ly cl JOIN nhankhau_cachly nkcl ON nkcl.id_cachly = cl.id_cachly JOIN nhan_khau nk ON nkcl.id_nhankhau = nk.ID";
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
                 CachLyBean cachLyBean = new CachLyBean();
-                CachLy cachly = cachLyBean.getCachLy();
-                //NhanKhauModel nhanKhauModel = testBean.getNhanKhauModel();
-                cachly.setId(rs.getInt("id"));
+                CachLyModel cachly = cachLyBean.getCachLy();
+                NhanKhauModel nhanKhauModel = cachLyBean.getNhanKhauModel();
+
+                //need fix column hoTen
+                nhanKhauModel.setHoTen(rs.getString("hoTen"));
+                cachly.setCachly_id(rs.getInt("id_cachly"));
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
                 cachly.setIs_tested(rs.getBoolean("is_tested"));
+
                 list.add(cachLyBean);
             }
             preparedStatement.close();
