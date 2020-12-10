@@ -27,6 +27,8 @@ public class ThemMoiTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGrHinhThuc = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jlbIdTest = new javax.swing.JLabel();
         jlblIdNhanKhau = new javax.swing.JLabel();
         jlblTestTime = new javax.swing.JLabel();
@@ -34,14 +36,15 @@ public class ThemMoiTest extends javax.swing.JFrame {
         jlblKetQua = new javax.swing.JLabel();
         jlblCachLy = new javax.swing.JLabel();
         jtfIdTest = new javax.swing.JTextField();
-        jtfHinhThuc = new javax.swing.JTextField();
         jtfKetQua = new javax.swing.JTextField();
         jtfCachLy = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
         testTimeChooser = new com.toedter.calendar.JDateChooser();
         selectBtn = new javax.swing.JButton();
-        tenChuHoJtf = new javax.swing.JTextField();
+        tenNguoiTestJtf = new javax.swing.JTextField();
+        jrbtnTestNhanh = new javax.swing.JRadioButton();
+        jdbtnTestChuan = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,11 +66,11 @@ public class ThemMoiTest extends javax.swing.JFrame {
         jlblCachLy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlblCachLy.setText("Cách ly:");
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Hủy");
+        btnCancel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCancel.setText("Hủy");
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton2.setText("Thêm mới");
+        btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnAdd.setText("Thêm mới");
 
         selectBtn.setText("Chọn...");
         selectBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -76,13 +79,24 @@ public class ThemMoiTest extends javax.swing.JFrame {
             }
         });
 
-        tenChuHoJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tenChuHoJtf.setEnabled(false);
-        tenChuHoJtf.addActionListener(new java.awt.event.ActionListener() {
+        tenNguoiTestJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tenNguoiTestJtf.setEnabled(false);
+        tenNguoiTestJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tenChuHoJtfActionPerformed(evt);
+                tenNguoiTestJtfActionPerformed(evt);
             }
         });
+
+        btnGrHinhThuc.add(jrbtnTestNhanh);
+        jrbtnTestNhanh.setText("Test Nhanh");
+        jrbtnTestNhanh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbtnTestNhanhActionPerformed(evt);
+            }
+        });
+
+        btnGrHinhThuc.add(jdbtnTestChuan);
+        jdbtnTestChuan.setText("Test Chuẩn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,9 +106,9 @@ public class ThemMoiTest extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnAdd)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,13 +122,16 @@ public class ThemMoiTest extends javax.swing.JFrame {
                         .addComponent(selectBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tenChuHoJtf)
-                            .addComponent(testTimeChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jrbtnTestNhanh)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jdbtnTestChuan))
+                            .addComponent(tenNguoiTestJtf)
+                            .addComponent(testTimeChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                             .addComponent(jtfIdTest)
-                            .addComponent(jtfHinhThuc)
                             .addComponent(jtfKetQua)
                             .addComponent(jtfCachLy))
-                        .addGap(102, 102, 102))))
+                        .addGap(99, 99, 99))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,14 +153,15 @@ public class ThemMoiTest extends javax.swing.JFrame {
                                 .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(selectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tenChuHoJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tenNguoiTestJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(20, 20, 20)
                                 .addComponent(testTimeChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25)
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlblHinhThuc)
-                            .addComponent(jtfHinhThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                            .addComponent(jrbtnTestNhanh)
+                            .addComponent(jdbtnTestChuan))
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfKetQua, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlblKetQua))
@@ -153,8 +171,8 @@ public class ThemMoiTest extends javax.swing.JFrame {
                             .addComponent(jlblCachLy))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnCancel)
+                    .addComponent(btnAdd))
                 .addContainerGap())
         );
 
@@ -162,15 +180,16 @@ public class ThemMoiTest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
-        ChooseNhanKhau chooseNhanKhau = new ChooseNhanKhau();
-        chooseNhanKhau.setLocationRelativeTo(null);
-        chooseNhanKhau.setResizable(false);
-        chooseNhanKhau.setVisible(true);
+        
     }//GEN-LAST:event_selectBtnActionPerformed
 
-    private void tenChuHoJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenChuHoJtfActionPerformed
+    private void tenNguoiTestJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenNguoiTestJtfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tenChuHoJtfActionPerformed
+    }//GEN-LAST:event_tenNguoiTestJtfActionPerformed
+
+    private void jrbtnTestNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnTestNhanhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbtnTestNhanhActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,20 +227,23 @@ public class ThemMoiTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.ButtonGroup btnGrHinhThuc;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton jdbtnTestChuan;
     private javax.swing.JLabel jlbIdTest;
     private javax.swing.JLabel jlblCachLy;
     private javax.swing.JLabel jlblHinhThuc;
     private javax.swing.JLabel jlblIdNhanKhau;
     private javax.swing.JLabel jlblKetQua;
     private javax.swing.JLabel jlblTestTime;
+    private javax.swing.JRadioButton jrbtnTestNhanh;
     private javax.swing.JTextField jtfCachLy;
-    private javax.swing.JTextField jtfHinhThuc;
     private javax.swing.JTextField jtfIdTest;
     private javax.swing.JTextField jtfKetQua;
     private javax.swing.JButton selectBtn;
-    private javax.swing.JTextField tenChuHoJtf;
+    private javax.swing.JTextField tenNguoiTestJtf;
     private com.toedter.calendar.JDateChooser testTimeChooser;
     // End of variables declaration//GEN-END:variables
 }
