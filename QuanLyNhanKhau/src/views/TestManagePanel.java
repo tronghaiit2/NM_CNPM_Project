@@ -1,11 +1,12 @@
 package views;
 
 import controllers.TestManagerPanelController;
+import views.TestManagerFrame.ThemMoiTest;
 
 import javax.swing.*;
 /**
  *
- * @author Dung
+ * @author Ducnm
  */
 public class TestManagePanel extends javax.swing.JPanel {
     private JFrame parentJFrame;
@@ -61,7 +62,11 @@ public class TestManagePanel extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setText("Thêm mới");
-
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewBtnActionPerformed(evt);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,6 +108,12 @@ public class TestManagePanel extends javax.swing.JPanel {
         jBtn.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt){
+        ThemMoiTest themMoiTest = new ThemMoiTest(this.controller, this.parentJFrame);
+        themMoiTest.setLocationRelativeTo(null);
+        themMoiTest.setResizable(false);
+        themMoiTest.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtn;
