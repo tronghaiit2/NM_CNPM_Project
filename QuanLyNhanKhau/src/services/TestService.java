@@ -12,14 +12,17 @@ import java.util.List;
 
 public class TestService {
 
-
+    public static void main(String[] args) {
+        TestService testService = new TestService();
+        testService.getListTestBeans();
+    }
 
     public List<TestBean> getListTestBeans() {
         List<TestBean> list = new ArrayList<>();
 
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            String query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id_nhankhau = nk.ID JOIN cach_ly cl ON t.id_cachly = cl.id_cachly ";
+            String query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id_nhankhau = nk.ID LEFT JOIN cach_ly cl ON t.id_cachly = cl.id_cachly ";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -33,6 +36,7 @@ public class TestService {
                 test.setKet_qua(rs.getString("ket_qua"));
                 test.setCachly_id(rs.getInt("id_cachly"));
                 test.setId(rs.getInt("id_nhankhau"));
+                //System.out.println(test.toString());
                 list.add(testBean);
             }
             preparedStatement.close();

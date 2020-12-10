@@ -11,6 +11,8 @@ import controllers.TestManagerController.ThemMoiTestController;
 import controllers.TestManagerPanelController;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -110,6 +112,12 @@ public class ThemMoiTest extends javax.swing.JFrame {
         });
         btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAdd.setText("Thêm mới");
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                confirmBtnActionPerformed(e);
+            }
+        });
 
         selectBtn.setText("Chọn...");
         selectBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -261,8 +269,37 @@ public class ThemMoiTest extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tenNguoiTestJtf1ActionPerformed
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
-        
-        dispose();
+        if (this.jtfIdTest.getText().trim().isEmpty()
+                ||this.tenNguoiTestJtf1.getText().trim().isEmpty()
+                ||this.jtfKetQua.getText().trim().isEmpty()
+                ||this.jtfCachLy.getText().trim().isEmpty()
+                ||(!this.jrbtnTestNhanh.isSelected()
+                &&!this.jdbtnTestChuan.isSelected())) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các thông tin", "Warning", JOptionPane.ERROR_MESSAGE );
+        } else {
+            this.testBean.setNhanKhauModel(nguoiTest.getNhanKhauModel());
+            this.testBean.getTest().setId(Integer.parseInt(idNguoiTestJtf.getText()));
+            this.testBean.getTest().setTestId(Integer.parseInt(jtfIdTest.getText()));
+            this.testBean.getTest().setThoi_diem_test(testTimeChooser.getDate());
+            this.testBean.getTest().setKet_qua(jtfKetQua.getText());
+            String ht;
+            if (jrbtnTestNhanh.isSelected()) ht = jrbtnTestNhanh.getText();
+            else ht = jdbtnTestChuan.getText();
+            this.testBean.getTest().setHinh_thuc_test(ht);
+            this.testBean.getTest().setCachly_id(Integer.parseInt(jtfCachLy.getText()));
+            System.out.println(this.testBean.getTest().toString());
+            try {
+                if (this.controller.themMoiTest(this.testBean)){
+                    JOptionPane.showMessageDialog(null,"Thêm thành công!!");
+                    close();
+                    parentController.refreshData();
+                }
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui lòng kiểm tra lại!!", "Warning", JOptionPane.ERROR_MESSAGE );
+            }
+        }
+
     }
 
     private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
