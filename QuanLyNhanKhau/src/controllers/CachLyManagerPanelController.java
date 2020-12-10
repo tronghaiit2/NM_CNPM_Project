@@ -7,7 +7,7 @@ package controllers;
 
 import Bean.CachLyBean;
 import Bean.NhanKhauBean;
-import models.CachLy;
+import models.CachLyModel;
 import services.CachLyService;
 import services.NhanKhauService;
 import utility.ClassTableModel;
@@ -29,7 +29,7 @@ public class CachLyManagerPanelController {
     private CachLyService cachLyService;
     private List<CachLyBean> listCachLyBeans;
     private ClassTableModel classTableModel =null;
-    private final String[] COLUMNS = {"Mã cách ly", "ID nhân khẩu", "Thời gian", "Mức độ", "Đã test?"};
+    private final String[] COLUMNS = {"Họ tên", "Mã cách ly", "Thời gian", "Mức độ", "Đã test?"};
     private JFrame parentJFrame;
 
     private NhanKhauService nhanKhauService;
@@ -69,7 +69,7 @@ public class CachLyManagerPanelController {
 
 
     public void setDataTable(){
-        List<CachLy> listItem = new ArrayList<>();
+        List<CachLyModel> listItem = new ArrayList<>();
         this.listCachLyBeans.forEach(cachLy ->{
             listItem.add(cachLy.getCachLy());
         });

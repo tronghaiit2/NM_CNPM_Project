@@ -105,19 +105,9 @@ public class ThemMoiTest extends javax.swing.JFrame {
 
         btnCancel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCancel.setText("Hủy");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
-            }
-        });
+
         btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAdd.setText("Thêm mới");
-        btnAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                confirmBtnActionPerformed(e);
-            }
-        });
 
         selectBtn.setText("Chọn...");
         selectBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -268,7 +258,7 @@ public class ThemMoiTest extends javax.swing.JFrame {
     private void tenNguoiTestJtf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenNguoiTestJtf1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tenNguoiTestJtf1ActionPerformed
-    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {                                           
         if (this.jtfIdTest.getText().trim().isEmpty()
                 ||this.tenNguoiTestJtf1.getText().trim().isEmpty()
                 ||this.jtfKetQua.getText().trim().isEmpty()
@@ -302,7 +292,7 @@ public class ThemMoiTest extends javax.swing.JFrame {
 
     }
 
-    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBtnActionPerformed
+    private void selectBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
         ChooseNhanKhau chooseNhanKhau = new ChooseNhanKhau(this.nguoiTest, this);
         chooseNhanKhau.setLocationRelativeTo(null);
         chooseNhanKhau.setResizable(false);
@@ -314,7 +304,7 @@ public class ThemMoiTest extends javax.swing.JFrame {
         this.idNguoiTestJtf.setText(Integer.toString(this.nguoiTest.getNhanKhauModel().getID()));
     }
 
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
         close();
     }
 
