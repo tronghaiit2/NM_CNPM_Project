@@ -26,7 +26,7 @@ public class TestManagerPanelController {
        private JTextField jtfSearch;
        private TestService testService;
        private List<TestBean> listTestBeans;
-       private ClassTableModel classTableModel =null;
+       private ClassTableModel classTableModel = null;
        private final String[] COLUMNS = {"Mã test", "ID nhân khẩu", "Thời điểm", "Hình thức", "Kết quả", "Mã cách ly" };
        private JFrame parentJFrame;
        public TestManagerPanelController(JPanel jpnView, JTextField jtfSearch){

@@ -1,6 +1,7 @@
 package utility;
 
 import Bean.HoKhauBean;
+import Bean.KhaiBaoBean;
 import Bean.MemOfFamily;
 import Bean.NhanKhauBean;
 import java.util.List;
@@ -25,7 +26,7 @@ public class TableModelHoKhau {
         dtm.setColumnIdentifiers(listColumn);
         Object[] obj;
         obj = new Object[columns];
-        listItem.forEach((NhanKhauBean item) -> {  
+        listItem.forEach((NhanKhauBean item) -> {
             obj[0] = item.getNhanKhauModel().getHoTen();
             obj[1] = item.getNhanKhauModel().getGioiTinh();
             obj[2] = item.getNhanKhauModel().getNamSinh();
@@ -83,4 +84,6 @@ public class TableModelHoKhau {
         });
         return dtm;
     }
+
+
 }

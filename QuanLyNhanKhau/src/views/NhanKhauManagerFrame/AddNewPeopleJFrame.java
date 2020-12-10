@@ -26,13 +26,6 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
     private AddNewController controller;
 
 
-//    public AddNewPeopleJFrame() {
-//        initComponents();
-//        setTitle("Thêm mới nhân khẩu");
-//        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        controller = new AddNewController();
-//    }
-
     public AddNewPeopleJFrame(NhanKhauManagerPanelController parentController, JFrame parentJFrame) {
         this.parentController = parentController;
         this.parentFrame = parentJFrame;

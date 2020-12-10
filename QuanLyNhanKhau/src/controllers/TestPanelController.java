@@ -9,6 +9,6 @@ package controllers;
  *
  * @author admins
  */
-public class CachLyPanelController {
+public class TestPanelController {
        
 }

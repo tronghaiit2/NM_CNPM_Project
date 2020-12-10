@@ -1,25 +1,22 @@
 package views;
 
-import controllers.TestManagerPanelController;
-import views.TestManagerFrame.ThemMoiTest;
+import controllers.TestPanelController;
+import javax.swing.JFrame;
 
-import javax.swing.*;
 /**
  *
- * @author Ducnm
+ * @author Dung
  */
-public class TestManagePanel extends javax.swing.JPanel {
-    private JFrame parentJFrame;
-    private TestManagerPanelController controller = null;
+public class TestPanel extends javax.swing.JPanel {
+    private JFrame parentFrame;
+    private TestPanelController controller;
     /**
-     * Creates new form TestManagePanel
+     * Creates new form KhaiBaoPanel
      */
-    public TestManagePanel(JFrame parentFrame) {
-        this.parentJFrame = parentFrame;
+    public TestPanel(JFrame parentFrame) {
+        this.parentFrame = parentFrame;
         initComponents();
-        controller = new TestManagerPanelController(jPanel1, jTextField1);
-        controller.setParentJFrame(parentJFrame);
-        controller.setDataTable();
+        this.controller = new TestPanelController();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,12 +58,8 @@ public class TestManagePanel extends javax.swing.JPanel {
         jButton1.setPreferredSize(new java.awt.Dimension(101, 25));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setText("Thêm mới");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addNewBtnActionPerformed(evt);
-            }
-        });
+        jButton2.setLabel("Thêm mới");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +67,7 @@ public class TestManagePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
@@ -95,7 +88,7 @@ public class TestManagePanel extends javax.swing.JPanel {
                     .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -108,12 +101,6 @@ public class TestManagePanel extends javax.swing.JPanel {
         jBtn.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt){
-        ThemMoiTest themMoiTest = new ThemMoiTest(this.controller, this.parentJFrame);
-        themMoiTest.setLocationRelativeTo(null);
-        themMoiTest.setResizable(false);
-        themMoiTest.setVisible(true);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtn;

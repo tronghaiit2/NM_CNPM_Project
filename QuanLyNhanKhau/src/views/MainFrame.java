@@ -11,6 +11,7 @@ import controllers.MainController;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame() throws SQLException, ClassNotFoundException {
         initComponents();
         setTitle("QUẢN LÝ NHÂN KHẨU");
         List<DanhMucBean> listDanhMuc = new ArrayList<>();
@@ -207,7 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jlbTest.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlbTest.setForeground(new java.awt.Color(255, 255, 255));
-        jlbTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cachly_icon.png"))); // NOI18N
+        jlbTest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/testvirus_icon.png"))); // NOI18N
         jlbTest.setText("Test Covid");
         jlbTest.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 

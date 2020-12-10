@@ -1,117 +1,90 @@
-package controllers;
+package controllers.KhaiBaoManagerController;
 
-import Bean.NhanKhauBean;
-import models.NhanKhauModel;
-import services.NhanKhauService;
+import Bean.KhaiBaoBean;
+import services.KhaiBaoService;
 import utility.ClassTableModel;
-import views.infoViews.InfoJframe;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 
 /**
- *
- * @author Hai
+* @author: hieppm
  */
-public class NhanKhauManagerPanelController {
-    
+
+public class KhaiBaoMangerPanelController {
+    private final String[] COLUMNS = {"Họ tên", "Mã nhân khẩu", "Ngày sinh", "Ngày khai báo", "Biểu hiện", "Vùng dịch"};
     private JPanel jpnView;
-    private JTextField jtfSearch;
-    private NhanKhauService nhanKhauService;
-    private List<NhanKhauBean> listNhanKhauBeans;
-    private ClassTableModel classTableModel = null;
-    private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
+    private JTextField jtfSearch = new JTextField("");
+    private KhaiBaoService khaiBaoService;
+    private List<KhaiBaoBean> khaiBaoBeanList;
+    private ClassTableModel classTableModel;
     private JFrame parentJFrame;
 
-    // khởi tạo
-    public NhanKhauManagerPanelController(JPanel jpnView, JTextField jtfSearch) {
+    public KhaiBaoMangerPanelController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
-        classTableModel = new ClassTableModel();
-        this.nhanKhauService = new NhanKhauService();
-        this.listNhanKhauBeans = this.nhanKhauService.getListNhanKhau();
+        this.classTableModel = new ClassTableModel();
+        this.khaiBaoService = new KhaiBaoService();
+        this.khaiBaoBeanList = this.khaiBaoService.getListKhaiBao("");
         initAction();
     }
 
-    public NhanKhauManagerPanelController() {
-    }
-    
-    
-    //
-    public void initAction(){
+    public void initAction() {
         this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
+                // What to do
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = nhanKhauService.search(key.trim());
+                khaiBaoBeanList = khaiBaoService.search(key);
                 setDataTable();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
+                // what to do
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = nhanKhauService.search(key.trim());
+                khaiBaoBeanList = khaiBaoService.search(key);
                 setDataTable();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
+                // what to do
                 String key = jtfSearch.getText();
-                listNhanKhauBeans = nhanKhauService.search(key.trim());
+                khaiBaoBeanList = khaiBaoService.search(key);
                 setDataTable();
             }
         });
-
-
     }
-    
+
     public void setDataTable() {
-        List<NhanKhauModel> listItem = new ArrayList<>();
-        this.listNhanKhauBeans.forEach(nhankhau -> {
-            listItem.add(nhankhau.getNhanKhauModel());
-        });
-        DefaultTableModel model = classTableModel.setTableNhanKhau(listItem, COLUMNS);
+        DefaultTableModel model = classTableModel.setTableKhaiBaoBean(khaiBaoBeanList, COLUMNS);
+
         JTable table = new JTable(model) {
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {
                 return false;
             }
-            
+
         };
-        
+
         // thiet ke bang
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 50));
-        table.setRowHeight(50);
+        table.getTableHeader().setPreferredSize(new Dimension(120, 50));
+        table.setRowHeight(55);
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
         table.getColumnModel().getColumn(0).setMaxWidth(80);
         table.getColumnModel().getColumn(0).setMinWidth(80);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-//                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-                if (e.getClickCount() > 1) {
-                    NhanKhauBean temp = listNhanKhauBeans.get(table.getSelectedRow());
-                    NhanKhauBean info = nhanKhauService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
-                    InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
-                    infoJframe.setLocationRelativeTo(null);
-                    infoJframe.setVisible(true);
-                }
-            }
-            
-        });
-        
+
+
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
         scroll.setPreferredSize(new Dimension(1350, 400));
@@ -125,11 +98,12 @@ public class NhanKhauManagerPanelController {
     public void setParentJFrame(JFrame parentJFrame) {
         this.parentJFrame = parentJFrame;
     }
-    
+
     public void refreshData() {
-        this.listNhanKhauBeans = this.nhanKhauService.getListNhanKhau();
+        this.khaiBaoBeanList = this.khaiBaoService.getListKhaiBao("");
         setDataTable();
     }
+
     public JPanel getJpnView() {
         return jpnView;
     }
@@ -145,6 +119,4 @@ public class NhanKhauManagerPanelController {
     public void setJtfSearch(JTextField jtfSearch) {
         this.jtfSearch = jtfSearch;
     }
-    
-    
 }

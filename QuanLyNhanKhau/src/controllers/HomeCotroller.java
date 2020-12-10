@@ -15,14 +15,17 @@ public class HomeCotroller {
     private JLabel tongHoKhauLb;
     private JLabel nhanKhauTamTruLb;
     private JLabel nhanKhauTamVangLb;
+    private JLabel tongKhaiBao;
 
-    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau, JLabel nhanKhauTamTruLb, JLabel nhanKhauTamVangLb) {
+    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau, JLabel nhanKhauTamTruLb, JLabel nhanKhauTamVangLb, JLabel tongKhaiBao) {
         this.tongNhanKhauLb = tongNhanKhauLb;
         this.tongHoKhauLb = tongHoKhau;
         this.nhanKhauTamTruLb = nhanKhauTamTruLb;
         this.nhanKhauTamVangLb = nhanKhauTamVangLb;
+        this.tongKhaiBao = tongKhaiBao;
     }
-    
+
+
     public void setData() {
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
@@ -46,6 +49,7 @@ public class HomeCotroller {
             preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){
+
                 this.nhanKhauTamTruLb.setText(String.valueOf(rs.getInt("tong")));
             }
             preparedStatement.close();
@@ -57,7 +61,18 @@ public class HomeCotroller {
                 this.nhanKhauTamVangLb.setText(String.valueOf(rs.getInt("tong")));
             }
             preparedStatement.close();
-            
+
+            query = "SELECT COUNT(DISTINCT id_nhankhau) as tong from khai_bao";
+            preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                this.tongKhaiBao.setText(String.valueOf(rs.getInt("tong")));
+            }
+            preparedStatement.close();
+
+
+
+
             connection.close();
         } catch (Exception e) {
         }
@@ -94,6 +109,12 @@ public class HomeCotroller {
     public void setNhanKhauTamVangLb(JLabel nhanKhauTamVangLb) {
         this.nhanKhauTamVangLb = nhanKhauTamVangLb;
     }
-    
-    
+
+    public JLabel getTongKhaiBao() {
+        return tongKhaiBao;
+    }
+
+    public void setTongKhaiBao(JLabel tongKhaiBao) {
+        this.tongKhaiBao = tongKhaiBao;
+    }
 }
