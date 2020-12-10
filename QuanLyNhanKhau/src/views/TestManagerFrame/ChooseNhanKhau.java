@@ -5,17 +5,23 @@
  */
 package views.TestManagerFrame;
 
+import Bean.NhanKhauBean;
+import controllers.TestManagerController.ChooseNhanKhauController;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
  * @author ducnm
  */
 public class ChooseNhanKhau extends javax.swing.JFrame {
-
+    private NhanKhauBean nhanKhauBean;
+    private NhanKhauBean nhanKhauBeanTemp;
     private JFrame parentJFrame;
-
+    private ChooseNhanKhauController controller;
     /**
      * Creates new form ChooseNhanKhau
      */
@@ -23,6 +29,22 @@ public class ChooseNhanKhau extends javax.swing.JFrame {
         initComponents();
     }
 
+    public ChooseNhanKhau(NhanKhauBean nhanKhauBean, JFrame parentJFrame){
+        initComponents();
+        this.nhanKhauBean = nhanKhauBean;
+        this.parentJFrame = parentJFrame;
+        this.nhanKhauBeanTemp = new NhanKhauBean();
+        parentJFrame.setEnabled(false);
+        controller = new ChooseNhanKhauController(this.nhanKhauBeanTemp, searchJtf, selectedJtf, tableJpn);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                parentJFrame.setEnabled(true);
+                Close();
+            }
+
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,44 +132,15 @@ public class ChooseNhanKhau extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
-        
+        this.nhanKhauBean.setNhanKhauModel(this.nhanKhauBeanTemp.getNhanKhauModel());
+        this.parentJFrame.setEnabled(true);
+        ThemMoiTest themMoiTest = (ThemMoiTest)this.parentJFrame;
+        themMoiTest.setNguoiTest();
         dispose();
     }//GEN-LAST:event_confirmBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChooseNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChooseNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChooseNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChooseNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ChooseNhanKhau().setVisible(true);
-            }
-        });
-    }
+
     public void Close() {
         if (JOptionPane.showConfirmDialog(this, "Are you sure to close??", "Confirm", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
             this.parentJFrame.setEnabled(true);
