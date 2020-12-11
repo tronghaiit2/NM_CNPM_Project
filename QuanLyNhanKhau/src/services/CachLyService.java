@@ -32,7 +32,6 @@ public class CachLyService {
             while (rs.next()){
                 CachLyBean cachLyBean = new CachLyBean();
                 CachLy cachly = cachLyBean.getCachLy();
-                //NhanKhauModel nhanKhauModel = testBean.getNhanKhauModel();
                 cachly.setId(rs.getInt("id"));
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
@@ -47,20 +46,7 @@ public class CachLyService {
         return list;
     }
 
-//    public List<TestBean> search(String keyword){
-//        List<TestBean> list = new ArrayList<>();
-//        String query;
-//        if (keyword.trim().isEmpty()){
-//            return this.getListTestBeans();
-//        }
-//
-//        try {
-//
-//        } catch (Exception e){
-//
-//        }
-//        return list;
-//    }
+
 
     private void exceptionHandle(String message){
         JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);

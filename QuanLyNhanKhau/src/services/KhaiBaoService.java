@@ -2,6 +2,7 @@ package services;
 
 import Bean.KhaiBaoBean;
 import Bean.NhanKhauBean;
+import controllers.KhaiBaoManagerController.KhaiBaoMangerPanelController;
 import models.ChungMinhThuModel;
 import models.KhaiBao;
 import models.NhanKhauModel;
@@ -68,6 +69,7 @@ public class KhaiBaoService {
                 int res = preparedStatement.executeUpdate(query);
                 if (res == 1){
                     JOptionPane.showMessageDialog(null, "Xóa thành công ");
+
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Xóa thất bại", "Warning", JOptionPane.WARNING_MESSAGE);

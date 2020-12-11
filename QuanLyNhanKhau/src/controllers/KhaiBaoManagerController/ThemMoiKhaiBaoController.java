@@ -34,8 +34,7 @@ public class ThemMoiKhaiBaoController {
             return true;
         } else
             return false;
-//        connection.close();
-//
+
     }
 
     public int getNhanKhauID(String ma_nhan_khau) {

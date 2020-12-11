@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author ai làm thì điền tên vô
+ * @author hieppm
  */
 public class ThongKePanel extends javax.swing.JPanel {
     private JFrame parentFrame;

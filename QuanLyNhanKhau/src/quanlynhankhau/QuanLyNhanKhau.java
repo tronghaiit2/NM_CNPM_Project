@@ -14,17 +14,14 @@ public class QuanLyNhanKhau {
 
     public static Calendar calendar = Calendar.getInstance();
     
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args){
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
         }
-//        MainFrame mainFrame = new MainFrame();
-//        mainFrame.setLocationRelativeTo(null);
-//        mainFrame.setResizable(true);
-//        mainFrame.setVisible(true);
         LoginUI loginUI = new LoginUI();
         loginUI.setVisible(true);
+
     }
     
 }
