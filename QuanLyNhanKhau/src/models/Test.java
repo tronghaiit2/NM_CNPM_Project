@@ -12,11 +12,24 @@ import java.util.Date;
  */
 public class Test {
     private int id;
+    private int id_nhankhau;
     private String hinh_thuc_test;
+
+    public int getId_nhankhau() {
+        return id_nhankhau;
+    }
+
+    public void setId_nhankhau(int id_nhankhau) {
+        this.id_nhankhau = id_nhankhau;
+    }
+
     private Date thoi_diem_test;
     private String ket_qua;
     private int cachly_id;
     private int testId;
+
+    public Test() {
+    }
 
     public int getTestId() {
         return testId;
