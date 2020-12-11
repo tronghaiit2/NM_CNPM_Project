@@ -409,9 +409,10 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`cach_ly` (
   `id_cachly` INT(11) NOT NULL,
-  `noi_cach_ly` VARCHAR(100) NOT NULL,
+  `id_nhankhau` INT(11) NOT NULL,
+  `noi_cach_ly` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   `tgian_bat_dau` DATETIME NOT NULL,
-  `muc_do_cach_ly` VARCHAR(50) NULL DEFAULT NULL,
+  `muc_do_cach_ly` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   `is_tested` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id_cachly`))
 ENGINE = InnoDB
