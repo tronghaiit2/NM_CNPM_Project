@@ -1,6 +1,6 @@
 package services;
 
-import models.CachLy;
+import models.CachLyModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,8 +42,8 @@ public class ThongKeCachLyService {
         }
     }
 
-    public List<CachLy> getListCachLy(String mucDo, String tgianCachLy) {
-        List<CachLy> list = new ArrayList<>();
+    public List<CachLyModel> getListCachLy(String mucDo, String tgianCachLy) {
+        List<CachLyModel> list = new ArrayList<>();
 
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
@@ -61,7 +61,7 @@ public class ThongKeCachLyService {
 
             while (rs.next()) {
 
-                CachLy cachly = new CachLy();
+                CachLyModel cachly = new CachLyModel();
                 cachly.setId(rs.getInt("id_cachly"));
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
@@ -77,8 +77,8 @@ public class ThongKeCachLyService {
         return list;
     }
 
-    public List<CachLy> getALlListCachLy() {
-        List<CachLy> list = new ArrayList<>();
+    public List<CachLyModel> getALlListCachLy() {
+        List<CachLyModel> list = new ArrayList<>();
 
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
@@ -88,7 +88,7 @@ public class ThongKeCachLyService {
 
             while (rs.next()) {
 
-                CachLy cachly = new CachLy();
+                CachLyModel cachly = new CachLyModel();
                 cachly.setId(rs.getInt("id_cachly"));
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
