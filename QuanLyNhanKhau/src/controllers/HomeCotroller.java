@@ -16,13 +16,15 @@ public class HomeCotroller {
     private JLabel nhanKhauTamTruLb;
     private JLabel nhanKhauTamVangLb;
     private JLabel tongKhaiBao;
+    private JLabel tongCachLy;
 
-    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau, JLabel nhanKhauTamTruLb, JLabel nhanKhauTamVangLb, JLabel tongKhaiBao) {
+    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau, JLabel nhanKhauTamTruLb, JLabel nhanKhauTamVangLb, JLabel tongKhaiBao, JLabel tongCachLy) {
         this.tongNhanKhauLb = tongNhanKhauLb;
         this.tongHoKhauLb = tongHoKhau;
         this.nhanKhauTamTruLb = nhanKhauTamTruLb;
         this.nhanKhauTamVangLb = nhanKhauTamVangLb;
         this.tongKhaiBao = tongKhaiBao;
+        this.tongCachLy = tongCachLy;
     }
 
 
@@ -70,6 +72,13 @@ public class HomeCotroller {
             }
             preparedStatement.close();
 
+            query = "SELECT COUNT(DISTINCT id_cachly) as tong from cach_ly";
+            preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                this.tongCachLy.setText(String.valueOf(rs.getInt("tong")));
+            }
+            preparedStatement.close();
 
 
 
@@ -116,5 +125,13 @@ public class HomeCotroller {
 
     public void setTongKhaiBao(JLabel tongKhaiBao) {
         this.tongKhaiBao = tongKhaiBao;
+    }
+
+    public JLabel getTongCachLy() {
+        return tongCachLy;
+    }
+
+    public void setTongCachLy(JLabel tongCachLy) {
+        this.tongCachLy = tongCachLy;
     }
 }
