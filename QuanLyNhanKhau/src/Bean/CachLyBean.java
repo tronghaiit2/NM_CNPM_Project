@@ -4,43 +4,35 @@
  * and open the template in the editor.
  */
 package Bean;
-import models.CachLy;
+import models.CachLyModel;
+import models.NhanKhauModel;
 import models.Test;
 import models.NhanKhauCachLy;
 /**
  *
- * @author Admin
+ * @author Dung
  */
 public class CachLyBean {
-    private CachLy cachLy;
-    private Test test;
+    private CachLyModel cachLyModel;
     private NhanKhauCachLy nhanKhauCachLy;
+    private NhanKhauModel nhanKhauModel;
 
-    public CachLyBean(CachLy cachLy, Test test, NhanKhauCachLy nhanKhauCachLy) {
-        this.cachLy = cachLy;
-        this.test = test;
-        this.nhanKhauCachLy = nhanKhauCachLy;
+    public CachLyBean(CachLyModel cachLyModel, NhanKhauModel nhanKhauModel) {
+        this.cachLyModel = cachLyModel;
+        this.nhanKhauModel = nhanKhauModel;
     }
 
     public CachLyBean(){
-        this.cachLy = new CachLy();
-        this.nhanKhauCachLy = new NhanKhauCachLy();
+        this.cachLyModel = new CachLyModel();
+        this.nhanKhauModel = new NhanKhauModel();
     }
 
-    public CachLy getCachLy() {
-        return cachLy;
+    public CachLyModel getCachLyModel() {
+        return cachLyModel;
     }
 
-    public void setCachLy(CachLy cachLy) {
-        this.cachLy = cachLy;
-    }
-
-    public Test getTest() {
-        return test;
-    }
-
-    public void setTest(Test test) {
-        this.test = test;
+    public void setCachLyModel(CachLyModel cachLyModel) {
+        this.cachLyModel = cachLyModel;
     }
 
     public NhanKhauCachLy getNhanKhauCachLy() {
@@ -51,4 +43,11 @@ public class CachLyBean {
         this.nhanKhauCachLy = nhanKhauCachLy;
     }
 
+    public NhanKhauModel getNhanKhauModel() {
+        return nhanKhauModel;
+    }
+
+    public void setNhanKhauModel(NhanKhauModel nhanKhauModel) {
+        this.nhanKhauModel = nhanKhauModel;
+    }
 }

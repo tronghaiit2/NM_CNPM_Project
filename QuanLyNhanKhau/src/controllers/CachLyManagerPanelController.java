@@ -7,12 +7,15 @@ package controllers;
 
 import Bean.CachLyBean;
 import Bean.NhanKhauBean;
-import models.CachLy;
+import models.CachLyModel;
+import models.NhanKhauModel;
 import services.CachLyService;
 import services.NhanKhauService;
 import utility.ClassTableModel;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -28,8 +31,8 @@ public class CachLyManagerPanelController {
     private JTextField jtfSearch;
     private CachLyService cachLyService;
     private List<CachLyBean> listCachLyBeans;
-    private ClassTableModel classTableModel =null;
-    private final String[] COLUMNS = {"Mã cách ly", "ID nhân khẩu", "Thời gian", "Mức độ", "Đã test?"};
+    private ClassTableModel classTableModel = null;
+    private final String[] COLUMNS = {"Họ tên","Mã nhân khẩu", "Mã cách ly", "Thời gian", "Mức độ", "Đã test?"};
     private JFrame parentJFrame;
 
     private NhanKhauService nhanKhauService;
@@ -42,6 +45,7 @@ public class CachLyManagerPanelController {
         this.cachLyService = new CachLyService();
         this.listCachLyBeans = this.cachLyService.getListCachLyBeans();
         //initAction();
+        //setDataTable();
     }
 
     public CachLyManagerPanelController(){
@@ -67,13 +71,41 @@ public class CachLyManagerPanelController {
 //              });
 //       }
 
+    /*
+public void initAction() {
+    this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            // What to do
+            String key = jtfSearch.getText();
+            listCachLyBeans = cachLyService.search(key);
+            setDataTable();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            // what to do
+            String key = jtfSearch.getText();
+            listCachLyBeans = cachLyService.search(key);
+            setDataTable();
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            // what to do
+            String key = jtfSearch.getText();
+            listCachLyBeans = cachLyService.search(key);
+            setDataTable();
+        }
+    });
+}
+
+     */
 
     public void setDataTable(){
-        List<CachLy> listItem = new ArrayList<>();
-        this.listCachLyBeans.forEach(cachLy ->{
-            listItem.add(cachLy.getCachLy());
-        });
-        DefaultTableModel model = classTableModel.setTableCachLy(listItem, COLUMNS);
+        /*
+        DefaultTableModel model = classTableModel.setTableCachLy(listCachLyBeans , COLUMNS);
+
         JTable table = new JTable(model){
             @Override
             public boolean editCellAt(int row, int column, EventObject e){
@@ -81,15 +113,32 @@ public class CachLyManagerPanelController {
             }
         };
 
+         */
+        List<CachLyModel> listItem = new ArrayList<>();
+        this.listCachLyBeans.forEach(nhankhau -> {
+            listItem.add(nhankhau.getCachLyModel());
+        });
+        DefaultTableModel model = classTableModel.setTableCachLy(listCachLyBeans, COLUMNS);
+        JTable table = new JTable(model) {
+            @Override
+
+            public boolean editCellAt(int row, int column, EventObject e) {
+                return false;
+            }
+        };
+
+
         table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table.getTableHeader().setPreferredSize(new Dimension(100, 50));
         table.setRowHeight(50);
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        table.getColumnModel().getColumn(0).setMaxWidth(80);
-        table.getColumnModel().getColumn(0).setMinWidth(80);
+        table.getColumnModel().getColumn(0).setMinWidth(150);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        table.getColumnModel().getColumn(1).setMinWidth(100);
+
+
 //              table.addMouseListener(new MouseAdapter() {
 //                     @Override
 //                     public void mouseClicked(MouseEvent e) {

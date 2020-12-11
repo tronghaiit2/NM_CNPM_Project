@@ -12,32 +12,51 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import models.CachLy;
+
+import Bean.TestBean;
+import models.CachLyModel;
+import models.NhanKhauModel;
+import models.Test;
 
 /**
  *
  * @author Dung
  */
 public class CachLyService {
+    public static void main(String[] args){
+        CachLyService cachLyService = new CachLyService();
+        cachLyService.getListCachLyBeans();
+    }
     public List<CachLyBean> getListCachLyBeans() {
         List<CachLyBean> list = new ArrayList<>();
 
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            //need fix query
-            String query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id = nk.ID JOIN cach_ly cl ON t.cachly_id = cl.id ";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            String query;
+                //need fix query
+            query = "select * from cach_ly left join nhan_khau nk on cach_ly.id_nhankhau = nk.ID";
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
+
+            //old
             while (rs.next()){
                 CachLyBean cachLyBean = new CachLyBean();
-                CachLy cachly = cachLyBean.getCachLy();
-                cachly.setId(rs.getInt("id"));
+
+                CachLyModel cachly = cachLyBean.getCachLyModel();
+                NhanKhauModel nhanKhauModel = cachLyBean.getNhanKhauModel();
+                nhanKhauModel.setHoTen(rs.getString("hoTen"));
+                nhanKhauModel.setID(rs.getInt("ID"));
+                cachly.setCachly_id(rs.getInt("id_cachly"));
+
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
                 cachly.setIs_tested(rs.getBoolean("is_tested"));
+                cachly.setNhankhau_id(rs.getInt("id_nhankhau"));
+
                 list.add(cachLyBean);
             }
+
             preparedStatement.close();
             connection.close();
         } catch (Exception e){

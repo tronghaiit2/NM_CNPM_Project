@@ -20,6 +20,7 @@ public class CachLyPanel extends javax.swing.JPanel {
         controller = new CachLyManagerPanelController(tablePanel, jtfSearch);
         controller.setParentJFrame(parentJFrame);
         controller.setDataTable();
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,7 +112,7 @@ public class CachLyPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ThemMoiCachLyJFrame themMoiCachLyJFrame = new ThemMoiCachLyJFrame();
+        ThemMoiCachLyJFrame themMoiCachLyJFrame = new ThemMoiCachLyJFrame(this.controller, this.parentJFrame);
         themMoiCachLyJFrame.setLocationRelativeTo(null);
         themMoiCachLyJFrame.setResizable(false);
         themMoiCachLyJFrame.setVisible(true);

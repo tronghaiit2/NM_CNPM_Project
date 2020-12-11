@@ -1,5 +1,6 @@
 package utility;
 
+import Bean.CachLyBean;
 import Bean.HoKhauBean;
 import Bean.KhaiBaoBean;
 import models.*;
@@ -189,7 +190,8 @@ public class ClassTableModel {
     }
 
     //Table Cach Ly
-    public DefaultTableModel setTableCachLy(List<CachLy> cachLy, String[] listColumn) {
+    public DefaultTableModel setTableCachLy (List <CachLyBean> listItem, String[] listColumn){
+
         final int column = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel() {
             @Override
@@ -199,21 +201,26 @@ public class ClassTableModel {
 
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 5 ? Boolean.class : String.class;
+                return columnIndex == 6 ? Boolean.class : String.class;
             }
+
         };
         dtm.setColumnIdentifiers(listColumn);
         Object[] obj = new Object[column];
 
-        cachLy.forEach((CachLy item) -> {
-            obj[0] = item.getCachly_id();
-            obj[1] = item.getId();
-            obj[2] = item.getTgian_bat_dau().toString();
-            obj[3] = item.getMuc_do_cach_ly();
-            obj[4] = item.isIs_tested();
+        listItem.forEach((CachLyBean item) -> {
+
+            obj[0] = item.getNhanKhauModel().getHoTen();
+            obj[1] = item.getNhanKhauModel().getID();
+            obj[2] = item.getCachLyModel().getCachly_id();
+            obj[3] = item.getCachLyModel().getTgian_bat_dau().toString();
+            obj[4] = item.getCachLyModel().getMuc_do_cach_ly();
+            obj[5] = item.getCachLyModel().isIs_tested();
+
 
             dtm.addRow(obj);
         });
         return dtm;
     }
+
 }
