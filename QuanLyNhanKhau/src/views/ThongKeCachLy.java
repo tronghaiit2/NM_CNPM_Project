@@ -6,7 +6,7 @@
 package views;
 
 import Bean.CachLyBean;
-import models.CachLy;
+import models.CachLyModel;
 import services.CachLyService;
 import services.ThongKeCachLyService;
 import utility.ClassTableModel;
@@ -25,7 +25,7 @@ public class ThongKeCachLy extends javax.swing.JPanel {
     private final String[] COLUMNS = {"Mã cách ly", "ID nhân khẩu", "Thời gian", "Mức độ", "Đã test?"};
     private CachLyService cachLyService;
     private List<CachLyBean> cachLyBeanList;
-    private List<CachLy> cachLyList;
+    private List<CachLyModel> cachLyList;
     private ClassTableModel classTableModel;
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
@@ -177,7 +177,7 @@ public class ThongKeCachLy extends javax.swing.JPanel {
         jLabel2.setText("Thời gian bắt đầu cách ly : ");
 
         jButton1.setText("Show");
-        jButton1.addActionListener(new java.awt.event.ActionListener(){
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 stateButton = 1;
@@ -232,19 +232,18 @@ public class ThongKeCachLy extends javax.swing.JPanel {
         ThongKeCachLyService service = new ThongKeCachLyService();
         String mucDoGender = (String) selectMucDo.getSelectedItem();
         String tgian = jTextField1.getText();
-        while (!service.validateJavaDate(tgian)){
-            JOptionPane.showMessageDialog(null, "Thời gian cần có định dạng yyyy-MM-dd!", "Input Error",JOptionPane.ERROR_MESSAGE);
+        while (!service.validateJavaDate(tgian)) {
+            JOptionPane.showMessageDialog(null, "Thời gian cần có định dạng yyyy-MM-dd!", "Input Error", JOptionPane.ERROR_MESSAGE);
             jTextField1.setText("");
             tgian = jTextField1.getText();
         }
-        List<CachLy> listItem = service.getALlListCachLy();
+        List<CachLyModel> listItem = service.getALlListCachLy();
         try {
             if (mucDoGender == null) {
-                JOptionPane.showMessageDialog(null, "Chưa chọn mức độ thống kê!", "Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Chưa chọn mức độ thống kê!", "Warning", JOptionPane.WARNING_MESSAGE);
 
-            }
-            else{
-                if(stateButton == 1)
+            } else {
+                if (stateButton == 1)
                     listItem = service.getListCachLy(mucDoGender, tgian);
             }
 
@@ -257,11 +256,11 @@ public class ThongKeCachLy extends javax.swing.JPanel {
 
 
     public void setDataTable() {
-        List<CachLy> listItem = new ArrayList<>();
+        List<CachLyModel> listItem = new ArrayList<>();
         this.cachLyList.forEach(cachly -> {
             listItem.add(cachly);
         });
-        DefaultTableModel model = classTableModel.setTableCachLy(listItem, COLUMNS);
+        DefaultTableModel model = classTableModel.setTableCachLyModel(listItem, COLUMNS);
         JTable table = new JTable(model);
 
         // thiet ke bang
@@ -271,9 +270,28 @@ public class ThongKeCachLy extends javax.swing.JPanel {
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        table.getColumnModel().getColumn(0).setMaxWidth(80);
-        table.getColumnModel().getColumn(0).setMinWidth(80);
-        table.getColumnModel().getColumn(0).setPreferredWidth(80);
+
+        table.getColumnModel().getColumn(0).setMaxWidth(100);
+        table.getColumnModel().getColumn(0).setMinWidth(40);
+        table.getColumnModel().getColumn(0).setPreferredWidth(100);
+
+        table.getColumnModel().getColumn(1).setMaxWidth(200);
+        table.getColumnModel().getColumn(1).setMinWidth(40);
+        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+
+        table.getColumnModel().getColumn(2).setMaxWidth(200);
+        table.getColumnModel().getColumn(2).setMinWidth(40);
+        table.getColumnModel().getColumn(2).setPreferredWidth(200);
+
+
+
+        table.getColumnModel().getColumn(3).setMaxWidth(160);
+        table.getColumnModel().getColumn(3).setMinWidth(40);
+        table.getColumnModel().getColumn(3).setPreferredWidth(160);
+
+        table.getColumnModel().getColumn(4).setMaxWidth(100);
+        table.getColumnModel().getColumn(4).setMinWidth(40);
+        table.getColumnModel().getColumn(4).setPreferredWidth(100);
 
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);

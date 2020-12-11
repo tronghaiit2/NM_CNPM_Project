@@ -1,6 +1,6 @@
 package services;
 
-import models.CachLy;
+import models.CachLyModel;
 import models.Test;
 
 import java.sql.Connection;

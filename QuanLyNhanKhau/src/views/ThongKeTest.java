@@ -150,11 +150,11 @@ public class ThongKeTest extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 697, Short.MAX_VALUE)
+                        .addGap(0, 359, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 385, Short.MAX_VALUE)
+                        .addGap(0, 359, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Kết quả test: ");
@@ -180,7 +180,7 @@ public class ThongKeTest extends javax.swing.JPanel {
                                                 .addGap(62, 62, 62)
                                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(101, 101, 101)
+                                                .addGap(81, 81, 81)
                                                 .addComponent(jLabel1)
                                                 .addGap(1, 1, 1)
                                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -255,9 +255,27 @@ public class ThongKeTest extends javax.swing.JPanel {
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        table.getColumnModel().getColumn(0).setMaxWidth(80);
-        table.getColumnModel().getColumn(0).setMinWidth(80);
-        table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        table.getColumnModel().getColumn(0).setMaxWidth(100);
+        table.getColumnModel().getColumn(0).setMinWidth(40);
+        table.getColumnModel().getColumn(0).setPreferredWidth(100);
+
+        table.getColumnModel().getColumn(1).setMaxWidth(200);
+        table.getColumnModel().getColumn(1).setMinWidth(40);
+        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+
+        table.getColumnModel().getColumn(2).setMaxWidth(200);
+        table.getColumnModel().getColumn(2).setMinWidth(40);
+        table.getColumnModel().getColumn(2).setPreferredWidth(200);
+
+
+
+        table.getColumnModel().getColumn(3).setMaxWidth(160);
+        table.getColumnModel().getColumn(3).setMinWidth(40);
+        table.getColumnModel().getColumn(3).setPreferredWidth(160);
+
+        table.getColumnModel().getColumn(4).setMaxWidth(100);
+        table.getColumnModel().getColumn(4).setMinWidth(40);
+        table.getColumnModel().getColumn(4).setPreferredWidth(100);
 
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
