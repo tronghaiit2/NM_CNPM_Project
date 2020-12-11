@@ -10,40 +10,29 @@ import models.Test;
 import models.NhanKhauCachLy;
 /**
  *
- * @author Admin
+ * @author Dung
  */
 public class CachLyBean {
     private CachLyModel cachLyModel;
-    private Test test;
     private NhanKhauCachLy nhanKhauCachLy;
     private NhanKhauModel nhanKhauModel;
 
-    public CachLyBean(CachLyModel cachLyModel, Test test, NhanKhauCachLy nhanKhauCachLy) {
+    public CachLyBean(CachLyModel cachLyModel, NhanKhauModel nhanKhauModel) {
         this.cachLyModel = cachLyModel;
-        this.test = test;
-        this.nhanKhauCachLy = nhanKhauCachLy;
+        this.nhanKhauModel = nhanKhauModel;
     }
 
     public CachLyBean(){
         this.cachLyModel = new CachLyModel();
-        this.nhanKhauCachLy = new NhanKhauCachLy();
         this.nhanKhauModel = new NhanKhauModel();
     }
 
-    public CachLyModel getCachLy() {
+    public CachLyModel getCachLyModel() {
         return cachLyModel;
     }
 
-    public void setCachLy(CachLyModel cachLyModel) {
+    public void setCachLyModel(CachLyModel cachLyModel) {
         this.cachLyModel = cachLyModel;
-    }
-
-    public Test getTest() {
-        return test;
-    }
-
-    public void setTest(Test test) {
-        this.test = test;
     }
 
     public NhanKhauCachLy getNhanKhauCachLy() {

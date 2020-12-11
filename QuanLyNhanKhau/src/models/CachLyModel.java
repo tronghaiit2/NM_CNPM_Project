@@ -6,6 +6,7 @@
 package models;
 import java.util.Date;
 
+
 /**
  *
  * @author hieppm
@@ -16,6 +17,9 @@ public class CachLyModel {
     private String muc_do_cach_ly;
     private boolean is_tested;
     private int cachly_id;
+    private String noi_cach_ly;
+    private Date tgian_du_kien;
+    private int nhankhau_id;
 
     public int getId() {
         return id;
@@ -57,5 +61,33 @@ public class CachLyModel {
         this.cachly_id = cachly_id;
     }
 
+    public String getNoi_cach_ly() {
+        return noi_cach_ly;
+    }
 
+    public void setNoi_cach_ly(String noi_cach_ly) {
+        this.noi_cach_ly = noi_cach_ly;
+    }
+
+    public Date getTgian_du_kien() {
+        return tgian_du_kien;
+    }
+
+    public void setTgian_du_kien(Date tgian_du_kien) {
+        this.tgian_du_kien = tgian_du_kien;
+    }
+
+    public int getNhankhau_id() {
+        return nhankhau_id;
+    }
+
+    public void setNhankhau_id(int nhankhau_id) {
+        this.nhankhau_id = nhankhau_id;
+    }
+
+    @Override
+    public String toString(){
+        String cachLyString = id + " " + tgian_bat_dau + " " + tgian_du_kien + " " + noi_cach_ly + " " + muc_do_cach_ly + " " + cachly_id + " " + is_tested;
+        return cachLyString;
+    }
 }

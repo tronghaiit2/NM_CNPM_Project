@@ -51,6 +51,7 @@ public class ChooseCachLyController {
     public ChooseCachLyController(){}
 
     public void setDataTable() {
+
         List<NhanKhauModel> listItem = new ArrayList<>();
         this.listNhanKhauBeans.forEach(nhankhau -> {
             listItem.add(nhankhau.getNhanKhauModel());
