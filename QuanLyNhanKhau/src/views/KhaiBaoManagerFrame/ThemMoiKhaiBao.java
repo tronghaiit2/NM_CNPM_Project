@@ -23,6 +23,7 @@ import java.sql.Date;
  * @author hieppm
  */
 public class ThemMoiKhaiBao extends javax.swing.JFrame {
+    public int stateButton;
     private JFrame parentFrame;
     private KhaiBaoMangerPanelController parentController;
     private KhaiBaoBean khaiBaoBean;
@@ -52,6 +53,10 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
     public ThemMoiKhaiBao(JFrame parentFrame) throws HeadlessException {
         this.parentFrame = parentFrame;
         initComponents();
+    }
+
+    public ThemMoiKhaiBao(){
+        this.stateButton = 0;
     }
     public ThemMoiKhaiBao(KhaiBaoMangerPanelController parentController, JFrame parentJFrame) {
         this.parentController = parentController;
@@ -148,6 +153,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CreateBtnActionPerformed(e);
+                stateButton = 1;
             }
         });
 

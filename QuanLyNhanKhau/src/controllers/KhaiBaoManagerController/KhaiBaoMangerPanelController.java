@@ -21,7 +21,7 @@ public class KhaiBaoMangerPanelController {
     private JPanel jpnView;
     private JTextField jtfSearch = new JTextField("");
     private KhaiBaoService khaiBaoService;
-    private List<KhaiBaoBean> khaiBaoBeanList;
+    public List<KhaiBaoBean> khaiBaoBeanList;
     private ClassTableModel classTableModel;
     private JFrame parentJFrame;
 
@@ -31,6 +31,10 @@ public class KhaiBaoMangerPanelController {
         this.classTableModel = new ClassTableModel();
         this.khaiBaoService = new KhaiBaoService();
         this.khaiBaoBeanList = this.khaiBaoService.getListKhaiBao("");
+        initAction();
+    }
+
+    public KhaiBaoMangerPanelController(){
         initAction();
     }
 

@@ -51,7 +51,15 @@ public class MainController {
                     view = new TimKiemPanel(this.jfrMain);
                     break;
                 case "ThongKe":
-                    view = new ThongKePanel(this.jfrMain);
+                    ImageIcon icon = new ImageIcon("QuanLyNhanKhau/src/Icons/app.png");
+                    String[] option = {"Thống kê nhân khẩu", "Thống kê cách ly", "Thống kê test"};
+                    String res = (String) JOptionPane.showInputDialog(null, "Hãy chọn vấn đề cần thống kê!",
+                            "Message", JOptionPane.QUESTION_MESSAGE,icon, option, option[0]);
+                    if(res == "Thống kê nhân khẩu")
+                        view = new ThongKePanel(this.jfrMain);
+                    else if(res == "Thống kê cách ly")
+                        view = new ThongKeCachLy();
+                    else view = new ThongKeTest();
                     break;
                 case "KhaiBao":
                     view = new KhaiBaoPanel(this.jfrMain);
@@ -127,7 +135,15 @@ public class MainController {
                     view = new TimKiemPanel(this.jfrMain);
                     break;
                 case "ThongKe":
-                    view = new ThongKePanel(this.jfrMain);
+                    ImageIcon icon = new ImageIcon("QuanLyNhanKhau/src/Icons/app.png");
+                    String[] option = {"Thống kê nhân khẩu", "Thống kê cách ly", "Thống kê test"};
+                    String res = (String) JOptionPane.showInputDialog(null, "Hãy chọn vấn đề cần thống kê!",
+                            "Message", JOptionPane.QUESTION_MESSAGE,icon, option, option[0]);
+                    if(res == "Thống kê nhân khẩu")
+                        view = new ThongKePanel(this.jfrMain);
+                    else if(res == "Thống kê cách ly")
+                        view = new ThongKeCachLy();
+                    else view = new ThongKeTest();
                     break;
                 case "KhaiBao":
                     view = new KhaiBaoPanel(this.jfrMain);

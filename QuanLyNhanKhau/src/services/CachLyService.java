@@ -41,11 +41,13 @@ public class CachLyService {
             //old
             while (rs.next()){
                 CachLyBean cachLyBean = new CachLyBean();
+
                 CachLyModel cachly = cachLyBean.getCachLyModel();
                 NhanKhauModel nhanKhauModel = cachLyBean.getNhanKhauModel();
                 nhanKhauModel.setHoTen(rs.getString("hoTen"));
                 nhanKhauModel.setID(rs.getInt("ID"));
                 cachly.setCachly_id(rs.getInt("id_cachly"));
+
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
                 cachly.setIs_tested(rs.getBoolean("is_tested"));
@@ -118,6 +120,7 @@ public class CachLyService {
         }
         return list;
     }
+
 
     private void exceptionHandle(String message){
         JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);
