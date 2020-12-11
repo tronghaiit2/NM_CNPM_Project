@@ -17,7 +17,6 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel tablePanel;
     private javax.swing.JTextField jtfSearch;
 
@@ -44,7 +43,6 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
         tablePanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jtfSearch = new javax.swing.JTextField();
 
         jtfSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -132,12 +130,23 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
         themMoi.setVisible(true);
         themMoi.setLocationRelativeTo(null);
         themMoi.setResizable(true);
+        ThemMoiKhaiBao themMoiKhaiBao = new ThemMoiKhaiBao();
+        if(themMoiKhaiBao.stateButton == 1){
+            KhaiBaoService khaiBaoService = new KhaiBaoService();
+            controller.khaiBaoBeanList = khaiBaoService.getListKhaiBao("");
+            controller.setDataTable();
+        }
+
     }
 
     public void Button1Action(ActionEvent e) {
         String nhanKhauID = JOptionPane.showInputDialog(null, "Nhập ID nhân khẩu cần xóa khai báo ");
         KhaiBaoService service = new KhaiBaoService();
         service.removeKhaiBao(nhanKhauID);
+        KhaiBaoService khaiBaoService = new KhaiBaoService();
+        controller.khaiBaoBeanList = khaiBaoService.getListKhaiBao("");
+        controller.setDataTable();
+
     }
 
     private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed

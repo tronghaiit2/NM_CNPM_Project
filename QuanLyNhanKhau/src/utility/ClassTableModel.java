@@ -2,11 +2,7 @@ package utility;
 
 import Bean.CachLyBean;
 import Bean.HoKhauBean;
-
 import Bean.KhaiBaoBean;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
-
 import models.*;
 
 import javax.swing.table.DefaultTableModel;
@@ -111,28 +107,28 @@ public class ClassTableModel {
         return dtm;
     }
 
-    public DefaultTableModel setTableTest(List<Test> test, String[] listColumn){
+    public DefaultTableModel setTableTest(List<Test> test, String[] listColumn) {
         final int column = listColumn.length;
-        DefaultTableModel dtm = new DefaultTableModel(){
+        DefaultTableModel dtm = new DefaultTableModel() {
             @Override
-            public boolean isCellEditable(int row, int column){
+            public boolean isCellEditable(int row, int column) {
                 return super.isCellEditable(row, column);
             }
+
             @Override
-            public Class<?> getColumnClass (int columnIndex){
-                return columnIndex == 6? Boolean.class : String.class;
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 5 ? Boolean.class : String.class;
             }
         };
         dtm.setColumnIdentifiers(listColumn);
         Object[] obj = new Object[column];
 
-        test.forEach((Test item) ->{
+        test.forEach((Test item) -> {
             obj[0] = item.getTestId();
             obj[1] = item.getId();
             obj[2] = item.getThoi_diem_test().toString();
             obj[3] = item.getHinh_thuc_test();
             obj[4] = item.getKet_qua();
-            obj[5] = item.getCachly_id();
             dtm.addRow(obj);
         });
         return dtm;
@@ -195,6 +191,7 @@ public class ClassTableModel {
 
     //Table Cach Ly
     public DefaultTableModel setTableCachLy (List <CachLyBean> listItem, String[] listColumn){
+
         final int column = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel() {
             @Override
