@@ -11,7 +11,7 @@ public class HomePagePanel extends javax.swing.JPanel {
     private HomeCotroller cotroller;
     public HomePagePanel() {
         initComponents();
-        this.cotroller = new HomeCotroller(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb, tongNhanKhauKhaiBaoLb2);
+        this.cotroller = new HomeCotroller(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb, tongNhanKhauKhaiBaoLb2, tongNhanKhauDaTestLb2);
         this.cotroller.setData();
     }
     
