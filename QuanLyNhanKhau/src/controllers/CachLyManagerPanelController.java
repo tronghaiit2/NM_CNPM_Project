@@ -43,64 +43,43 @@ public class CachLyManagerPanelController {
         this.jtfSearch = jtfSearch;
         classTableModel = new ClassTableModel();
         this.cachLyService = new CachLyService();
-        this.listCachLyBeans = this.cachLyService.getListCachLyBeans();
-        //initAction();
+        this.listCachLyBeans = this.cachLyService.getListCachLyBeans("");
+        initAction();
         //setDataTable();
     }
 
     public CachLyManagerPanelController(){
     }
 
-//       public void initAction(){
-//              this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
-//                     @Override
-//                     public void insertUpdate(DocumentEvent e) {
-//                            String key = jtfSearch.getText();
-//                            listTestBeans = testService.search(key);
-//                     }
-//
-//                     @Override
-//                     public void removeUpdate(DocumentEvent e) {
-//
-//                     }
-//
-//                     @Override
-//                     public void changedUpdate(DocumentEvent e) {
-//
-//                     }
-//              });
-//       }
 
-    /*
-public void initAction() {
-    this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            // What to do
-            String key = jtfSearch.getText();
-            listCachLyBeans = cachLyService.search(key);
-            setDataTable();
-        }
+    public void initAction() {
+        this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                // What to do
+                String key = jtfSearch.getText();
+                listCachLyBeans = cachLyService.search(key);
+                setDataTable();
+            }
 
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            // what to do
-            String key = jtfSearch.getText();
-            listCachLyBeans = cachLyService.search(key);
-            setDataTable();
-        }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                // what to do
+                String key = jtfSearch.getText();
+                listCachLyBeans = cachLyService.search(key);
+                setDataTable();
+            }
 
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            // what to do
-            String key = jtfSearch.getText();
-            listCachLyBeans = cachLyService.search(key);
-            setDataTable();
-        }
-    });
-}
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // what to do
+                String key = jtfSearch.getText();
+                listCachLyBeans = cachLyService.search(key);
+                setDataTable();
+            }
+        });
+    }
 
-     */
 
     public void setDataTable(){
         /*
@@ -163,7 +142,7 @@ public void initAction() {
     }
 
     public void refreshData(){
-        this.listCachLyBeans = this.cachLyService.getListCachLyBeans();
+        this.listCachLyBeans = this.cachLyService.getListCachLyBeans("");
         setDataTable();
     }
 

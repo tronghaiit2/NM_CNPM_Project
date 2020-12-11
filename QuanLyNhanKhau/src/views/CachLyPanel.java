@@ -1,7 +1,9 @@
 package views;
 
 import controllers.CachLyManagerPanelController;
-import javax.swing.JFrame;
+
+import javax.swing.*;
+
 import views.CachLyManagerFrame.ThemMoiCachLyJFrame;
 
 /**
@@ -36,6 +38,7 @@ public class CachLyPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jtfSearch = new javax.swing.JTextField();
+        textNote = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setToolTipText("");
@@ -69,6 +72,9 @@ public class CachLyPanel extends javax.swing.JPanel {
             }
         });
 
+        textNote.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        textNote.setText("Tìm kiếm theo tên hoặc số CMT");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,11 +93,18 @@ public class CachLyPanel extends javax.swing.JPanel {
                                                 .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(textNote, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
+                                //.addGap(40, 40, 40)
+                                .addContainerGap()
+                                .addComponent(textNote, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -125,5 +138,6 @@ public class CachLyPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JTextField jtfSearch;
     private javax.swing.JPanel tablePanel;
+    private javax.swing.JLabel textNote;
     // End of variables declaration//GEN-END:variables
 }
