@@ -35,7 +35,7 @@ public class TestService {
                 test.setThoi_diem_test(rs.getDate("thoi_diem_test"));
                 test.setKet_qua(rs.getString("ket_qua"));
                 test.setId(rs.getInt("id_nhankhau"));
-                System.out.println(test.toString());
+                //System.out.println(test.toString());
                 list.add(testBean);
             }
             preparedStatement.close();

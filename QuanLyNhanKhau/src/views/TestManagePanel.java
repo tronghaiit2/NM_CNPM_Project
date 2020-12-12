@@ -1,10 +1,15 @@
 package views;
 
 
+import Bean.TestBean;
 import controllers.TestManagerPanelController;
 import views.TestManagerFrame.ThemMoiTest;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 /**
  *
  * @author Ducnm
@@ -12,6 +17,16 @@ import javax.swing.*;
 public class TestManagePanel extends javax.swing.JPanel {
     private JFrame parentJFrame;
     private TestManagerPanelController controller = null;
+    private TestBean testBeanSelected;
+
+    public TestBean getTestBeanSelected() {
+        return testBeanSelected;
+    }
+
+    public void setTestBeanSelected(TestBean testBeanSelected) {
+        this.testBeanSelected = testBeanSelected;
+    }
+
     /**
      * Creates new form TestManagePanel
      */
@@ -65,7 +80,12 @@ public class TestManagePanel extends javax.swing.JPanel {
         deleteBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         deleteBtn.setText("Xóa");
         deleteBtn.setPreferredSize(new java.awt.Dimension(101, 25));
-
+        deleteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteBtnActionPerformed(e);
+            }
+        });
 
         addBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         addBtn.setText("Thêm mới");
@@ -110,7 +130,6 @@ public class TestManagePanel extends javax.swing.JPanel {
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-
                         .addGap(0, 306, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -125,6 +144,18 @@ public class TestManagePanel extends javax.swing.JPanel {
         themMoiTest.setLocationRelativeTo(null);
         themMoiTest.setResizable(false);
         themMoiTest.setVisible(true);
+    }
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt){
+        try {
+            if (this.controller.xoaTest(this.controller.getTestBeanSelected())){
+                JOptionPane.showMessageDialog(null,"Xóa thành công!");
+                controller.refreshData();
+            }
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Có lỗi ở TestManagePanel!");
+        }
     }
 
 

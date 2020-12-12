@@ -7,12 +7,21 @@ package controllers;
 
 import Bean.TestBean;
 import models.Test;
+import services.MysqlConnection;
 import services.TestService;
 import utility.ClassTableModel;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
@@ -22,8 +31,27 @@ import java.util.List;
  * @author ducnm
  */
 public class TestManagerPanelController {
+       private JButton deleteBtn;
        private JPanel jpnView;
+
+       public JButton getDeleteBtn() {
+              return deleteBtn;
+       }
+
+       public void setDeleteBtn(JButton deleteBtn) {
+              this.deleteBtn = deleteBtn;
+       }
+       private TestBean testBeanSelected;
        private JTextField jtfSearch;
+
+       public TestBean getTestBeanSelected() {
+              return testBeanSelected;
+       }
+
+       public void setTestBeanSelected(TestBean testBeanSelected) {
+              this.testBeanSelected = testBeanSelected;
+       }
+
        private TestService testService;
        private List<TestBean> listTestBeans;
        private ClassTableModel classTableModel = null;
@@ -40,25 +68,27 @@ public class TestManagerPanelController {
        public TestManagerPanelController(){
        }
 
-//       public void initAction(){
-//              this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
-//                     @Override
-//                     public void insertUpdate(DocumentEvent e) {
-//                            String key = jtfSearch.getText();
-//                            listTestBeans = testService.search(key);
-//                     }
-//
-//                     @Override
-//                     public void removeUpdate(DocumentEvent e) {
-//
-//                     }
-//
-//                     @Override
-//                     public void changedUpdate(DocumentEvent e) {
-//
-//                     }
-//              });
-//       }
+      public void initAction(){
+
+
+              this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
+                     @Override
+                     public void insertUpdate(DocumentEvent e) {
+                            String key = jtfSearch.getText();
+                            //listTestBeans = testService.search(key);
+                     }
+
+                     @Override
+                     public void removeUpdate(DocumentEvent e) {
+
+                     }
+
+                     @Override
+                     public void changedUpdate(DocumentEvent e) {
+
+                     }
+              });
+     }
 
        public void setDataTable(){
               List<Test> listItem = new ArrayList<>();
@@ -82,15 +112,14 @@ public class TestManagerPanelController {
               table.getColumnModel().getColumn(0).setMaxWidth(80);
               table.getColumnModel().getColumn(0).setMinWidth(80);
               table.getColumnModel().getColumn(0).setPreferredWidth(80);
-//              table.addMouseListener(new MouseAdapter() {
-//                     @Override
-//                     public void mouseClicked(MouseEvent e) {
-//                            if (e.getClickCount()>1){
-//                                   TestBean temp = listTestBeans.get(table.getSelectedRow());
-//                                   //TestBean info = testService.getListTestBeans(temp.getNhanKhauModel());
-//                            }
-//                     }
-//              });
+              table.addMouseListener(new MouseAdapter() {
+                     @Override
+                     public void mouseClicked(MouseEvent e) {
+                           TestBean temp = listTestBeans.get(table.getSelectedRow());
+                           testBeanSelected = temp;
+                           setTestBeanSelected(temp);
+                     }
+              });
               JScrollPane scroll = new JScrollPane();
               scroll.getViewport().add(table);
               scroll.setPreferredSize(new Dimension(1350, 400));
@@ -107,6 +136,18 @@ public class TestManagerPanelController {
        public void refreshData(){
               this.listTestBeans = this.testService.getListTestBeans();
               setDataTable();
+       }
+
+       public boolean xoaTest(TestBean testBean) throws SQLException, ClassNotFoundException{
+              Test test = testBean.getTest();
+              Connection connection = MysqlConnection.getMysqlConnection();
+              String query = "DELETE FROM test WHERE id_test = ?";
+              PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+              preparedStatement.setInt(1, test.getTestId());
+              preparedStatement.executeUpdate();
+              connection.close();
+              refreshData();
+              return true;
        }
 
        public JPanel getJpnView() {

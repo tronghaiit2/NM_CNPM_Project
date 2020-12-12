@@ -12,8 +12,8 @@ public class ThemMoiTestController {
         NhanKhauModel nhanKhauModel = testBean.getNhanKhauModel();
         Test test = testBean.getTest();
         Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "INSERT INTO test (id_test, id_nhankhau, thoi_diem_test, hinh_thuc_test, ket_qua, id_cachly)"
-                + "values (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO test (id_test, id_nhankhau, thoi_diem_test, hinh_thuc_test, ket_qua)"
+                + "values (?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setInt(1, test.getTestId());
         preparedStatement.setInt(2, test.getId());
@@ -21,7 +21,6 @@ public class ThemMoiTestController {
         preparedStatement.setDate(3, ngayTest);
         preparedStatement.setString(4, test.getHinh_thuc_test());
         preparedStatement.setString(5, test.getKet_qua());
-        preparedStatement.setInt(6, test.getCachly_id());
 
         preparedStatement.executeUpdate();
         connection.close();
