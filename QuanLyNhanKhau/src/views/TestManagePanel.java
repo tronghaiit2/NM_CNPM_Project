@@ -7,13 +7,13 @@ import javax.swing.JFrame;
  *
  * @author Dung
  */
-public class TestPanel extends javax.swing.JPanel {
+public class TestManagePanel extends javax.swing.JPanel {
     private JFrame parentFrame;
     private TestPanelController controller;
     /**
      * Creates new form KhaiBaoPanel
      */
-    public TestPanel(JFrame parentFrame) {
+    public TestManagePanel(JFrame parentFrame) {
         this.parentFrame = parentFrame;
         initComponents();
         this.controller = new TestPanelController();
@@ -29,8 +29,8 @@ public class TestPanel extends javax.swing.JPanel {
 
         jBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -53,12 +53,12 @@ public class TestPanel extends javax.swing.JPanel {
             .addGap(0, 377, Short.MAX_VALUE)
         );
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Chỉnh sửa");
-        jButton1.setPreferredSize(new java.awt.Dimension(101, 25));
+        deleteBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        deleteBtn.setText("Xóa");
+        deleteBtn.setPreferredSize(new java.awt.Dimension(101, 25));
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setLabel("Thêm mới");
+        addBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        addBtn.setLabel("Thêm mới");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,8 +70,8 @@ public class TestPanel extends javax.swing.JPanel {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
@@ -90,9 +90,9 @@ public class TestPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 306, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -103,9 +103,9 @@ public class TestPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JButton jBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

@@ -20,7 +20,7 @@ import views.NhanKhauManagePanel;
 import views.ThongKePanel;
 import views.TimKiemPanel;
 import views.KhaiBaoPanel;
-import views.TestPanel;
+import views.TestManagePanel;
 
 /**
  *
@@ -63,7 +63,7 @@ public class MainController {
                 case "KhaiBao":
                     view = new ThongKePanel(this.jfrMain);
                 case "Test":
-                    view = new TestPanel(this.jfrMain);
+                    view = new TestManagePanel(this.jfrMain);
                     break;
                 //any more
                 default:
@@ -138,7 +138,7 @@ public class MainController {
                 case "KhaiBao": 
                     view = new KhaiBaoPanel(this.jfrMain);
                 case "Test":
-                    view = new TestPanel(this.jfrMain);
+                    view = new TestManagePanel(this.jfrMain);
                 case "CachLy":
                     view = new CachLyPanel(this.jfrMain);
                 default:
