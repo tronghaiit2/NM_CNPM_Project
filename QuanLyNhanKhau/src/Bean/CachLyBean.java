@@ -10,7 +10,7 @@ import models.Test;
 import models.NhanKhauCachLy;
 /**
  *
- * @author Dung
+ * @author DungLHT
  */
 public class CachLyBean {
     private CachLyModel cachLyModel;

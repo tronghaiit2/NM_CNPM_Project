@@ -72,7 +72,7 @@ public class HomeCotroller {
             }
             preparedStatement.close();
 
-            query = "SELECT COUNT(DISTINCT id_cachly) as tong from cach_ly";
+            query = "SELECT COUNT(DISTINCT id_nhankhau) as tong from cach_ly";
             preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             rs = preparedStatement.executeQuery();
             while (rs.next()){

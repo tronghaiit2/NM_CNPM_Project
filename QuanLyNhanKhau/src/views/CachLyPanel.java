@@ -1,18 +1,22 @@
 package views;
 
+import Bean.CachLyBean;
 import controllers.CachLyManagerPanelController;
 
 import javax.swing.*;
 
+import services.CachLyService;
+import services.KhaiBaoService;
 import views.CachLyManagerFrame.ThemMoiCachLyJFrame;
 
 /**
  *
- * @author Dung
+ * @author DungLHT
  */
 public class CachLyPanel extends javax.swing.JPanel {
     private JFrame parentJFrame;
     private CachLyManagerPanelController controller = null;
+    private CachLyBean testCachLySelected;
     /**
      * Creates new form KhaiBaoPanel
      */
@@ -24,6 +28,15 @@ public class CachLyPanel extends javax.swing.JPanel {
         controller.setDataTable();
 
     }
+
+    public CachLyBean getTestCachLySelected() {
+        return testCachLySelected;
+    }
+
+    public void setTestCachLySelected(CachLyBean testCachLySelected) {
+        this.testCachLySelected = testCachLySelected;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +76,11 @@ public class CachLyPanel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setText("Xóa");
         jButton1.setPreferredSize(new java.awt.Dimension(101, 25));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setText("Thêm mới");
@@ -122,7 +140,7 @@ public class CachLyPanel extends javax.swing.JPanel {
         jBtn.getAccessibleContext().setAccessibleName("");
         jBtn.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
-
+    //Event Them moi
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ThemMoiCachLyJFrame themMoiCachLyJFrame = new ThemMoiCachLyJFrame(this.controller, this.parentJFrame);
@@ -131,6 +149,20 @@ public class CachLyPanel extends javax.swing.JPanel {
         themMoiCachLyJFrame.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+
+    //Event Xoa
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            if (this.controller.xoaCachLy(this.controller.getCachLyBeanSelected())){
+                JOptionPane.showMessageDialog(null,"Xóa thành công!");
+                controller.refreshData();
+            }
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Chọn nhân khẩu trước khi xóa!");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtn;
