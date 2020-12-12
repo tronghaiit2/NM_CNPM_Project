@@ -69,10 +69,8 @@ public class ThemMoiTest extends javax.swing.JFrame {
         jlblTestTime = new javax.swing.JLabel();
         jlblHinhThuc = new javax.swing.JLabel();
         jlblKetQua = new javax.swing.JLabel();
-        jlblCachLy = new javax.swing.JLabel();
         jtfIdTest = new javax.swing.JTextField();
         jtfKetQua = new javax.swing.JTextField();
-        jtfCachLy = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         testTimeChooser = new com.toedter.calendar.JDateChooser();
@@ -100,15 +98,17 @@ public class ThemMoiTest extends javax.swing.JFrame {
         jlblKetQua.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jlblKetQua.setText("Kết quả:");
 
-        jlblCachLy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jlblCachLy.setText("Cách ly:");
-
         btnCancel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCancel.setText("Hủy");
 
         btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnAdd.setText("Thêm mới");
-
+        btnAdd.addActionListener(new java.awt.event.ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addBtnActionPerformed(e);
+            }
+        });
         selectBtn.setText("Chọn...");
         selectBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +169,6 @@ public class ThemMoiTest extends javax.swing.JFrame {
                                     .addComponent(jlblTestTime)
                                     .addComponent(jlblKetQua)
                                     .addComponent(jlblHinhThuc)
-                                    .addComponent(jlblCachLy)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jlblIdNhanKhau)
                                         .addGap(31, 31, 31)
@@ -185,7 +184,6 @@ public class ThemMoiTest extends javax.swing.JFrame {
                                             .addComponent(testTimeChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                                             .addComponent(jtfIdTest)
                                             .addComponent(jtfKetQua)
-                                            .addComponent(jtfCachLy)
                                             .addComponent(idNguoiTestJtf)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -225,11 +223,7 @@ public class ThemMoiTest extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfKetQua, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlblKetQua))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlblCachLy)
-                    .addComponent(jtfCachLy, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85)
+                .addGap(136, 136, 136)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnAdd))
@@ -258,11 +252,10 @@ public class ThemMoiTest extends javax.swing.JFrame {
     private void tenNguoiTestJtf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenNguoiTestJtf1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tenNguoiTestJtf1ActionPerformed
-    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {
         if (this.jtfIdTest.getText().trim().isEmpty()
                 ||this.tenNguoiTestJtf1.getText().trim().isEmpty()
                 ||this.jtfKetQua.getText().trim().isEmpty()
-                ||this.jtfCachLy.getText().trim().isEmpty()
                 ||(!this.jrbtnTestNhanh.isSelected()
                 &&!this.jdbtnTestChuan.isSelected())) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các thông tin", "Warning", JOptionPane.ERROR_MESSAGE );
@@ -276,7 +269,6 @@ public class ThemMoiTest extends javax.swing.JFrame {
             if (jrbtnTestNhanh.isSelected()) ht = jrbtnTestNhanh.getText();
             else ht = jdbtnTestChuan.getText();
             this.testBean.getTest().setHinh_thuc_test(ht);
-            this.testBean.getTest().setCachly_id(Integer.parseInt(jtfCachLy.getText()));
             System.out.println(this.testBean.getTest().toString());
             try {
                 if (this.controller.themMoiTest(this.testBean)){
@@ -322,13 +314,11 @@ public class ThemMoiTest extends javax.swing.JFrame {
     private javax.swing.JRadioButton jdbtnTestChuan;
     private javax.swing.JLabel jlbIdNhanKhau;
     private javax.swing.JLabel jlbIdTest;
-    private javax.swing.JLabel jlblCachLy;
     private javax.swing.JLabel jlblHinhThuc;
     private javax.swing.JLabel jlblIdNhanKhau;
     private javax.swing.JLabel jlblKetQua;
     private javax.swing.JLabel jlblTestTime;
     private javax.swing.JRadioButton jrbtnTestNhanh;
-    private javax.swing.JTextField jtfCachLy;
     private javax.swing.JTextField jtfIdTest;
     private javax.swing.JTextField jtfKetQua;
     private javax.swing.JButton selectBtn;
