@@ -22,7 +22,7 @@ public class TestService {
 
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            String query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id_nhankhau = nk.ID LEFT JOIN cach_ly cl ON t.id_cachly = cl.id_cachly ";
+            String query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id_nhankhau = nk.ID ";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -34,9 +34,8 @@ public class TestService {
                 test.setHinh_thuc_test(rs.getString("hinh_thuc_test"));
                 test.setThoi_diem_test(rs.getDate("thoi_diem_test"));
                 test.setKet_qua(rs.getString("ket_qua"));
-                test.setCachly_id(rs.getInt("id_cachly"));
                 test.setId(rs.getInt("id_nhankhau"));
-                //System.out.println(test.toString());
+                System.out.println(test.toString());
                 list.add(testBean);
             }
             preparedStatement.close();
