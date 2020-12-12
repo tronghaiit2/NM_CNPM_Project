@@ -18,7 +18,7 @@ import java.awt.event.WindowEvent;
 
 /**
  *
- * @author admins
+ * @author DungLHT
  */
 public class ThemMoiCachLyJFrame extends javax.swing.JFrame {
     private NhanKhauBean nguoiCachLy = new NhanKhauBean();

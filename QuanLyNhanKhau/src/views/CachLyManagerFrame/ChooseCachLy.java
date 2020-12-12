@@ -16,7 +16,7 @@ import java.awt.event.WindowEvent;
 
 /**
  *
- * @author ducnm
+ * @author DungLHT
  */
 public class ChooseCachLy extends javax.swing.JFrame {
     private NhanKhauBean nhanKhauBean;

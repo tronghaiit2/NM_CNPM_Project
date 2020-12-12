@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
 
+/**
+ *
+ * @author DungLHT
+ */
 
 public class ThemMoiCachLyController {
     public boolean themMoiCachLy(CachLyBean cachLyBean) throws SQLException, ClassNotFoundException{

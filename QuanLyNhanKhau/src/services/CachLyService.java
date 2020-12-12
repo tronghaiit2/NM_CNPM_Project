@@ -6,9 +6,9 @@
 package services;
 
 import Bean.CachLyBean;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
+import java.awt.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -19,12 +19,13 @@ import models.CachLyModel;
 import models.KhaiBao;
 import models.NhanKhauModel;
 import models.Test;
+import views.CachLyPanel;
 
 /**
  *
- * @author Dung
+ * @author DungLHT
  */
-public class CachLyService {
+public class CachLyService{
 
     public List<CachLyBean> getListCachLyBeans(String hoTen) {
         List<CachLyBean> list = new ArrayList<>();
@@ -120,7 +121,6 @@ public class CachLyService {
         }
         return list;
     }
-
 
     private void exceptionHandle(String message){
         JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);
