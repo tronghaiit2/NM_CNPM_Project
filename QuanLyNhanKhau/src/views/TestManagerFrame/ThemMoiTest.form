@@ -53,7 +53,6 @@
                                   <Component id="jlblTestTime" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlblKetQua" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlblHinhThuc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlblCachLy" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlblIdNhanKhau" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -72,7 +71,6 @@
                                           <Component id="testTimeChooser" alignment="0" pref="239" max="32767" attributes="0"/>
                                           <Component id="jtfIdTest" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jtfKetQua" max="32767" attributes="0"/>
-                                          <Component id="jtfCachLy" alignment="0" max="32767" attributes="0"/>
                                           <Component id="idNguoiTestJtf" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -131,12 +129,7 @@
                   <Component id="jtfKetQua" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jlblKetQua" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlblCachLy" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfCachLy" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -187,19 +180,9 @@
         <Property name="text" type="java.lang.String" value="K&#x1ebf;t qu&#x1ea3;:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlblCachLy">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="C&#xe1;ch ly:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="jtfIdTest">
     </Component>
     <Component class="javax.swing.JTextField" name="jtfKetQua">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jtfCachLy">
     </Component>
     <Component class="javax.swing.JButton" name="btnCancel">
       <Properties>

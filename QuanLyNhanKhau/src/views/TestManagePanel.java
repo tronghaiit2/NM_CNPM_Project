@@ -1,5 +1,6 @@
 package views;
 
+
 import controllers.TestManagerPanelController;
 import views.TestManagerFrame.ThemMoiTest;
 
@@ -20,6 +21,7 @@ public class TestManagePanel extends javax.swing.JPanel {
         controller = new TestManagerPanelController(jPanel1, jTextField1);
         controller.setParentJFrame(parentJFrame);
         controller.setDataTable();
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,8 +34,10 @@ public class TestManagePanel extends javax.swing.JPanel {
 
         jBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+
+        deleteBtn = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+
         jTextField1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -56,13 +60,16 @@ public class TestManagePanel extends javax.swing.JPanel {
             .addGap(0, 377, Short.MAX_VALUE)
         );
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Xóa");
-        jButton1.setPreferredSize(new java.awt.Dimension(101, 25));
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setText("Thêm mới");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+
+        deleteBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        deleteBtn.setText("Xóa");
+        deleteBtn.setPreferredSize(new java.awt.Dimension(101, 25));
+
+
+        addBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        addBtn.setText("Thêm mới");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewBtnActionPerformed(evt);
             }
@@ -74,11 +81,13 @@ public class TestManagePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
@@ -95,11 +104,13 @@ public class TestManagePanel extends javax.swing.JPanel {
                     .addComponent(jBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                         .addGap(0, 306, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -108,6 +119,7 @@ public class TestManagePanel extends javax.swing.JPanel {
         jBtn.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void addNewBtnActionPerformed(java.awt.event.ActionEvent evt){
         ThemMoiTest themMoiTest = new ThemMoiTest(this.controller, this.parentJFrame);
         themMoiTest.setLocationRelativeTo(null);
@@ -115,10 +127,13 @@ public class TestManagePanel extends javax.swing.JPanel {
         themMoiTest.setVisible(true);
     }
 
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JButton jBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
