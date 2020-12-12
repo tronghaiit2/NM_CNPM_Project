@@ -21,7 +21,6 @@ public class ThemMoiTestController {
         preparedStatement.setDate(3, ngayTest);
         preparedStatement.setString(4, test.getHinh_thuc_test());
         preparedStatement.setString(5, test.getKet_qua());
-
         preparedStatement.executeUpdate();
         connection.close();
         return true;

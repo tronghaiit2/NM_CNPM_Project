@@ -136,6 +136,7 @@ public class TestManagePanel extends javax.swing.JPanel {
 
         jBtn.getAccessibleContext().setAccessibleName("");
         jBtn.getAccessibleContext().setAccessibleDescription("");
+        jBtn.setVisible(false);
     }// </editor-fold>//GEN-END:initComponents
 
 

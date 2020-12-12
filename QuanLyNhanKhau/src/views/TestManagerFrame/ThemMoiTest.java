@@ -269,7 +269,7 @@ public class ThemMoiTest extends javax.swing.JFrame {
             if (jrbtnTestNhanh.isSelected()) ht = jrbtnTestNhanh.getText();
             else ht = jdbtnTestChuan.getText();
             this.testBean.getTest().setHinh_thuc_test(ht);
-            System.out.println(this.testBean.getTest().toString());
+            //System.out.println(this.testBean.getTest().toString());
             try {
                 if (this.controller.themMoiTest(this.testBean)){
                     JOptionPane.showMessageDialog(null,"Thêm thành công!!");

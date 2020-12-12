@@ -117,7 +117,7 @@ public class ClassTableModel {
 
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 5 ? Boolean.class : String.class;
+                return columnIndex == 6 ? Boolean.class : String.class;
             }
         };
         dtm.setColumnIdentifiers(listColumn);
@@ -126,9 +126,10 @@ public class ClassTableModel {
         test.forEach((Test item) -> {
             obj[0] = item.getTestId();
             obj[1] = item.getId();
-            obj[2] = item.getThoi_diem_test().toString();
-            obj[3] = item.getHinh_thuc_test();
-            obj[4] = item.getKet_qua();
+            obj[2] = item.getTenNguoiTest();
+            obj[3] = item.getThoi_diem_test().toString();
+            obj[4] = item.getHinh_thuc_test();
+            obj[5] = item.getKet_qua();
             dtm.addRow(obj);
         });
         return dtm;

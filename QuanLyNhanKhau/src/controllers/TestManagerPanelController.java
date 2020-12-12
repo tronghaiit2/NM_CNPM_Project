@@ -55,7 +55,7 @@ public class TestManagerPanelController {
        private TestService testService;
        private List<TestBean> listTestBeans;
        private ClassTableModel classTableModel = null;
-       private final String[] COLUMNS = {"Mã test", "ID nhân khẩu", "Thời điểm", "Hình thức", "Kết quả" };
+       private final String[] COLUMNS = {"Mã test", "Id người test","Người test", "Thời điểm", "Hình thức", "Kết quả" };
        private JFrame parentJFrame;
        public TestManagerPanelController(JPanel jpnView, JTextField jtfSearch){
               this.jpnView = jpnView;
@@ -63,7 +63,7 @@ public class TestManagerPanelController {
               classTableModel = new ClassTableModel();
               this.testService = new TestService();
               this.listTestBeans = this.testService.getListTestBeans();
-              //initAction();
+              initAction();
        }
        public TestManagerPanelController(){
        }
@@ -75,17 +75,22 @@ public class TestManagerPanelController {
                      @Override
                      public void insertUpdate(DocumentEvent e) {
                             String key = jtfSearch.getText();
-                            //listTestBeans = testService.search(key);
+                            listTestBeans = testService.search(key.trim());
+                            setDataTable();
                      }
 
                      @Override
                      public void removeUpdate(DocumentEvent e) {
-
+                         String key = jtfSearch.getText();
+                         listTestBeans = testService.search(key.trim());
+                         setDataTable();
                      }
 
                      @Override
                      public void changedUpdate(DocumentEvent e) {
-
+                         String key = jtfSearch.getText();
+                         listTestBeans = testService.search(key.trim());
+                         setDataTable();
                      }
               });
      }
