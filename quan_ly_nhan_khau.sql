@@ -68,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`nhan_khau` (
   `lyDoXoa` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   `ghiChu` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idNguoiTao` (`idNguoiTao` ASC) VISIBLE,
-  INDEX `idNguoiXoa` (`idNguoiXoa` ASC) VISIBLE,
-  FULLTEXT INDEX `hoTen` (`hoTen`, `bietDanh`) VISIBLE,
+  INDEX `idNguoiTao` (`idNguoiTao` ASC) ,
+  INDEX `idNguoiXoa` (`idNguoiXoa` ASC) ,
+  FULLTEXT INDEX `hoTen` (`hoTen`, `bietDanh`) ,
   CONSTRAINT `nhan_khau_ibfk_1`
     FOREIGN KEY (`idNguoiTao`)
     REFERENCES `quan_ly_nhan_khau`.`users` (`ID`),
@@ -93,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`chung_minh_thu` (
   `ngayCap` DATE NULL DEFAULT NULL,
   `noiCap` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idNhanKhau` (`idNhanKhau` ASC) VISIBLE,
-  FULLTEXT INDEX `soCMT` (`soCMT`) VISIBLE,
+  INDEX `idNhanKhau` (`idNhanKhau` ASC) ,
+  FULLTEXT INDEX `soCMT` (`soCMT`) ,
   CONSTRAINT `chung_minh_thu_ibfk_1`
     FOREIGN KEY (`idNhanKhau`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
@@ -118,8 +118,8 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`ho_khau` (
   `lyDoChuyen` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   `nguoiThucHien` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idChuHo` (`idChuHo` ASC) VISIBLE,
-  FULLTEXT INDEX `maHoKhau` (`maHoKhau`) VISIBLE,
+  INDEX `idChuHo` (`idChuHo` ASC) ,
+  FULLTEXT INDEX `maHoKhau` (`maHoKhau`) ,
   CONSTRAINT `ho_khau_ibfk_1`
     FOREIGN KEY (`idChuHo`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
@@ -141,8 +141,8 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`dinh_chinh` (
   `ngayThayDoi` DATE NULL DEFAULT NULL,
   `nguoiThayDoi` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idHoKhau` (`idHoKhau` ASC) VISIBLE,
-  INDEX `nguoiThayDoi` (`nguoiThayDoi` ASC) VISIBLE,
+  INDEX `idHoKhau` (`idHoKhau` ASC) ,
+  INDEX `nguoiThayDoi` (`nguoiThayDoi` ASC) ,
   CONSTRAINT `dinh_chinh_ibfk_1`
     FOREIGN KEY (`idHoKhau`)
     REFERENCES `quan_ly_nhan_khau`.`ho_khau` (`ID`),
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`gia_dinh` (
   `ngheNghiep` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   `diaChiHienTai` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idNhanKhau` (`idNhanKhau` ASC) VISIBLE,
+  INDEX `idNhanKhau` (`idNhanKhau` ASC) ,
   CONSTRAINT `gia_dinh_ibfk_1`
     FOREIGN KEY (`idNhanKhau`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
@@ -189,8 +189,8 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`khai_tu` (
   `ngayChet` DATE NULL DEFAULT NULL,
   `lyDoChet` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idNguoiKhai` (`idNguoiKhai` ASC) VISIBLE,
-  INDEX `idNguoiChet` (`idNguoiChet` ASC) VISIBLE,
+  INDEX `idNguoiKhai` (`idNguoiKhai` ASC) ,
+  INDEX `idNguoiChet` (`idNguoiChet` ASC) ,
   CONSTRAINT `khai_tu_ibfk_1`
     FOREIGN KEY (`idNguoiKhai`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`),
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`tam_tru` (
   `denNgay` DATE NOT NULL,
   `lyDo` TEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idNhanKhau` (`idNhanKhau` ASC) VISIBLE,
+  INDEX `idNhanKhau` (`idNhanKhau` ASC) ,
   CONSTRAINT `tam_tru_ibfk_1`
     FOREIGN KEY (`idNhanKhau`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`tam_vang` (
   `denNgay` DATE NULL DEFAULT NULL,
   `lyDo` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idNhanKhau` (`idNhanKhau` ASC) VISIBLE,
+  INDEX `idNhanKhau` (`idNhanKhau` ASC) ,
   CONSTRAINT `tam_vang_ibfk_1`
     FOREIGN KEY (`idNhanKhau`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`thanh_vien_cua_ho` (
   `idHoKhau` INT(11) NOT NULL,
   `quanHeVoiChuHo` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   PRIMARY KEY (`idNhanKhau`, `idHoKhau`),
-  INDEX `idHoKhau` (`idHoKhau` ASC) VISIBLE,
+  INDEX `idHoKhau` (`idHoKhau` ASC) ,
   CONSTRAINT `thanh_vien_cua_ho_ibfk_1`
     FOREIGN KEY (`idNhanKhau`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`),
@@ -278,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`tieu_su` (
   `ngheNghiep` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   `noiLamViec` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `idNhanKhau` (`idNhanKhau` ASC) VISIBLE,
+  INDEX `idNhanKhau` (`idNhanKhau` ASC) ,
   CONSTRAINT `tieu_su_ibfk_1`
     FOREIGN KEY (`idNhanKhau`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
@@ -343,19 +343,19 @@ INSERT INTO `ho_khau` (`ID`, `maHoKhau`, `idChuHo`, `maKhuVuc`, `diaChi`, `ngayL
 (16, 'TQB004', 33, 'HN03', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '2019-12-08', NULL, NULL, NULL);
 
 INSERT INTO `nhan_khau` (`ID`, `maNhanKhau`, `hoTen`, `bietDanh`, `namSinh`, `gioiTinh`, `noiSinh`, `nguyenQuan`, `danToc`, `tonGiao`, `quocTich`, `soHoChieu`, `noiThuongTru`, `diaChiHienNay`, `trinhDoHocVan`, `TrinhDoChuyenMon`, `bietTiengDanToc`, `trinhDoNgoaiNgu`, `ngheNghiep`, `noiLamViec`, `tienAn`, `ngayChuyenDen`, `lyDoChuyenDen`, `ngayChuyenDi`, `lyDoChuyenDi`, `diaChiMoi`, `ngayTao`, `idNguoiTao`, `ngayXoa`, `idNguoiXoa`, `lyDoXoa`, `ghiChu`) VALUES
-(26, NULL, 'Trinh Văn An', '', '1990-12-07', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 1 Tạ Quang Bưu, Hai Bà Trưng, Hà Nội', 'Số 1 Tạ Quang Bưu, Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình đọ B', 'Giáo Viên', 'Trường THCS Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(27, NULL, 'Trần Thanh Duyên', '', '1997-12-23', 'Nữ', NULL, 'Hải Phòng', 'Kinh', 'Không', 'Việt Nam', '', 'Số 3, đường Đình Đông, phường Đình Đông, quận Ngô Quyền, Hải Phòng', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Nhân viên văn phòng', 'Công ty ABC', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(28, NULL, 'Nguyễn Minh Quân', '', '1995-05-31', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Kỹ sư', 'Viettel', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(29, NULL, 'Nguyễn Tiến Dũng', '', '1964-06-03', 'Nam', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Kỹ sư', 'Không', 'Không', 'Phó giám đốc', 'Công ty EXE', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(30, NULL, 'Vũ Mỹ Linh', '', '1965-12-06', 'Nữ', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12', 'Cử Nhân', 'Không', 'Không', 'Nội trợ', 'Tại nhà', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(31, NULL, 'Nguyễn Tiến Đạt', '', '1990-09-09', 'Nam', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Kỹ sư', 'không', 'Anh trình độ C', 'Kỹ sư điện', 'Công ty điện EVN', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(32, NULL, 'Nguyễn Trà My', '', '1997-12-12', 'Nữ', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'không', 'Anh trình đố D', 'Luật sư', 'Văn phòng luật sư 123', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(33, NULL, 'Trần Văn Nam', '', '1980-07-09', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Tiến sĩ', 'Không', 'Anh trình độ D', 'Giảng viên đại học', 'Đại học Bách khoa Hà Nội', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(34, NULL, 'Nguyễn Minh Tuyết', '', '1985-09-02', 'Nữ', NULL, 'Nam Định', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Bác sĩ', 'Bệnh viện quốc tế HJK', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(35, NULL, 'Trần Trung Kiên', '', '2008-12-25', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '6/12 chính quy', 'Không', 'Không', 'Không', 'Học sinh', 'Trường THCS Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(36, NULL, 'Trần Thúy Ngọc', '', '2013-01-15', 'Nữ', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '1/12 chính quy', 'Không', 'Không', 'Không', 'Học sinh', 'Trường tiểu học Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(37, NULL, 'Lý Văn Công', '', '1945-06-04', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '10/12 chính quy', 'Không', 'Không', 'Không', 'Về hưu', 'Không', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
-(38, NULL, 'Bùi Thị Hà', '', '1948-02-03', 'Nữ', NULL, 'Hải Phòng', 'Kinh', 'Không', 'Việt Nam', '', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '10/12', 'Không', 'Không', 'Không', 'Nội trợ', 'Tại nhà', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL);
+(26, 'TA26', 'Trinh Văn An', '', '1990-12-07', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 1 Tạ Quang Bưu, Hai Bà Trưng, Hà Nội', 'Số 1 Tạ Quang Bưu, Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình đọ B', 'Giáo Viên', 'Trường THCS Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(27, 'TD27', 'Trần Thanh Duyên', '', '1997-12-23', 'Nữ', NULL, 'Hải Phòng', 'Kinh', 'Không', 'Việt Nam', '', 'Số 3, đường Đình Đông, phường Đình Đông, quận Ngô Quyền, Hải Phòng', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Nhân viên văn phòng', 'Công ty ABC', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(28, 'NQ28', 'Nguyễn Minh Quân', '', '1995-05-31', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 2 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Kỹ sư', 'Viettel', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(29, 'ND29', 'Nguyễn Tiến Dũng', '', '1964-06-03', 'Nam', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Kỹ sư', 'Không', 'Không', 'Phó giám đốc', 'Công ty EXE', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(30, 'VL30', 'Vũ Mỹ Linh', '', '1965-12-06', 'Nữ', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12', 'Cử Nhân', 'Không', 'Không', 'Nội trợ', 'Tại nhà', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(31, 'ND31', 'Nguyễn Tiến Đạt', '', '1990-09-09', 'Nam', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Kỹ sư', 'không', 'Anh trình độ C', 'Kỹ sư điện', 'Công ty điện EVN', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(32, 'NM32', 'Nguyễn Trà My', '', '1997-12-12', 'Nữ', NULL, 'Hải Dương', 'Kinh', 'Thiên chúa giáo', 'Việt Nam', '', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 3 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'không', 'Anh trình đố D', 'Luật sư', 'Văn phòng luật sư 123', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(33, 'TN33', 'Trần Văn Nam', '', '1980-07-09', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Tiến sĩ', 'Không', 'Anh trình độ D', 'Giảng viên đại học', 'Đại học Bách khoa Hà Nội', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(34, 'NT34', 'Nguyễn Minh Tuyết', '', '1985-09-02', 'Nữ', NULL, 'Nam Định', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '12/12 chính quy', 'Thạc sĩ', 'Không', 'Anh trình độ D', 'Bác sĩ', 'Bệnh viện quốc tế HJK', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(35, 'TK35', 'Trần Trung Kiên', '', '2008-12-25', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '6/12 chính quy', 'Không', 'Không', 'Không', 'Học sinh', 'Trường THCS Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(36, 'TN36', 'Trần Thúy Ngọc', '', '2013-01-15', 'Nữ', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 4 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '1/12 chính quy', 'Không', 'Không', 'Không', 'Học sinh', 'Trường tiểu học Chu Văn An', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(37, 'LC37', 'Lý Văn Công', '', '1945-06-04', 'Nam', NULL, 'Hà Nội', 'Kinh', 'Không', 'Việt Nam', '', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '10/12 chính quy', 'Không', 'Không', 'Không', 'Về hưu', 'Không', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL),
+(38, 'BH38', 'Bùi Thị Hà', '', '1948-02-03', 'Nữ', NULL, 'Hải Phòng', 'Kinh', 'Không', 'Việt Nam', '', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', 'Số 5 Tạ Quang Bửu, quận Hai Bà Trưng, Hà Nội', '10/12', 'Không', 'Không', 'Không', 'Nội trợ', 'Tại nhà', NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-08', 1, NULL, NULL, NULL, NULL);
 
 INSERT INTO `thanh_vien_cua_ho` (`idNhanKhau`, `idHoKhau`, `quanHeVoiChuHo`) VALUES
 (26, 14, 'Chủ hộ'),
@@ -386,17 +386,18 @@ INSERT INTO `users` (`ID`, `userName`, `passwd`) VALUES
 (1, 'admin', '1');
 
 
+
 -- -----------------------------------------------------
 -- Table `quan_ly_nhan_khau`.`khai_bao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`khai_bao` (
-  `id_khaibao` INT(11) NOT NULL,
+  `id_khaibao` INT(11) NOT NULL auto_increment,
   `id_nhankhau` INT(11) NOT NULL,
-  `vung_dich` VARCHAR(50) NULL DEFAULT NULL,
-  `bieu_hien` VARCHAR(50) NULL DEFAULT NULL,
+  `vung_dich` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
+  `bieu_hien` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
   `ngay_khai_bao` DATE NOT NULL,
   PRIMARY KEY (`id_khaibao`),
-  INDEX `fk_nhankhau_id_1` (`id_nhankhau` ASC) VISIBLE,
+  INDEX `fk_nhankhau_id_1` (`id_nhankhau` ASC) ,
   CONSTRAINT `fk_nhankhau_khaibao`
     FOREIGN KEY (`id_nhankhau`)
     REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
@@ -408,12 +409,18 @@ DEFAULT CHARACTER SET = latin1;
 -- Table `quan_ly_nhan_khau`.`cach_ly`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`cach_ly` (
-  `id_cachly` INT(11) NOT NULL,
-  `noi_cach_ly` VARCHAR(100) NOT NULL,
+  `id_cachly` INT(11) NOT NULL auto_increment,
+  `id_nhankhau` INT(11) NOT NULL,
+  `noi_cach_ly` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
   `tgian_bat_dau` DATETIME NOT NULL,
-  `muc_do_cach_ly` VARCHAR(50) NULL DEFAULT NULL,
+  `muc_do_cach_ly` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
   `is_tested` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`id_cachly`))
+  PRIMARY KEY (`id_cachly`),
+    INDEX `fk_nhankhau_id_2` (`id_nhankhau` ASC) ,
+  CONSTRAINT `fk_nhankhau_cachly`
+    FOREIGN KEY (`id_nhankhau`)
+    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
+)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
@@ -421,43 +428,23 @@ DEFAULT CHARACTER SET = latin1;
 -- Table `quan_ly_nhan_khau`.`test`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`test` (
-  `id_test` INT(11) NOT NULL,
+  `id_test` INT(11) NOT NULL auto_increment,
   `id_nhankhau` INT(11) NOT NULL,
-  `noi_test` VARCHAR(100) NOT NULL,
   `thoi_diem_test` DATETIME NOT NULL,
-  `hinh_thuc_test` VARCHAR(50) NOT NULL,
-  `ket_qua` VARCHAR(50) NOT NULL,
-  `id_cachly` INT(11) NOT NULL,
+  `hinh_thuc_test` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
+  `ket_qua` VARCHAR(50) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL,
   PRIMARY KEY (`id_test`),
-  INDEX `fk_cachly_id_1` (`id_cachly` ASC) VISIBLE,
-  CONSTRAINT `fk_cachly_test`
-    FOREIGN KEY (`id_cachly`)
-    REFERENCES `quan_ly_nhan_khau`.`cach_ly` (`id_cachly`),
+	INDEX `fk_nhankhau_id_3` (`id_nhankhau` ASC) ,
   CONSTRAINT `fk_nhankhau_test`
     FOREIGN KEY (`id_nhankhau`)
-    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`))
+    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`ID`)
+)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-
--- -----------------------------------------------------
--- Table `quan_ly_nhan_khau`.`nhankhau_cachly`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `quan_ly_nhan_khau`.`nhankhau_cachly` (
-  `id` INT(11) NOT NULL,
-  `id_cachly` INT(11) NOT NULL,
-  `id_nhankhau` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_cachly_id` (`id_cachly` ASC) VISIBLE,
-  INDEX `fk_nhankhau_id` (`id_nhankhau` ASC) VISIBLE,
-  CONSTRAINT `fk_cachly_id`
-    FOREIGN KEY (`id_cachly`)
-    REFERENCES `quan_ly_nhan_khau`.`cach_ly` (`id_cachly`),
-  CONSTRAINT `fk_nhankhau_id`
-    FOREIGN KEY (`id_nhankhau`)
-    REFERENCES `quan_ly_nhan_khau`.`nhan_khau` (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+INSERT INTO `khai_bao` VALUES (1,30,'Đà Nẵng','ốm, sốt','2020-12-08 08:20:00');
+INSERT INTO `cach_ly` VALUES (1,30, 'Bệnh viện Thanh Nhàn','2020-12-09 09:00:00','F1',1);
+INSERT INTO `test` VALUES (1,30,'2020-12-09 07:00:00','nhanh','âm tính');
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
