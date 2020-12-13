@@ -39,7 +39,7 @@ public class ThemMoiTest extends javax.swing.JFrame {
         this.parentFrame.setEnabled(false);
         this.testBean = new TestBean();
         initComponents();
-        setTitle("Thêm mới test");
+        setTitle("Thêm mới test Covid-19");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         controller = new ThemMoiTestController();
 

@@ -28,7 +28,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
     private KhaiBaoMangerPanelController parentController;
     private KhaiBaoBean khaiBaoBean;
     private ThemMoiKhaiBaoController controller;
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -267,7 +267,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         this.parentFrame.setEnabled(false);
         this.khaiBaoBean = new KhaiBaoBean();
         initComponents();
-        setTitle("Thêm mới nhân khẩu");
+        setTitle("Thêm mới khai báo dịch tễ");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         controller = new ThemMoiKhaiBaoController();
 
@@ -541,5 +541,5 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         selectNhanKhau.setResizable(false);
         selectNhanKhau.setVisible(true);
     }
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
