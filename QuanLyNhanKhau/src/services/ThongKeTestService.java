@@ -91,6 +91,7 @@ public class ThongKeTestService {
                 test.setHinh_thuc_test(rs.getString("hinh_thuc_test"));
                 test.setThoi_diem_test(rs.getDate("thoi_diem_test"));
                 test.setKet_qua(rs.getString("ket_qua"));
+                list.add(test);
             }
             preparedStatement.close();
             connection.close();

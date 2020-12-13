@@ -47,6 +47,209 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JButton selectButton;
+    private SelectNhanKhau selectNhanKhau;
+
+    public int getStateButton() {
+        return stateButton;
+    }
+
+    public void setStateButton(int stateButton) {
+        this.stateButton = stateButton;
+    }
+
+    public JFrame getParentFrame() {
+        return parentFrame;
+    }
+
+    public void setParentFrame(JFrame parentFrame) {
+        this.parentFrame = parentFrame;
+    }
+
+    public KhaiBaoMangerPanelController getParentController() {
+        return parentController;
+    }
+
+    public void setParentController(KhaiBaoMangerPanelController parentController) {
+        this.parentController = parentController;
+    }
+
+    public KhaiBaoBean getKhaiBaoBean() {
+        return khaiBaoBean;
+    }
+
+    public void setKhaiBaoBean(KhaiBaoBean khaiBaoBean) {
+        this.khaiBaoBean = khaiBaoBean;
+    }
+
+    public ThemMoiKhaiBaoController getController() {
+        return controller;
+    }
+
+    public void setController(ThemMoiKhaiBaoController controller) {
+        this.controller = controller;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
+    }
+
+    public JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    public void setjTextField2(JTextField jTextField2) {
+        this.jTextField2 = jTextField2;
+    }
+
+    public JTextField getjTextField3() {
+        return jTextField3;
+    }
+
+    public void setjTextField3(JTextField jTextField3) {
+        this.jTextField3 = jTextField3;
+    }
+
+    public JTextField getjTextField4() {
+        return jTextField4;
+    }
+
+    public void setjTextField4(JTextField jTextField4) {
+        this.jTextField4 = jTextField4;
+    }
+
+    public JTextField getjTextField5() {
+        return jTextField5;
+    }
+
+    public void setjTextField5(JTextField jTextField5) {
+        this.jTextField5 = jTextField5;
+    }
+
+    public JTextField getjTextField6() {
+        return jTextField6;
+    }
+
+    public void setjTextField6(JTextField jTextField6) {
+        this.jTextField6 = jTextField6;
+    }
+
+    public JTextField getjTextField7() {
+        return jTextField7;
+    }
+
+    public void setjTextField7(JTextField jTextField7) {
+        this.jTextField7 = jTextField7;
+    }
+
+    public JTextField getjTextField8() {
+        return jTextField8;
+    }
+
+    public void setjTextField8(JTextField jTextField8) {
+        this.jTextField8 = jTextField8;
+    }
+
+    public JButton getSelectButton() {
+        return selectButton;
+    }
+
+    public void setSelectButton(JButton selectButton) {
+        this.selectButton = selectButton;
+    }
+
+    public SelectNhanKhau getSelectNhanKhau() {
+        return selectNhanKhau;
+    }
+
+    public void setSelectNhanKhau(SelectNhanKhau selectNhanKhau) {
+        this.selectNhanKhau = selectNhanKhau;
+    }
+
     /**
      * Creates new form ThemMoiKhaiBao
      */
@@ -101,6 +304,12 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         jTextField6 = new JTextField();
         jTextField7 = new JTextField();
         jTextField8 = new JTextField();
+        jTextField1.setEnabled(false);
+        jTextField2.setEnabled(false);
+        jTextField3.setEnabled(false);
+        jTextField4.setEnabled(false);
+        jTextField5.setEnabled(false);
+
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
         jLabel3 = new JLabel();
@@ -111,6 +320,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         jLabel8 = new JLabel();
         jButton1 = new JButton();
         jButton2 = new JButton();
+        selectButton = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +367,15 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
             }
         });
 
+        selectButton.setFont(new Font("Arial", 0, 14));
+        selectButton.setText("Chọn");
+        selectButton.addActionListener(new java.awt.event.ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ButtonAction();
+            }
+        });
+
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,7 +408,9 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
                                 .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2)
-                                .addContainerGap())
+                                .addContainerGap()
+                                .addComponent(selectButton)
+                        .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -197,7 +418,8 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1))
+                                        .addComponent(jLabel1)
+                                        .addComponent(selectButton))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(jTextField5, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
@@ -242,25 +464,25 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
 
     private void CreateBtnActionPerformed(ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
         int nhankhauID;
+        nhankhauID = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getID();
+
+        String maNhanKhau = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getMaNhanKhau();
+
+        String hoTen = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getHoTen();
+
+        String gioiTinh = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getGioiTinh();
+
         if (validateValueInForm()) {
             // tao moi 1 doi tuong nhan khau
             KhaiBao temp = new KhaiBao();
             NhanKhauModel nhanKhauModel = new NhanKhauModel();
-
-            nhankhauID = controller.getNhanKhauID(jTextField5.getText());
-            if(nhankhauID != -1){
-                temp.setVung_dich(jTextField7.getText());
-                temp.setBieu_hien(jTextField8.getText());
-                temp.setNgay_khai_bao(Date.valueOf(jTextField6.getText()));
-                temp.setNhankhau_id(nhankhauID);
-            }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Không tìm thấy nhân khẩu", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-
-            nhanKhauModel.setMaNhanKhau(jTextField5.getText());
-            nhanKhauModel.setHoTen(jTextField1.getText());
-            nhanKhauModel.setGioiTinh(jTextField5.getText());
+            temp.setVung_dich(jTextField7.getText());
+            temp.setBieu_hien(jTextField8.getText());
+            temp.setNgay_khai_bao(Date.valueOf(jTextField6.getText()));
+            temp.setNhankhau_id(nhankhauID);
+            nhanKhauModel.setMaNhanKhau(maNhanKhau);
+            nhanKhauModel.setHoTen(hoTen);
+            nhanKhauModel.setGioiTinh(gioiTinh);
             this.khaiBaoBean.setKhaiBaoModel(temp);
             this.khaiBaoBean.setNhanKhauModel(nhanKhauModel);
 
@@ -282,7 +504,6 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
     private boolean validateValueInForm() {
         // check null
         if (jTextField1.getText().trim().isEmpty()
-                || jTextField2.getText().trim().isEmpty()
                 || jTextField3.getText().trim().isEmpty()
                 || jTextField4.getText().trim().isEmpty()
                 || jTextField5.getText().trim().isEmpty()
@@ -291,6 +512,34 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+
+    public void setDataTextField(KhaiBaoBean khaiBaoBean){
+        KhaiBaoService khaiBaoService = new KhaiBaoService();
+        this.jTextField1.setText(khaiBaoBean.getNhanKhauModel().getHoTen());
+        this.jTextField1.setEnabled(false);
+        jTextField3.setText(khaiBaoBean.getNhanKhauModel().getNamSinh().toString());
+        jTextField3.setEnabled(false);
+
+        String maNhanKhau = khaiBaoService.getMaNhanKhau(khaiBaoBean.getNhanKhauModel().getHoTen(), khaiBaoBean.getNhanKhauModel().getNamSinh().toString());
+        this.jTextField5.setText(maNhanKhau);
+        this.jTextField5.setEnabled(false);
+
+        this.jTextField4.setText(khaiBaoBean.getNhanKhauModel().getGioiTinh());
+        jTextField4.setEnabled(false);
+
+        String cmt = khaiBaoService.getChungMinhThu(khaiBaoBean.getNhanKhauModel().getHoTen(), khaiBaoBean.getNhanKhauModel().getNamSinh().toString());
+        jTextField2.setText(cmt);
+
+        jTextField2.setEnabled(false);
+    }
+
+
+    public void ButtonAction(){
+        selectNhanKhau = new SelectNhanKhau(khaiBaoBean, this);
+        selectNhanKhau.setLocationRelativeTo(null);
+        selectNhanKhau.setResizable(false);
+        selectNhanKhau.setVisible(true);
     }
     // End of variables declaration//GEN-END:variables
 }

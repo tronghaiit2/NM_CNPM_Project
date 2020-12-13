@@ -40,7 +40,7 @@ public class ThongKeTest extends javax.swing.JPanel {
         initComponents();
         this.stateButton = 0;
         setData();
-        setDataTable();
+        //setDataTable();
     }
 
     public ThongKeTestService getService() {
@@ -211,7 +211,7 @@ public class ThongKeTest extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
             stateButton = 1;
             setData();
-            setDataTable();
+            stateButton = 0;
     }
 
     public void setData() {
