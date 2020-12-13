@@ -41,6 +41,7 @@ public class TestService {
             preparedStatement.close();
             connection.close();
         } catch (Exception e){
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
         return list;

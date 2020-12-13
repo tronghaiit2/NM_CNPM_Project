@@ -24,7 +24,7 @@ public class KhaiBaoService {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query;
             if (hoTen != "") {
-                query = String.format("SELECT * FROM khai_bao join nhan_khau on khai_bao.id_nhankhau = nhan_khau.ID where nhan_khau.hoTen = \'%s\' " , hoTen);
+                query = String.format("SELECT * FROM khai_bao join nhan_khau on khai_bao.id_nhankhau = nhan_khau.ID where nhan_khau.hoTen = \'%s\' ", hoTen);
             } else {
                 query = "SELECT * FROM khai_bao join nhan_khau on khai_bao.id_nhankhau = nhan_khau.ID";
             }
@@ -58,8 +58,8 @@ public class KhaiBaoService {
         return listKhaiBao;
     }
 
-    public void removeKhaiBao(String IDNhanKhau){
-        try{
+    public void removeKhaiBao(String IDNhanKhau) {
+        try {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query_turn_off_safe_mode = "SET SQL_SAFE_UPDATES = 0";
             PreparedStatement preparedStatement_safe_mode = (PreparedStatement) connection.prepareStatement(query_turn_off_safe_mode);
@@ -67,11 +67,10 @@ public class KhaiBaoService {
             String query = String.format("delete from khai_bao where id_nhankhau = \'%s\'", IDNhanKhau);
             try (PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query)) {
                 int res = preparedStatement.executeUpdate(query);
-                if (res == 1){
+                if (res == 1) {
                     JOptionPane.showMessageDialog(null, "Xóa thành công ");
 
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Xóa thất bại", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
@@ -84,7 +83,7 @@ public class KhaiBaoService {
     }
 
     public List<KhaiBaoBean> search(String keyword) {
-        List<KhaiBaoBean> list = new  ArrayList<>();
+        List<KhaiBaoBean> list = new ArrayList<>();
         String query;
         if (keyword.trim().isEmpty()) {
             return getListKhaiBao("");
@@ -117,7 +116,7 @@ public class KhaiBaoService {
             Connection connection = MysqlConnection.getMysqlConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 KhaiBaoBean temp = new KhaiBaoBean();
                 NhanKhauModel nhanKhau = new NhanKhauModel();
                 nhanKhau.setHoTen(rs.getString("hoTen"));
@@ -140,6 +139,53 @@ public class KhaiBaoService {
         return list;
     }
 
+    public String getChungMinhThu(String hoTen, String namSinh) {
+        String cmt = "";
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query = "select soCMT from chung_minh_thu join nhan_khau nk on nk.ID = chung_minh_thu.idNhanKhau ";
+            query += String.format("where nk.hoTen = '%s' and nk.namSinh = '%s'", hoTen, namSinh);
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                cmt = rs.getString("soCMT");
+                break;
+            }
+            preparedStatement.close();
+            connection.close();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return cmt;
+    }
+
+    public String getMaNhanKhau(String hoTen, String namSinh) {
+        String maNhanKhau = "";
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query = "select maNhanKhau from nhan_khau nk ";
+            query += String.format("where nk.hoTen = '%s' and nk.namSinh = '%s'", hoTen, namSinh);
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                maNhanKhau = rs.getString("maNhanKhau");
+                break;
+            }
+            preparedStatement.close();
+            connection.close();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return maNhanKhau;
+    }
 
 
 

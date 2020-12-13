@@ -28,13 +28,9 @@ public class ChooseNhanKhauController {
         this.selectedJtf = selectedJtf;
         this.tablePanel = tablePanel;
         this.searchJtf = jtfSearch;
-        //classTableModel = new ClassTableModel();
-        //this.nhanKhauService = new NhanKhauService();
         this.listNhanKhauBeans = this.nhanKhauService.getListNhanKhau();
-        //initAction();
         setDataTable();
     }
-    public ChooseNhanKhauController(){}
 
     public void setDataTable() {
         List<NhanKhauModel> listItem = new ArrayList<>();
