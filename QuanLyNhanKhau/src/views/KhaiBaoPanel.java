@@ -19,6 +19,7 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel tablePanel;
     private javax.swing.JTextField jtfSearch;
+    private javax.swing.JLabel textNote;
 
     /**
      * Creates new form KhaiBaoPanel
@@ -44,7 +45,7 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jtfSearch = new javax.swing.JTextField();
-
+        textNote = new javax.swing.JLabel();
         jtfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfSearchActionPerformed(evt);
@@ -88,6 +89,10 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
         );
 
 
+        textNote.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        textNote.setText("Tìm kiếm theo tên hoặc số CMT");
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,9 +106,11 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
                                                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                                                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(layout.createSequentialGroup()
+                                                .addComponent(textNote, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(61, 61, 61)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        )
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -111,6 +118,7 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(textNote, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
