@@ -26,7 +26,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() throws SQLException, ClassNotFoundException {
         initComponents();
-        setTitle("QUẢN LÝ NHÂN KHẨU");
+        setTitle("QUẢN LÝ THÔNG TIN COVID-19");
         List<DanhMucBean> listDanhMuc = new ArrayList<>();
         listDanhMuc.add(new DanhMucBean("TrangChu", Home, jblTrangChu));
         listDanhMuc.add(new DanhMucBean("NhanKhau", NhanKhauBtn, jlbNhanKhau));
