@@ -24,13 +24,8 @@ public class TestService {
             return this.getListTestBeans();
         }
         try {
-            query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id_nhankhau = nk.ID "
-                    + "WHERE t.id_test LIKE '%" + keyword + "%'"
-                    + "OR id_nhankhau LIKE '%" + keyword + "%'"
-                    + "OR thoi_diem_test LIKE '%" + keyword + "%'"
-                    + "OR hinh_thuc_test LIKE '%" + keyword + "%'"
-                    + "OR ket_qua LIKE '%" + keyword + "%'"
-                    + "OR hoTen LIKE '%" + keyword + "%'";
+            query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id_nhankhau = nk.ID join chung_minh_thu cmt on cmt.idNhanKhau = nk.ID "
+                    + "where nk.hoTen LIKE '%" + keyword + "%' or cmt.soCMT like " + "'%" + keyword + "%'";
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
