@@ -210,7 +210,7 @@ public class ClassTableModel {
         obj = new Object[columns];
         listItem.forEach((KhaiBaoBean item) -> {
             obj[0] = item.getNhanKhauModel().getHoTen();
-            obj[1] = item.getNhanKhauModel().getMaNhanKhau();
+            obj[1] = item.getNhanKhauModel().getID();
             obj[2] = item.getNhanKhauModel().getNamSinh();
             obj[3] = item.getKhaiBaoModel().getNgay_khai_bao();
             obj[4] = item.getKhaiBaoModel().getBieu_hien();

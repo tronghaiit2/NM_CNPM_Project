@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 public class KhaiBaoMangerPanelController {
-    private final String[] COLUMNS = {"Họ tên", "Mã nhân khẩu", "Ngày sinh", "Ngày khai báo", "Biểu hiện", "Vùng dịch"};
+    private final String[] COLUMNS = {"Họ tên", "ID nhân khẩu", "Ngày sinh", "Ngày khai báo", "Biểu hiện", "Vùng dịch"};
     private JPanel jpnView;
     private JTextField jtfSearch = new JTextField("");
     private KhaiBaoService khaiBaoService;
