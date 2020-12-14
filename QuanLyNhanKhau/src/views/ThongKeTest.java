@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class ThongKeTest extends javax.swing.JPanel {
 
-    private final String[] COLUMNS = {"Mã test", "ID nhân khẩu", "Thời điểm test", "Hình thức test", "Kết quả"};
+    private final String[] COLUMNS = {"Mã test", "ID nhân khẩu", "Người test","Thời điểm test", "Hình thức test", "Kết quả"};
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -245,7 +245,7 @@ public class ThongKeTest extends javax.swing.JPanel {
         this.testList.forEach(test -> {
             listItem.add(test);
         });
-        DefaultTableModel model = classTableModel.setTableTest(listItem, COLUMNS);
+        DefaultTableModel model = classTableModel.setTableThongKeTest(listItem, COLUMNS);
         JTable table = new JTable(model);
 
         // thiet ke bang
@@ -259,23 +259,27 @@ public class ThongKeTest extends javax.swing.JPanel {
         table.getColumnModel().getColumn(0).setMinWidth(40);
         table.getColumnModel().getColumn(0).setPreferredWidth(100);
 
-        table.getColumnModel().getColumn(1).setMaxWidth(200);
+        table.getColumnModel().getColumn(1).setMaxWidth(180);
         table.getColumnModel().getColumn(1).setMinWidth(40);
-        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table.getColumnModel().getColumn(1).setPreferredWidth(180);
 
-        table.getColumnModel().getColumn(2).setMaxWidth(200);
+        table.getColumnModel().getColumn(2).setMaxWidth(160);
         table.getColumnModel().getColumn(2).setMinWidth(40);
-        table.getColumnModel().getColumn(2).setPreferredWidth(200);
+        table.getColumnModel().getColumn(2).setPreferredWidth(160);
 
 
 
-        table.getColumnModel().getColumn(3).setMaxWidth(160);
+        table.getColumnModel().getColumn(3).setMaxWidth(120);
         table.getColumnModel().getColumn(3).setMinWidth(40);
-        table.getColumnModel().getColumn(3).setPreferredWidth(160);
+        table.getColumnModel().getColumn(3).setPreferredWidth(120);
 
         table.getColumnModel().getColumn(4).setMaxWidth(100);
         table.getColumnModel().getColumn(4).setMinWidth(40);
         table.getColumnModel().getColumn(4).setPreferredWidth(100);
+
+        table.getColumnModel().getColumn(5).setMaxWidth(100);
+        table.getColumnModel().getColumn(5).setMinWidth(40);
+        table.getColumnModel().getColumn(5).setPreferredWidth(100);
 
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);

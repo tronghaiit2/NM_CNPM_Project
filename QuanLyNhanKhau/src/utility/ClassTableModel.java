@@ -4,6 +4,7 @@ import Bean.CachLyBean;
 import Bean.HoKhauBean;
 import Bean.KhaiBaoBean;
 import models.*;
+import services.ThongKeTestService;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
@@ -132,6 +133,35 @@ public class ClassTableModel {
             obj[5] = item.getKet_qua();
             dtm.addRow(obj);
         });
+        return dtm;
+    }
+
+    public DefaultTableModel setTableThongKeTest(List<Test> test, String[] listColumn) {
+        ThongKeTestService thongKeTestService = new ThongKeTestService();
+        final int column = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return super.isCellEditable(row, column);
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 6 ? Boolean.class : String.class;
+            }
+        };
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj = new Object[column];
+
+        for (Test item : test) {
+            obj[0] = item.getTestId();
+            obj[1] = item.getId_nhankhau();
+            obj[2] = thongKeTestService.getHoTen(String.valueOf(item.getId_nhankhau()));
+            obj[3] = item.getThoi_diem_test().toString();
+            obj[4] = item.getHinh_thuc_test();
+            obj[5] = item.getKet_qua();
+            dtm.addRow(obj);
+        }
         return dtm;
     }
 
