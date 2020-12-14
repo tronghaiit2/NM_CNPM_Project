@@ -84,8 +84,7 @@ public class KhaiBaoMangerPanelController {
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        table.getColumnModel().getColumn(0).setMaxWidth(80);
-        table.getColumnModel().getColumn(0).setMinWidth(80);
+        table.getColumnModel().getColumn(0).setMinWidth(120);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
 
 
