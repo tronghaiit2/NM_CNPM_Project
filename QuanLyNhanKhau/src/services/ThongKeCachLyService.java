@@ -66,6 +66,7 @@ public class ThongKeCachLyService {
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
                 cachly.setIs_tested(rs.getBoolean("is_tested"));
+                cachly.setNhankhau_id(rs.getInt("id_nhankhau"));
                 list.add(cachly);
             }
             preparedStatement.close();
@@ -89,7 +90,8 @@ public class ThongKeCachLyService {
             while (rs.next()) {
 
                 CachLyModel cachly = new CachLyModel();
-                cachly.setId(rs.getInt("id_cachly"));
+                cachly.setCachly_id(rs.getInt("id_cachly"));
+                cachly.setNhankhau_id(rs.getInt("id_nhankhau"));
                 cachly.setTgian_bat_dau(rs.getDate("tgian_bat_dau"));
                 cachly.setMuc_do_cach_ly(rs.getString("muc_do_cach_ly"));
                 cachly.setIs_tested(rs.getBoolean("is_tested"));

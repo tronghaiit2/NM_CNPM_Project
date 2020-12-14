@@ -272,7 +272,7 @@ public class ClassTableModel {
 
         cachLy.forEach((CachLyModel item) -> {
             obj[0] = item.getCachly_id();
-            obj[1] = item.getId();
+            obj[1] = item.getNhankhau_id();
             obj[2] = item.getTgian_bat_dau().toString();
             obj[3] = item.getMuc_do_cach_ly();
             obj[4] = item.isIs_tested();
