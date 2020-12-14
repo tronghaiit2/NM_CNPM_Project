@@ -15,6 +15,15 @@ public class Test {
     private int id_nhankhau;
     private String hinh_thuc_test;
 
+    public String getTenNguoiTest() {
+        return tenNguoiTest;
+    }
+
+    public void setTenNguoiTest(String tenNguoiTest) {
+        this.tenNguoiTest = tenNguoiTest;
+    }
+
+    private String tenNguoiTest;
     public int getId_nhankhau() {
         return id_nhankhau;
     }

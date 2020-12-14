@@ -17,12 +17,13 @@ public class HomeCotroller {
     private JLabel nhanKhauTamVangLb;
     private JLabel tongKhaiBao;
     private JLabel tongCachLy;
-
-    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau, JLabel nhanKhauTamTruLb, JLabel nhanKhauTamVangLb, JLabel tongKhaiBao, JLabel tongCachLy) {
+    private JLabel tongTest;
+    public HomeCotroller(JLabel tongNhanKhauLb, JLabel tongHoKhau, JLabel nhanKhauTamTruLb, JLabel nhanKhauTamVangLb, JLabel tongKhaiBao, JLabel tongCachLy, JLabel tongTest) {
         this.tongNhanKhauLb = tongNhanKhauLb;
         this.tongHoKhauLb = tongHoKhau;
         this.nhanKhauTamTruLb = nhanKhauTamTruLb;
         this.nhanKhauTamVangLb = nhanKhauTamVangLb;
+        this.tongTest = tongTest;
         this.tongKhaiBao = tongKhaiBao;
         this.tongCachLy = tongCachLy;
     }
@@ -80,6 +81,13 @@ public class HomeCotroller {
             }
             preparedStatement.close();
 
+            query = "SELECT COUNT(DISTINCT id_nhankhau) as tong from test;";
+            preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                this.tongTest.setText(String.valueOf(rs.getInt("tong")));
+            }
+            preparedStatement.close();
 
 
             connection.close();

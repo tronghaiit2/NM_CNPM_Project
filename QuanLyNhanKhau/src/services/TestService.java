@@ -17,6 +17,46 @@ public class TestService {
         testService.getListTestBeans();
     }
 
+    public List<TestBean> search(String keyword){
+        List<TestBean> list = new ArrayList<>();
+        String query = null;
+        if (keyword.trim().isEmpty()){
+            return this.getListTestBeans();
+        }
+        try {
+            query = "SELECT * FROM test t JOIN nhan_khau nk ON t.id_nhankhau = nk.ID "
+                    + "WHERE t.id_test LIKE '%" + keyword + "%'"
+                    + "OR id_nhankhau LIKE '%" + keyword + "%'"
+                    + "OR thoi_diem_test LIKE '%" + keyword + "%'"
+                    + "OR hinh_thuc_test LIKE '%" + keyword + "%'"
+                    + "OR ket_qua LIKE '%" + keyword + "%'"
+                    + "OR hoTen LIKE '%" + keyword + "%'";
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                TestBean testBean = new TestBean();
+                Test test = testBean.getTest();
+                //NhanKhauModel nhanKhauModel = testBean.getNhanKhauModel();
+                test.setTestId(rs.getInt("id_test"));
+                test.setHinh_thuc_test(rs.getString("hinh_thuc_test"));
+                test.setThoi_diem_test(rs.getDate("thoi_diem_test"));
+                test.setKet_qua(rs.getString("ket_qua"));
+                test.setId(rs.getInt("id_nhankhau"));
+                test.setTenNguoiTest(rs.getString("hoTen"));
+                //System.out.println("Test service: "+test.toString());
+                list.add(testBean);                
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+
     public List<TestBean> getListTestBeans() {
         List<TestBean> list = new ArrayList<>();
 
@@ -35,6 +75,7 @@ public class TestService {
                 test.setThoi_diem_test(rs.getDate("thoi_diem_test"));
                 test.setKet_qua(rs.getString("ket_qua"));
                 test.setId(rs.getInt("id_nhankhau"));
+                test.setTenNguoiTest(rs.getString("hoTen"));
                 //System.out.println(test.toString());
                 list.add(testBean);
             }
