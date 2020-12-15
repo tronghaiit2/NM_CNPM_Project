@@ -464,6 +464,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
 
     private void CreateBtnActionPerformed(ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
         int nhankhauID;
+        selectNhanKhau = new SelectNhanKhau();
         nhankhauID = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getID();
 
         String maNhanKhau = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getMaNhanKhau();
