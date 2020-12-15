@@ -81,7 +81,7 @@ public class ChooseCachLyController {
             public void mouseClicked(MouseEvent e) {
 //                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
                 if (e.getClickCount() > 1) {
-                    JOptionPane.showMessageDialog(null, "aa");
+                    JOptionPane.showMessageDialog(null, "Chọn thành công!");
                 }
                 NhanKhauBean temp = listNhanKhauBeans.get(table.getSelectedRow());
                 nhanKhauBean.setNhanKhauModel(temp.getNhanKhauModel());
