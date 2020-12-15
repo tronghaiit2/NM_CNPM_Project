@@ -140,7 +140,7 @@ public class CachLyPanel extends javax.swing.JPanel {
 
 
     //Event Xoa
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         try {
             if (this.controller.xoaCachLy(this.controller.getCachLyBeanSelected())){
                 JOptionPane.showMessageDialog(null,"Xóa thành công!");
@@ -149,7 +149,7 @@ public class CachLyPanel extends javax.swing.JPanel {
 
         } catch (Exception e){
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Chọn nhân khẩu trước khi xóa!");
+            JOptionPane.showMessageDialog(null, "Chọn thông tin cách ly trước khi xóa!");
         }
     }
 

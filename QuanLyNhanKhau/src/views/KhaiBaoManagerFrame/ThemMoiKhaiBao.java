@@ -366,7 +366,9 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                close();
+                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+                    close();
+                }
             }
         });
 

@@ -155,7 +155,7 @@ public class TestManagePanel extends javax.swing.JPanel {
 
         } catch (Exception e){
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Có lỗi ở TestManagePanel!");
+            JOptionPane.showMessageDialog(null, "Chọn thông tin test trước khi xóa!");
         }
     }
 

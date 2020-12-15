@@ -303,7 +303,9 @@ public class ThemMoiTest extends javax.swing.JFrame {
     }
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        close();
+       if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+            close();
+        }
     }
 
     /**
