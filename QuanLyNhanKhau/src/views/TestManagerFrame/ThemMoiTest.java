@@ -103,7 +103,7 @@ public class ThemMoiTest extends javax.swing.JFrame {
         btnCancel.addActionListener(new java.awt.event.ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                cancelBtnActionPerformed(e);
             }
         });
 
