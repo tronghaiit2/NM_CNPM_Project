@@ -77,7 +77,7 @@ public class ThongKeTestService {
             Connection connection = MysqlConnection.getMysqlConnection();
             //need fix query
             String query = String.format("SELECT * FROM test where ket_qua = '%s'", tinhTrang);
-            if (tgianCachLy != "" || tgianCachLy != null) {
+            if (!tgianCachLy.trim().equals("")) {
                 query += String.format(" and thoi_diem_test >= '%s'", tgianCachLy);
             }
             PreparedStatement preparedStatement = connection.prepareStatement(query);
