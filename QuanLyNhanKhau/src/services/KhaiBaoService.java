@@ -12,7 +12,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -162,6 +165,33 @@ public class KhaiBaoService {
         }
         return cmt;
     }
+
+    public boolean validateJavaDate(String strDate) {
+        /* Check if date is 'null' */
+
+        /* Date is not 'null' */
+
+            /*
+             * Set preferred date format,
+             * For example MM-dd-yyyy, MM.dd.yyyy,dd.MM.yyyy etc.*/
+            SimpleDateFormat sdfrmt = new SimpleDateFormat("yyyy-MM-dd");
+            sdfrmt.setLenient(false);
+            /* Create Date object
+             * parse the string into date
+             */
+            try {
+                Date javaDate = sdfrmt.parse(strDate);
+                System.out.println(strDate + " is valid date format");
+            }
+            /* Date format is invalid */ catch (ParseException e) {
+                System.out.println(strDate + " is Invalid Date format");
+                return false;
+            }
+            /* Return true if date format is valid */
+            return true;
+
+    }
+
 
     public String getMaNhanKhau(String hoTen, String namSinh) {
         String maNhanKhau = "";
