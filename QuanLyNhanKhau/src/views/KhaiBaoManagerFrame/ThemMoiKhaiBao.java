@@ -6,6 +6,7 @@
 package views.KhaiBaoManagerFrame;
 
 import Bean.KhaiBaoBean;
+import com.toedter.calendar.JDateChooser;
 import controllers.KhaiBaoManagerController.KhaiBaoMangerPanelController;
 import controllers.KhaiBaoManagerController.ThemMoiKhaiBaoController;
 import models.KhaiBao;
@@ -49,6 +50,49 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JButton selectButton;
     private SelectNhanKhau selectNhanKhau;
+    private com.toedter.calendar.JDateChooser testTimeChooser;
+
+    /**
+     * Creates new form ThemMoiKhaiBao
+     */
+    public ThemMoiKhaiBao(JFrame parentFrame) throws HeadlessException {
+        this.parentFrame = parentFrame;
+        initComponents();
+    }
+
+    public ThemMoiKhaiBao() {
+        this.stateButton = 0;
+    }
+
+    public ThemMoiKhaiBao(KhaiBaoMangerPanelController parentController, JFrame parentJFrame) {
+        this.parentController = parentController;
+        this.parentFrame = parentJFrame;
+        this.parentFrame.setEnabled(false);
+        this.khaiBaoBean = new KhaiBaoBean();
+        this.testTimeChooser = new com.toedter.calendar.JDateChooser();
+        initComponents();
+        setTitle("Thêm mới khai báo dịch tễ");
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        controller = new ThemMoiKhaiBaoController();
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
+                    close();
+                }
+            }
+
+        });
+    }
+
+    public JDateChooser getTestTimeChooser() {
+        return testTimeChooser;
+    }
+
+    public void setTestTimeChooser(JDateChooser testTimeChooser) {
+        this.testTimeChooser = testTimeChooser;
+    }
 
     public int getStateButton() {
         return stateButton;
@@ -250,38 +294,6 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         this.selectNhanKhau = selectNhanKhau;
     }
 
-    /**
-     * Creates new form ThemMoiKhaiBao
-     */
-    public ThemMoiKhaiBao(JFrame parentFrame) throws HeadlessException {
-        this.parentFrame = parentFrame;
-        initComponents();
-    }
-
-    public ThemMoiKhaiBao(){
-        this.stateButton = 0;
-    }
-    public ThemMoiKhaiBao(KhaiBaoMangerPanelController parentController, JFrame parentJFrame) {
-        this.parentController = parentController;
-        this.parentFrame = parentJFrame;
-        this.parentFrame.setEnabled(false);
-        this.khaiBaoBean = new KhaiBaoBean();
-        initComponents();
-        setTitle("Thêm mới khai báo dịch tễ");
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        controller = new ThemMoiKhaiBaoController();
-
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Are you sure to close??", "Warning!!", JOptionPane.YES_NO_OPTION) == 0) {
-                    close();
-                }
-            }
-
-        });
-    }
-
     void close() {
         this.parentFrame.setEnabled(true);
         dispose();
@@ -321,6 +333,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         jButton1 = new JButton();
         jButton2 = new JButton();
         selectButton = new JButton();
+        selectNhanKhau = new SelectNhanKhau();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -350,7 +363,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
 
         jButton1.setFont(new Font("Arial", 0, 14)); // NOI18N
         jButton1.setText("Hủy");
-        jButton1.addActionListener(new java.awt.event.ActionListener(){
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 close();
@@ -359,7 +372,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
 
         jButton2.setFont(new Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("Thêm mới");
-        jButton2.addActionListener(new java.awt.event.ActionListener(){
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CreateBtnActionPerformed(e);
@@ -369,7 +382,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
 
         selectButton.setFont(new Font("Arial", 0, 14));
         selectButton.setText("Chọn");
-        selectButton.addActionListener(new java.awt.event.ActionListener(){
+        selectButton.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ButtonAction();
@@ -399,7 +412,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
                                         .addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField6, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(testTimeChooser, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField7, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField8, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(133, Short.MAX_VALUE))
@@ -410,7 +423,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addContainerGap()
                                 .addComponent(selectButton)
-                        .addContainerGap())
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -438,7 +451,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
                                         .addComponent(jLabel5))
                                 .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField6, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(testTimeChooser, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel6))
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -461,17 +474,18 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-
     private void CreateBtnActionPerformed(ActionEvent evt) {//GEN-FIRST:event_CreateBtnActionPerformed
         int nhankhauID;
-        selectNhanKhau = new SelectNhanKhau();
-        nhankhauID = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getID();
 
+        KhaiBaoService khaiBaoService = new KhaiBaoService();
+
+        nhankhauID = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getID();
         String maNhanKhau = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getMaNhanKhau();
 
         String hoTen = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getHoTen();
 
         String gioiTinh = selectNhanKhau.khaiBaoBean1.getNhanKhauModel().getGioiTinh();
+
 
         if (validateValueInForm()) {
             // tao moi 1 doi tuong nhan khau
@@ -479,7 +493,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
             NhanKhauModel nhanKhauModel = new NhanKhauModel();
             temp.setVung_dich(jTextField7.getText());
             temp.setBieu_hien(jTextField8.getText());
-            temp.setNgay_khai_bao(Date.valueOf(jTextField6.getText()));
+            temp.setNgay_khai_bao(convertUtilToSql(testTimeChooser.getDate()));
             temp.setNhankhau_id(nhankhauID);
             nhanKhauModel.setMaNhanKhau(maNhanKhau);
             nhanKhauModel.setHoTen(hoTen);
@@ -494,6 +508,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
                     parentController.refreshData();
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
@@ -507,15 +522,19 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
         if (jTextField1.getText().trim().isEmpty()
                 || jTextField3.getText().trim().isEmpty()
                 || jTextField4.getText().trim().isEmpty()
-                || jTextField5.getText().trim().isEmpty()
-                || jTextField6.getText().trim().isEmpty()) {
+                || jTextField5.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập hết các trường bắt buộc", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;
     }
 
-    public void setDataTextField(KhaiBaoBean khaiBaoBean){
+    public java.sql.Date convertUtilToSql(java.util.Date uDate) {
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        return sDate;
+    }
+
+    public void setDataTextField(KhaiBaoBean khaiBaoBean) {
         KhaiBaoService khaiBaoService = new KhaiBaoService();
         this.jTextField1.setText(khaiBaoBean.getNhanKhauModel().getHoTen());
         this.jTextField1.setEnabled(false);
@@ -536,7 +555,7 @@ public class ThemMoiKhaiBao extends javax.swing.JFrame {
     }
 
 
-    public void ButtonAction(){
+    public void ButtonAction() {
         selectNhanKhau = new SelectNhanKhau(khaiBaoBean, this);
         selectNhanKhau.setLocationRelativeTo(null);
         selectNhanKhau.setResizable(false);
