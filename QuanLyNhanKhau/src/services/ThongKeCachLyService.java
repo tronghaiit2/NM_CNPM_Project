@@ -49,7 +49,7 @@ public class ThongKeCachLyService {
             Connection connection = MysqlConnection.getMysqlConnection();
             //need fix query
             String query = "";
-            if (tgianCachLy == "" || tgianCachLy == null) {
+            if (tgianCachLy.trim().equals("")) {
                 query = String.format("SELECT * FROM cach_ly cl where cl.muc_do_cach_ly = '%s'", mucDo);
 
             } else {
