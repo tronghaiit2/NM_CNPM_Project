@@ -7,6 +7,7 @@ import views.KhaiBaoManagerFrame.ThemMoiKhaiBao;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 
 /**
  * @author hieppm
@@ -148,12 +149,18 @@ public class KhaiBaoPanel extends javax.swing.JPanel {
     }
 
     public void Button1Action(ActionEvent e) {
-        String nhanKhauID = JOptionPane.showInputDialog(null, "Nhập ID nhân khẩu cần xóa khai báo ");
-        KhaiBaoService service = new KhaiBaoService();
-        service.removeKhaiBao(nhanKhauID);
-        KhaiBaoService khaiBaoService = new KhaiBaoService();
-        controller.khaiBaoBeanList = khaiBaoService.getListKhaiBao("");
-        controller.setDataTable();
+        try {
+            if (this.controller.xoaKhaiBao(this.controller.getKhaiBaoBean())){
+                JOptionPane.showMessageDialog(null,"Xóa thành công!");
+                controller.refreshData();
+            }
+
+        } catch (Exception exception){
+            System.out.println(exception.getMessage());
+            JOptionPane.showMessageDialog(null, "Chọn thông tin test trước khi xóa!");
+        }
+
+
 
     }
 

@@ -1,7 +1,10 @@
 package controllers.KhaiBaoManagerController;
 
 import Bean.KhaiBaoBean;
+import models.KhaiBao;
+import models.NhanKhauModel;
 import services.KhaiBaoService;
+import services.MysqlConnection;
 import utility.ClassTableModel;
 
 import javax.swing.*;
@@ -9,21 +12,28 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.EventObject;
 import java.util.List;
 
 /**
-* @author: hieppm
+ * @author: hieppm
  */
 
 public class KhaiBaoMangerPanelController {
     private final String[] COLUMNS = {"Họ tên", "ID nhân khẩu", "Ngày sinh", "Ngày khai báo", "Biểu hiện", "Vùng dịch"};
+    public List<KhaiBaoBean> khaiBaoBeanList;
     private JPanel jpnView;
     private JTextField jtfSearch = new JTextField("");
     private KhaiBaoService khaiBaoService;
-    public List<KhaiBaoBean> khaiBaoBeanList;
     private ClassTableModel classTableModel;
     private JFrame parentJFrame;
+    private KhaiBaoBean khaiBaoBean;
 
     public KhaiBaoMangerPanelController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
@@ -34,8 +44,52 @@ public class KhaiBaoMangerPanelController {
         initAction();
     }
 
-    public KhaiBaoMangerPanelController(){
+    public KhaiBaoMangerPanelController() {
         initAction();
+    }
+
+    public String[] getCOLUMNS() {
+        return COLUMNS;
+    }
+
+    public KhaiBaoService getKhaiBaoService() {
+        return khaiBaoService;
+    }
+
+    public void setKhaiBaoService(KhaiBaoService khaiBaoService) {
+        this.khaiBaoService = khaiBaoService;
+    }
+
+    public List<KhaiBaoBean> getKhaiBaoBeanList() {
+        return khaiBaoBeanList;
+    }
+
+    public void setKhaiBaoBeanList(List<KhaiBaoBean> khaiBaoBeanList) {
+        this.khaiBaoBeanList = khaiBaoBeanList;
+    }
+
+    public ClassTableModel getClassTableModel() {
+        return classTableModel;
+    }
+
+    public void setClassTableModel(ClassTableModel classTableModel) {
+        this.classTableModel = classTableModel;
+    }
+
+    public JFrame getParentJFrame() {
+        return parentJFrame;
+    }
+
+    public void setParentJFrame(JFrame parentJFrame) {
+        this.parentJFrame = parentJFrame;
+    }
+
+    public KhaiBaoBean getKhaiBaoBean() {
+        return khaiBaoBean;
+    }
+
+    public void setKhaiBaoBean(KhaiBaoBean khaiBaoBean) {
+        this.khaiBaoBean = khaiBaoBean;
     }
 
     public void initAction() {
@@ -87,6 +141,16 @@ public class KhaiBaoMangerPanelController {
         table.getColumnModel().getColumn(0).setMinWidth(120);
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
 
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                KhaiBaoBean temp = khaiBaoBeanList.get(table.getSelectedRow());
+                khaiBaoBean = temp;
+                System.out.println(khaiBaoBean.getNhanKhauModel().getID());
+                setKhaiBaoBean(temp);
+            }
+        });
+
 
         JScrollPane scroll = new JScrollPane();
         scroll.getViewport().add(table);
@@ -98,13 +162,23 @@ public class KhaiBaoMangerPanelController {
         jpnView.repaint();
     }
 
-    public void setParentJFrame(JFrame parentJFrame) {
-        this.parentJFrame = parentJFrame;
-    }
-
     public void refreshData() {
         this.khaiBaoBeanList = this.khaiBaoService.getListKhaiBao("");
         setDataTable();
+    }
+
+
+    public boolean xoaKhaiBao(KhaiBaoBean khaiBaoBean) throws SQLException, ClassNotFoundException {
+        NhanKhauModel nhanKhauModel = khaiBaoBean.getNhanKhauModel();
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "DELETE FROM khai_bao WHERE id_nhankhau = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        preparedStatement.setInt(1, nhanKhauModel.getID());
+        preparedStatement.executeUpdate();
+        connection.close();
+        refreshData();
+        return true;
+
     }
 
     public JPanel getJpnView() {
