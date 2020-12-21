@@ -12,10 +12,10 @@
 1️⃣ Clone repository về bằng cách click vào nút code màu xanh, chọn dowload zip, tải về rồi giải nén
 ![image](https://user-images.githubusercontent.com/53103225/102680871-0877f300-41ef-11eb-87cf-909455ae11ee.png)
 
-<br> hoặc mở một folder bất kỳ trong máy, click chuột phải và chọn<b> Git bash here</b>, sau đó gõ dòng lệnh trong dấu nháy kép sau đây vào màn hình console:
+<br> hoặc mở một folder bất kỳ trong máy, click chuột phải và chọn <i>Git bash here</i>, sau đó gõ dòng lệnh trong dấu nháy kép sau đây vào màn hình console:
 <br> 👉 "git clone https://github.com/tronghaiit2/NM_CNPM_Project.git"
 ![image](https://user-images.githubusercontent.com/53103225/102680838-bfc03a00-41ee-11eb-865c-a27fc5451114.png)
-<br> Khi nào màn hình console nhìn như này là xong:
+<br> - Khi nào màn hình console nhìn như này là xong:
 ![image](https://user-images.githubusercontent.com/53103225/102681022-7244cc80-41f0-11eb-930d-871743750c89.png)
 <br> ⚠️ Để mở màn hình console của git như trên thì trước tiên máy của bạn phải có <a href ="https://git-scm.com/downloads"> Git </a> <br>
 
@@ -32,14 +32,22 @@
 ![image](https://user-images.githubusercontent.com/53103225/102683731-b7272e00-4205-11eb-9192-277836cc98ae.png)
 
 -> Sau khi mở ấn vào nút <b>⚡ Execute</b> để tạo csdl cho phần mềm <br>
-5️⃣ Project đã hỗ trợ mysql connector phiên bản 8.0.21 và 8.0.22.
-<br> Nếu dùng phiên bản khác có thể tự thêm drive mysql connector phù hợp với phiên bản mysql trong máy (như vd trong hình là 8.0.21)
+5️⃣ Để kết nối csdl MySQL, cần có một drive <b> Mysql Connector </b> phù hợp với phiên bản trong máy, Project đã hỗ trợ <b> Mysql Connector </b> phiên bản 8.0.21 và 8.0.22.
 <br> (Xem phiên bản bằng cách chọn Help -> About Workbench)
-<br> Gợi ý dùng IDE Intellij IDEA hỗ trợ việc thêm thư viện bằng maven rất tiện lợi, chi tiết tham khảo trong link sau: 
+![image](https://user-images.githubusercontent.com/53103225/102679789-ea0cfa00-41e4-11eb-8f06-1a4c01cc1b2c.png) <br>
+
+<br> - Nếu phiên bản khác cần tự thêm thư viện, trước hết cần tải drive phù hợp: https://downloads.mysql.com/archives/c-j/
+<br> - Mục <i>Product version</i> chọn phiên bản giống như trong máy của mình, còn mục <i>Operating System</i> chọn "Platform Independent".
+<br> - Sau đó click vào nút download file zip để tải về rồi giải nén ra.
+![image](https://user-images.githubusercontent.com/53103225/102747597-21210e00-4393-11eb-9f8e-d8742be32af5.png)
+<br> + Nếu dùng Intellij IDEA, để thêm thư viện vào File -> Project Structure... -> Libraries. Sau đó click vào dấu "+" ở cửa sổ chứa thư viện, tìm đến thư viện vừa giải nén, chọn file .jar và ấn "OK".
+![image](https://user-images.githubusercontent.com/53103225/102749050-e40a4b00-4395-11eb-849b-9386c382efe7.png)
+<br> + Nếu dùng Netbeans, click chuột phải vào Libraries -> Add JAR/Folder... Tìm đến folder vừa giải nén, chọn file .jar và ấn open.
+![image](https://user-images.githubusercontent.com/53103225/102749299-5da23900-4396-11eb-8efb-ac425a334f01.png)
+![image](https://user-images.githubusercontent.com/53103225/102749427-96daa900-4396-11eb-8e92-6fda1c2dde11.png)
+<br> Ngoài ra nếu dùng Intellij IDEA, có thể thêm thư viện bằng maven, chi tiết tham khảo trong link sau: 
 <br> 👉 https://www.jetbrains.com/help/idea/convert-a-regular-project-into-a-maven-project.html#add_maven_support
 <br> Code xml cho từng phiên bản để add dependency vào file pom.xml nếu dùng maven:
 <br> 👉 https://mvnrepository.com/artifact/mysql/mysql-connector-java
-
-![image](https://user-images.githubusercontent.com/53103225/102679789-ea0cfa00-41e4-11eb-8f06-1a4c01cc1b2c.png) <br>
 
 6️⃣ Run project bằng IDE, đăng nhập bằng Username là Admin, Password là 1 (có thể xem trong csdl bảng user)
