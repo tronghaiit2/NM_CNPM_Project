@@ -36,13 +36,14 @@
 <br> (Xem phiên bản bằng cách chọn Help -> About Workbench)
 ![image](https://user-images.githubusercontent.com/53103225/102679789-ea0cfa00-41e4-11eb-8f06-1a4c01cc1b2c.png) <br>
 
-<br> - Nếu phiên bản khác cần tự thêm thư viện, trước hết cần tải drive phù hợp: https://downloads.mysql.com/archives/c-j/
+<br> - Nếu phiên bản khác cần tải drive phù hợp ở link sau rồi add vào project: 
+<br> 👉 https://downloads.mysql.com/archives/c-j/
 <br> - Mục <i>Product version</i> chọn phiên bản giống như trong máy của mình, còn mục <i>Operating System</i> chọn "Platform Independent".
 <br> - Sau đó click vào nút download file zip để tải về rồi giải nén ra.
 ![image](https://user-images.githubusercontent.com/53103225/102747597-21210e00-4393-11eb-9f8e-d8742be32af5.png)
 <br> + Nếu dùng Intellij IDEA, để thêm thư viện vào File -> Project Structure... -> Libraries. Sau đó click vào dấu "+" ở cửa sổ chứa thư viện, tìm đến thư viện vừa giải nén, chọn file .jar và ấn "OK".
 ![image](https://user-images.githubusercontent.com/53103225/102749050-e40a4b00-4395-11eb-849b-9386c382efe7.png)
-<br> + Nếu dùng Netbeans, click chuột phải vào Libraries -> Add JAR/Folder... Tìm đến folder vừa giải nén, chọn file .jar và ấn open.
+<br> + Nếu dùng Netbeans, click chuột phải vào Libraries -> Add JAR/Folder... Tìm đến folder vừa giải nén, chọn file .jar và ấn open. <br>
 ![image](https://user-images.githubusercontent.com/53103225/102749299-5da23900-4396-11eb-8efb-ac425a334f01.png)
 ![image](https://user-images.githubusercontent.com/53103225/102749427-96daa900-4396-11eb-8e92-6fda1c2dde11.png)
 <br> Ngoài ra nếu dùng Intellij IDEA, có thể thêm thư viện bằng maven, chi tiết tham khảo trong link sau: 
